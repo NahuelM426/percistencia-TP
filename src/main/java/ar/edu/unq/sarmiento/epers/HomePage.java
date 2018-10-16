@@ -12,21 +12,21 @@ import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 
 import ar.edu.unq.sarmiento.epers.hibernate.MaguitoHome;
-import ar.edu.unq.sarmiento.epers.model.Item;
-import ar.edu.unq.sarmiento.epers.model.Maguito;
+import ar.edu.unq.sarmiento.epers.model.Proyecto;
+import ar.edu.unq.sarmiento.epers.model.Developer;
 import ar.edu.unq.sarmiento.epers.model.SearchModel;
 
 public class HomePage extends WebPage {
 
 	private static final long serialVersionUID = -3657874371670902273L;
-	Form<SearchModel<Maguito>> form = null;
+	Form<SearchModel<Developer>> form = null;
 
 	@SuppressWarnings("serial")
 	public HomePage() {
 
-		IModel<SearchModel<Maguito>> model = new CompoundPropertyModel<SearchModel<Maguito>>(
-				new SearchModel<Maguito>(MaguitoHome.getInstance()));
-		form = new Form<SearchModel<Maguito>>("form", model);
+		IModel<SearchModel<Developer>> model = new CompoundPropertyModel<SearchModel<Developer>>(
+				new SearchModel<Developer>(MaguitoHome.getInstance()));
+		form = new Form<SearchModel<Developer>>("form", model);
 
 		form.add(new TextField<String>("search"));
 
@@ -36,9 +36,9 @@ public class HomePage extends WebPage {
 		form.add(new TextField<String>("result.vida"));
 		form.add(new TextField<String>("result.experiencia"));
 
-		PropertyListView<Item> items = new PropertyListView<Item>("result.items") {
+		PropertyListView<Proyecto> items = new PropertyListView<Proyecto>("result.proyectos") {
 			@Override
-			protected void populateItem(ListItem<Item> itemWrapper) {
+			protected void populateItem(ListItem<Proyecto> itemWrapper) {
 				itemWrapper.add(new Label("nombre"));
 				itemWrapper.add(new Label("peso"));
 			}

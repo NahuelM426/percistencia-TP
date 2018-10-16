@@ -5,8 +5,8 @@ import org.hibernate.Transaction;
 
 import ar.edu.unq.sarmiento.epers.hibernate.MaguitoHome;
 import ar.edu.unq.sarmiento.epers.hibernate.SessionFactoryContainer;
-import ar.edu.unq.sarmiento.epers.model.Item;
-import ar.edu.unq.sarmiento.epers.model.Maguito;
+import ar.edu.unq.sarmiento.epers.model.Proyecto;
+import ar.edu.unq.sarmiento.epers.model.Developer;
 
 public class GenerateData {
 
@@ -18,14 +18,14 @@ public class GenerateData {
 		Transaction transaction = s.beginTransaction();
 
 		try {
-			Maguito harry = new Maguito("Harry", 100);
-			harry.addItem(new Item("varita", 1));
-			harry.addItem(new Item("capa", 3));
+			Developer harry = new Developer("Harry", 100);
+			harry.addProyecto(new Proyecto("varita", 1));
+			harry.addProyecto(new Proyecto("capa", 3));
 			harry.setExperiencia(10);
 
-			Maguito gandalf = new Maguito("Gandalf", 90);
-			gandalf.addItem(new Item("baculo", 7));
-			gandalf.addItem(new Item("sombrero", 2));
+			Developer gandalf = new Developer("Gandalf", 90);
+			gandalf.addProyecto(new Proyecto("baculo", 7));
+			gandalf.addProyecto(new Proyecto("sombrero", 2));
 			gandalf.setExperiencia(200);
 
 			MaguitoHome.getInstance().insert(harry);

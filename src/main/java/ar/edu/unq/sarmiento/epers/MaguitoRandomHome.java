@@ -3,27 +3,27 @@ package ar.edu.unq.sarmiento.epers;
 import java.util.Random;
 
 import ar.edu.unq.sarmiento.epers.model.Home;
-import ar.edu.unq.sarmiento.epers.model.Item;
-import ar.edu.unq.sarmiento.epers.model.Maguito;
+import ar.edu.unq.sarmiento.epers.model.Proyecto;
+import ar.edu.unq.sarmiento.epers.model.Developer;
 
-public class MaguitoRandomHome implements Home<Maguito>{
+public class MaguitoRandomHome implements Home<Developer>{
 
 	private static final long serialVersionUID = 5914747011225145115L;
 	static MaguitoRandomHome instance = new MaguitoRandomHome();
 	
 	@Override
-	public Maguito findByName(String name) {
-		Maguito result = new Maguito();
+	public Developer findByName(String name) {
+		Developer result = new Developer();
 		result.setNombre(name);
 		result.setVida(new Random().nextInt(100));
-		Item item = new Item();
+		Proyecto item = new Proyecto();
 		item.setNombre("primer item");
 		item.setPeso(new Random().nextInt(100));
-		result.addItem(item);
-		item = new Item();
+		result.addProyecto(item);
+		item = new Proyecto();
 		item.setNombre("segundo item");
 		item.setPeso(new Random().nextInt(100));
-		result.addItem(item);
+		result.addProyecto(item);
 		return result;
 	}
 
@@ -32,17 +32,17 @@ public class MaguitoRandomHome implements Home<Maguito>{
 	}
 
 	@Override
-	public void insert(Maguito object) {
+	public void insert(Developer object) {
 		
 	}
 
 	@Override
-	public void update(Maguito object) {
+	public void update(Developer object) {
 		
 	}
 
 	@Override
-	public void delete(Maguito object) {
+	public void delete(Developer object) {
 		
 	}
 

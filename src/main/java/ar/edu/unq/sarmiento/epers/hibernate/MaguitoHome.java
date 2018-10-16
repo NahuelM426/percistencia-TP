@@ -3,9 +3,9 @@ package ar.edu.unq.sarmiento.epers.hibernate;
 import org.hibernate.Session;
 
 import ar.edu.unq.sarmiento.epers.model.Home;
-import ar.edu.unq.sarmiento.epers.model.Maguito;
+import ar.edu.unq.sarmiento.epers.model.Developer;
 
-public class MaguitoHome implements Home<Maguito> {
+public class MaguitoHome implements Home<Developer> {
 
 	private static final long serialVersionUID = 4775910097257163038L;
 
@@ -20,27 +20,27 @@ public class MaguitoHome implements Home<Maguito> {
 	}
 
 	@Override
-	public Maguito findByName(String name) {
+	public Developer findByName(String name) {
 		return this.getSession()
-				.createQuery("FROM Maguito WHERE nombre = :name", Maguito.class)
+				.createQuery("FROM Developer WHERE nombre = :name", Developer.class)
 				.setParameter("name", name)
 				.getSingleResult();
 		
 	}
 
 	@Override
-	public void insert(Maguito object) {
+	public void insert(Developer object) {
 		this.getSession().save(object);
 	}
 
 	@Override
-	public void update(Maguito object) {
+	public void update(Developer object) {
 		this.getSession().update(object);
 
 	}
 
 	@Override
-	public void delete(Maguito object) {
+	public void delete(Developer object) {
 		this.getSession().delete(object);
 	}
 

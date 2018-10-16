@@ -20,10 +20,10 @@
 		<property name="show_sql">true</property>
 
 		<property name="hibernate.current_session_context_class">thread</property>
-		<property name="hibernate.hbm2ddl.auto">create-drop</property>
+		<property name="hibernate.hbm2ddl.auto">create</property>
 
-		<mapping class="ar.edu.unq.sarmiento.epers.model.Item" />
-		<mapping class="ar.edu.unq.sarmiento.epers.model.Maguito" />
+		<mapping class="ar.edu.unq.sarmiento.epers.model.Developer" />
+		<mapping class="ar.edu.unq.sarmiento.epers.model.Proyecto" />
 
 	</session-factory>
 </hibernate-configuration>

@@ -9,20 +9,20 @@ import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Maguito extends Persistible {
+public class Developer extends Persistible {
 
 	private static final long serialVersionUID = -786414214144659508L;
 	private String nombre = "";
 	private int vida = 0;
 	private int experiencia;
 	
-	@OneToMany(mappedBy = "maguito",  cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-	private List<Item> items = new ArrayList<Item>();
+	@OneToMany(mappedBy = "developer",  cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+	private List<Proyecto> proyectos = new ArrayList<Proyecto>();
 
-	public Maguito() {
+	public Developer() {
 	}
 
-	public Maguito(String nombre, int vida) {
+	public Developer(String nombre, int vida) {
 		this.setNombre(nombre);
 		this.setVida(vida);
 	}
@@ -47,29 +47,29 @@ public class Maguito extends Persistible {
 		vida++;
 	}
 
-	public List<Item> getItems() {
-		return items;
+	public List<Proyecto> getProyectos() {
+		return proyectos;
 	}
 
-	public void setItems(List<Item> items) {
-		this.items = items;
+	public void setProyectos(List<Proyecto> proyectos) {
+		this.proyectos = proyectos;
 	}
 	
-	public void addItem(Item item) {
-		this.getItems().add(item);
-		if(item.getMaguito() != null) {
-			item.getMaguito().removeItem(item);
+	public void addProyecto(Proyecto project) {
+		this.getProyectos().add(project);
+		if(project.getDeveloper() != null) {
+			project.getDeveloper().removeProyecto(project);
 		}
-		item.setMaguito(this);
+		project.setDeveloper(this);
 	}
 	
-	public void removeItem(Item item) {
-		this.getItems().remove(item);
-		item.setMaguito(null);
+	public void removeProyecto(Proyecto project) {
+		this.getProyectos().remove(project);
+		project.setDeveloper(null);
 	}
 	
 	public int peso() {
-		return this.getItems().stream().map((item) -> item.getPeso()).reduce( (a,b) -> a + b).orElse(0) ; 
+		return this.getProyectos().stream().map((proyecto) -> proyecto.getPeso()).reduce( (a,b) -> a + b).orElse(0) ; 
 	}
 
 	public int getExperiencia() {

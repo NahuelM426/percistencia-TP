@@ -4,19 +4,19 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Item extends Persistible{
+public class Proyecto extends Persistible{
 
 	private static final long serialVersionUID = 7580495859264340032L;
 	private String nombre;
 	private int peso;
 	
 	@ManyToOne
-	private Maguito maguito;
+	private Developer developer;
 
-	public Item() {
+	public Proyecto() {
 	}
 
-	public Item(String nombre, int peso) {
+	public Proyecto(String nombre, int peso) {
 		this.setNombre(nombre);
 		this.setPeso(peso);
 	}
@@ -38,12 +38,12 @@ public class Item extends Persistible{
 		this.nombre = nombre;
 	}
 
-	public Maguito getMaguito() {
-		return maguito;
+	public Developer getDeveloper() {
+		return developer;
 	}
 
-	public void setMaguito(Maguito maguito) {
-		this.maguito = maguito;
+	public void setDeveloper(Developer developer) {
+		this.developer = developer;
 	}
 
 
