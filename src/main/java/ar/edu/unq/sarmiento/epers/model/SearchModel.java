@@ -4,7 +4,9 @@ import java.io.Serializable;
 
 import javax.persistence.NoResultException;
 
-public class SearchModel<T> implements Serializable {
+import ar.edu.unq.sarmiento.epers.home.Home;
+
+public class SearchModel<T extends Persistible> implements Serializable {
 
 	private static final long serialVersionUID = 2280350615761032908L;
 	private String search = "";
@@ -25,6 +27,7 @@ public class SearchModel<T> implements Serializable {
 	}
 
 	public T getResult() {
+		this.home.attach(result);
 		return result;
 	}
 
@@ -54,7 +57,7 @@ public class SearchModel<T> implements Serializable {
 	}
 
 	public void update() {
-		this.home.update(this.getResult());
+		this.home.saveOrUpdate(this.getResult());
 	}
 
 }

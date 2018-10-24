@@ -3,6 +3,8 @@ package ar.edu.unq.sarmiento.epers.model;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 public class UserStory extends Persistible{
@@ -11,8 +13,9 @@ public class UserStory extends Persistible{
 	private int complejidadEstimada;
 	private boolean completado = false; 
 	private Rol rol;
-	private Projecto proyectoAlQuePertenece;
+	private Proyecto proyectoAlQuePertenece;
 	private Backlog backlogAlQuePertenece;
+	@OneToMany
 	private List<Developer> developers;
 	public int getValorAlCliente() {
 		return valorAlCliente;
@@ -38,10 +41,10 @@ public class UserStory extends Persistible{
 	public void setRol(Rol rol) {
 		this.rol = rol;
 	}
-	public Projecto getProyectoAlQuePertenece() {
+	public Proyecto getProyectoAlQuePertenece() {
 		return proyectoAlQuePertenece;
 	}
-	public void setProyectoAlQuePertenece(Projecto proyectoAlQuePertenece) {
+	public void setProyectoAlQuePertenece(Proyecto proyectoAlQuePertenece) {
 		this.proyectoAlQuePertenece = proyectoAlQuePertenece;
 	}
 	public Backlog getBacklogAlQuePertenece() {
