@@ -6,11 +6,11 @@ import org.apache.wicket.model.PropertyModel;
 
 import ar.edu.unq.sarmiento.epers.model.Proyecto;
 
-public class DecripcionDeProyecto extends  WebPage {
+public class DescripcionDeProyecto extends  WebPage {
 	private ControlerProyecto controller;
 	private Proyecto proy;
 	
-public DecripcionDeProyecto (Proyecto proyec){
+public DescripcionDeProyecto (Proyecto proyec){
 	proy= proyec;
 }
 

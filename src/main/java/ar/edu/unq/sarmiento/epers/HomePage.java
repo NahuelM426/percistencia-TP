@@ -53,6 +53,29 @@ public class HomePage extends WebPage {
 		form.add(new TextField<String>("result.vida").setRequired(false));
 		form.add(new TextField<String>("result.experiencia").setRequired(false));
 
+		PropertyListView<Proyecto> items = new PropertyListView<Proyecto>("result.proyectos") {
+			@Override
+			protected void populateItem(ListItem<Proyecto> itemWrapper) {
+				Proyecto proyecto = itemWrapper.getModelObject();
+
+				CompoundPropertyModel<ListItem<Proyecto>> proyectoModel = new CompoundPropertyModel<>(itemWrapper);
+				itemWrapper.add(new Label("nombre", proyectoModel.bind("getNombre")));
+				itemWrapper.add(new Label("peso", proyectoModel.bind("getPeso")));
+
+				
+				Link<String> botonDescripcion = new Link<String>("descripcion") {
+					private static final long serialVersionUID = 3672370417232954427L;
+
+					@Override
+					public void onClick() {
+
+						this.setResponsePage(new DescripcionDeProyecto(proyecto));
+					}
+				};
+			}
+		};
+		form.add(items);
+		items.setOutputMarkupId(true);
 
 		AjaxButton ab = new AjaxButton("action") {
 			@Override
@@ -62,9 +85,10 @@ public class HomePage extends WebPage {
 					model.getObject().find();
 					target.add(form);
 				}
+
 			}
+
 		};
-		
 		form.add(ab);
 
 		ab = new AjaxButton("update") {
@@ -75,8 +99,11 @@ public class HomePage extends WebPage {
 					model.getObject().update();
 					target.add(form);
 				}
+
 			}
+
 		};
+
 		form.add(ab);
 		
 		Link<?> l = new Link<SearchModel<Developer>>("details") {
