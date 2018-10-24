@@ -2,8 +2,10 @@ package ar.edu.unq.sarmiento.epers;
 
 import java.util.Random;
 
-import ar.edu.unq.sarmiento.epers.model.Home;
+import org.hibernate.Session;
+
 import ar.edu.unq.sarmiento.epers.model.Proyecto;
+import ar.edu.unq.sarmiento.epers.home.Home;
 import ar.edu.unq.sarmiento.epers.model.Developer;
 
 public class MaguitoRandomHome implements Home<Developer>{
@@ -31,18 +33,34 @@ public class MaguitoRandomHome implements Home<Developer>{
 		return instance;
 	}
 
-	@Override
-	public void insert(Developer object) {
-		
-	}
 
-	@Override
-	public void update(Developer object) {
-		
-	}
 
 	@Override
 	public void delete(Developer object) {
+		
+	}
+
+	@Override
+	public Session getSession() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Developer find(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void saveOrUpdate(Developer object) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void attach(Developer result) {
+		// TODO Auto-generated method stub
 		
 	}
 

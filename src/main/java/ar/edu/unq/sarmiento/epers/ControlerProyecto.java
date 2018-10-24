@@ -3,10 +3,12 @@ package ar.edu.unq.sarmiento.epers;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import ar.edu.unq.sarmiento.epers.model.Home;
+import ar.edu.unq.sarmiento.epers.home.Home;
 import ar.edu.unq.sarmiento.epers.model.Proyecto;
 
 public class ControlerProyecto implements Home<Proyecto> {	
+	
+	
 	private Proyecto proyectoDecrip;
 	
 	@Autowired
@@ -20,28 +22,47 @@ public String nombreProyecto(){
 	return proyectoDecrip.getNombre();
 }
 
-private Session getSession() {
-	return session.getSessionFactory().getCurrentSession();
-}
-
 @Override
 public Proyecto findByName(String name) {
 	// TODO Auto-generated method stub
 	return null;
 }
 
-@Override
+
 public void insert(Proyecto object) {
-	getSession().save(object);
+	this.session.save(object);
 }
 
-@Override
 public void update(Proyecto object) {
-	getSession().update(object);
+	this.session.update(object);
 }
 
 @Override
 public void delete(Proyecto object) {
-	getSession().delete(object);
+	this.session.delete(object);
+}
+
+@Override
+public Session getSession() {
+	// TODO Auto-generated method stub
+	return null;
+}
+
+@Override
+public Proyecto find(Integer id) {
+	// TODO Auto-generated method stub
+	return null;
+}
+
+@Override
+public void saveOrUpdate(Proyecto object) {
+	// TODO Auto-generated method stub
+	
+}
+
+@Override
+public void attach(Proyecto result) {
+	// TODO Auto-generated method stub
+	
 }
 }
