@@ -15,8 +15,8 @@ public class Developer extends Persistible {
 	private String nombre = "";
 	private int vida = 0;
 	private int experiencia;
-	
-	@OneToMany(mappedBy = "developer",  cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+
+	@OneToMany(mappedBy = "developer", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	private List<Proyecto> proyectos = new ArrayList<Proyecto>();
 
 	public Developer() {
@@ -54,22 +54,22 @@ public class Developer extends Persistible {
 	public void setProyectos(List<Proyecto> proyectos) {
 		this.proyectos = proyectos;
 	}
-	
+
 	public void addProyecto(Proyecto project) {
 		this.getProyectos().add(project);
-		if(project.getDeveloper() != null) {
+		if (project.getDeveloper() != null) {
 			project.getDeveloper().removeProyecto(project);
 		}
 		project.setDeveloper(this);
 	}
-	
+
 	public void removeProyecto(Proyecto project) {
 		this.getProyectos().remove(project);
 		project.setDeveloper(null);
 	}
-	
+
 	public int peso() {
-		return this.getProyectos().stream().map((proyecto) -> proyecto.getPeso()).reduce( (a,b) -> a + b).orElse(0) ; 
+		return this.getProyectos().stream().map((proyecto) -> proyecto.getPeso()).reduce((a, b) -> a + b).orElse(0);
 	}
 
 	public int getExperiencia() {

@@ -16,9 +16,9 @@ public abstract class Persistible implements Serializable {
 	@Id
 	@GeneratedValue(generator="myGenerator")
 	@GenericGenerator(name="myGenerator", strategy = "increment")
-	private int id;
+	private Integer id;
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 	

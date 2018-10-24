@@ -4,12 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 @Entity
 public class Sprint extends Persistible{
 	
+	@OneToMany
 	private List<UserStory> userStories = new ArrayList();
+	@Transient
 	private List<Rol> roles = new ArrayList<>();
+	
 	public List<UserStory> getUserStories() {
 		return userStories;
 	}

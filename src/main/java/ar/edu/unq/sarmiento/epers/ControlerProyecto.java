@@ -1,14 +1,16 @@
 package ar.edu.unq.sarmiento.epers;
 
 import org.hibernate.Session;
+import org.springframework.beans.factory.annotation.Autowired;
 
-import ar.edu.unq.sarmiento.epers.hibernate.SessionFactoryContainer;
-import ar.edu.unq.sarmiento.epers.model.Developer;
 import ar.edu.unq.sarmiento.epers.model.Home;
 import ar.edu.unq.sarmiento.epers.model.Proyecto;
 
 public class ControlerProyecto implements Home<Proyecto> {	
 	private Proyecto proyectoDecrip;
+	
+	@Autowired
+	private Session session;
 	
 public ControlerProyecto (Proyecto proyecto){
 	proyectoDecrip = proyecto; 
@@ -17,8 +19,9 @@ public ControlerProyecto (Proyecto proyecto){
 public String nombreProyecto(){
 	return proyectoDecrip.getNombre();
 }
+
 private Session getSession() {
-	return SessionFactoryContainer.getSessionFactory().getCurrentSession();
+	return session.getSessionFactory().getCurrentSession();
 }
 
 @Override

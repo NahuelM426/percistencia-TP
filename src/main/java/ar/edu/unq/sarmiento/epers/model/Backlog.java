@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Backlog extends Persistible{
 
+	@OneToMany
 	private List<UserStory> userStories= new ArrayList<>();
 	private Sprint sprint;
 	public List<UserStory> getUserStories() {
