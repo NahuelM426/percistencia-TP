@@ -6,6 +6,7 @@ import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.PropertyListView;
 import org.apache.wicket.model.CompoundPropertyModel;
@@ -39,8 +40,22 @@ public class HomePage extends WebPage {
 		PropertyListView<Proyecto> items = new PropertyListView<Proyecto>("result.proyectos") {
 			@Override
 			protected void populateItem(ListItem<Proyecto> itemWrapper) {
-				itemWrapper.add(new Label("nombre"));
-				itemWrapper.add(new Label("peso"));
+				Proyecto proyecto = itemWrapper.getModelObject();
+
+				CompoundPropertyModel<ListItem<Proyecto>> proyectoModel = new CompoundPropertyModel<>(itemWrapper);
+				itemWrapper.add(new Label("nombre", proyectoModel.bind("getNombre")));
+				itemWrapper.add(new Label("peso", proyectoModel.bind("getPeso")));
+
+				
+				Link<String> botonDescripcion = new Link<String>("descripcion") {
+					private static final long serialVersionUID = 3672370417232954427L;
+
+					@Override
+					public void onClick() {
+
+						this.setResponsePage(new DescripcionDeProyecto(proyecto));
+					}
+				};
 			}
 		};
 		form.add(items);
