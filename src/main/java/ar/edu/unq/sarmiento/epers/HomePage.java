@@ -25,13 +25,10 @@ public class HomePage extends WebPage {
 
 	private static final long serialVersionUID = -3657874371670902273L;
 
-	@SpringBean(name="maguitoHome")
-	private Home<Developer> maguitoHome;
 
 	Form<SearchModel<Developer>> form = null;
 
 	@SuppressWarnings("serial")
-	
 	public HomePage(Developer maguito) { 
 		this();
 		((SearchModel<Developer>)getDefaultModelObject()).setResult(maguito);

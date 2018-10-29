@@ -11,7 +11,7 @@
 	 </context-param>
  	<context-param>
 		     <param-name>contextConfigLocation</param-name>
-		     <param-value>ar.edu.unq.sarmiento.epers;ar.edu.unq.sarmiento.epers.hibernate;ar.edu.unq.sarmiento.epers;ar.edu.unq.sarmiento.epers.home</param-value>
+		     <param-value>ar.edu.unq.sarmiento.epers;ar.edu.unq.sarmiento.epers.hibernate;ar.edu.unq.sarmiento.epers.home</param-value>
 	 </context-param>
 	 
 
