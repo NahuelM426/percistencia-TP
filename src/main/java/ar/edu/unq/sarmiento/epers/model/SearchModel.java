@@ -6,7 +6,7 @@ import javax.persistence.NoResultException;
 
 import ar.edu.unq.sarmiento.epers.home.Home;
 
-public class SearchModel<T extends Persistible> implements Serializable {
+public class SearchModel< T extends Persistible > implements Serializable {
 
 	private static final long serialVersionUID = 2280350615761032908L;
 	private String search = "";

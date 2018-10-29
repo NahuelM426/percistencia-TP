@@ -1,7 +1,12 @@
 package ar.edu.unq.sarmiento.epers;
 
+import javax.transaction.Transactional;
+
 import org.hibernate.Session;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import ar.edu.unq.sarmiento.epers.home.Home;
 import ar.edu.unq.sarmiento.epers.model.Proyecto;
@@ -62,7 +67,7 @@ public void saveOrUpdate(Proyecto object) {
 
 @Override
 public void attach(Proyecto result) {
-	// TODO Auto-generated method stub
+	
 	
 }
 }
