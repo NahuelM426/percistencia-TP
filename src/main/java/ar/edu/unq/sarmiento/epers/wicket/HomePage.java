@@ -44,7 +44,7 @@ public class HomePage extends WebPage{
 					@Override
 					public void onClick() {
 
-						//this.setResponsePage(new (materia, carrera));
+						this.setResponsePage(new ProyectosPage(developer));
 					}
 				};
 			}	
