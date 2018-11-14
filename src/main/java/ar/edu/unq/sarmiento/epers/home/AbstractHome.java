@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 import ar.edu.unq.sarmiento.epers.model.Persistible;
 
 @Repository
-@Transactional
 public abstract class AbstractHome<T extends Persistible> implements Home<T> {
 
 	private static final long serialVersionUID = -6234259370522061025L;

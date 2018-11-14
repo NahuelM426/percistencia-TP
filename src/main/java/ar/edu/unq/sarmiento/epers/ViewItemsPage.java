@@ -11,7 +11,7 @@ import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import ar.edu.unq.sarmiento.epers.home.MaguitoHome;
+import ar.edu.unq.sarmiento.epers.home.DeveloperHome;
 import ar.edu.unq.sarmiento.epers.model.Proyecto;
 import ar.edu.unq.sarmiento.epers.model.Developer;
 
@@ -19,7 +19,7 @@ public class ViewItemsPage extends WebPage {
 
 	
 	@Autowired
-	MaguitoHome maguitoHome;
+	DeveloperHome maguitoHome;
 	
 	/**
 	 * 

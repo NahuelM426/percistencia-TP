@@ -38,8 +38,10 @@ public class HomePage extends WebPage {
 		log.debug("construyendo form home");
 
 		IModel<SearchModel<Developer>> model = new CompoundPropertyModel<SearchModel<Developer>>(
-				new SearchModel<Developer>(maguitoHome));
+				new SearchModel<Developer>(null));
+		
 		this.setDefaultModel(model);
+		
 		form = new Form<SearchModel<Developer>>("form", model);
 
 		form.add(new TextField<String>("search"));
