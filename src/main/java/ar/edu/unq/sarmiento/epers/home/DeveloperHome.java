@@ -1,13 +1,11 @@
 package ar.edu.unq.sarmiento.epers.home;
 
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unq.sarmiento.epers.model.Developer;
 
 @Repository
-@Transactional
-public class MaguitoHome extends AbstractHome<Developer> {
+public class DeveloperHome extends AbstractHome<Developer> {
 
 	private static final long serialVersionUID = 4775910097257163038L;
 
@@ -17,6 +15,9 @@ public class MaguitoHome extends AbstractHome<Developer> {
 				.setParameter("name", name).getSingleResult();
 		
 
+	}
+	public java.util.List<Developer> listaDeDeveloper(){
+		return this.getSession().createQuery("FROM Developer", Developer.class).list();
 	}
 
 }

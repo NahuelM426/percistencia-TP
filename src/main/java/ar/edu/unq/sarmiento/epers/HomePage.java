@@ -16,7 +16,6 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.springframework.context.ApplicationContext;
 
 import ar.edu.unq.sarmiento.epers.home.Home;
-import ar.edu.unq.sarmiento.epers.home.MaguitoHome;
 import ar.edu.unq.sarmiento.epers.model.Proyecto;
 import ar.edu.unq.sarmiento.epers.model.Developer;
 import ar.edu.unq.sarmiento.epers.model.SearchModel;
@@ -39,8 +38,10 @@ public class HomePage extends WebPage {
 		log.debug("construyendo form home");
 
 		IModel<SearchModel<Developer>> model = new CompoundPropertyModel<SearchModel<Developer>>(
-				new SearchModel<Developer>(MaguitoHome));
+				new SearchModel<Developer>(null));
+		
 		this.setDefaultModel(model);
+		
 		form = new Form<SearchModel<Developer>>("form", model);
 
 		form.add(new TextField<String>("search"));
@@ -58,6 +59,7 @@ public class HomePage extends WebPage {
 
 				CompoundPropertyModel<ListItem<Proyecto>> proyectoModel = new CompoundPropertyModel<>(itemWrapper);
 				itemWrapper.add(new Label("nombre", proyectoModel.bind("getNombre")));
+				itemWrapper.add(new Label("peso", proyectoModel.bind("getPeso")));
 
 				
 				Link<String> botonDescripcion = new Link<String>("descripcion") {
