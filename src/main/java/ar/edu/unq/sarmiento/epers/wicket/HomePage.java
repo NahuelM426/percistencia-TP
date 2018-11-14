@@ -14,7 +14,6 @@ public class HomePage extends WebPage{
 	
 	@SpringBean(name="controllerDeHomePage")
 	private ControllerDeHomePage controller;
-	private Developer controllerDeveloper=new Developer();
 	
 	public HomePage(){
 		this(new Developer());

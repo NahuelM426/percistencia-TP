@@ -20,11 +20,9 @@ public class MaguitoRandomHome implements Home<Developer>{
 		result.setVida(new Random().nextInt(100));
 		Proyecto item = new Proyecto();
 		item.setNombre("primer item");
-		item.setPeso(new Random().nextInt(100));
 		result.addProyecto(item);
 		item = new Proyecto();
 		item.setNombre("segundo item");
-		item.setPeso(new Random().nextInt(100));
 		result.addProyecto(item);
 		return result;
 	}

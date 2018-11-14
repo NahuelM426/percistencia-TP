@@ -68,10 +68,6 @@ public class Developer extends Persistible {
 		project.setDeveloper(null);
 	}
 
-	public int peso() {
-		return this.getProyectos().stream().map((proyecto) -> proyecto.getPeso()).reduce((a, b) -> a + b).orElse(0);
-	}
-
 	public int getExperiencia() {
 		return experiencia;
 	}

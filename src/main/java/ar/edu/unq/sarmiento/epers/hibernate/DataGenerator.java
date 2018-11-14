@@ -17,13 +17,13 @@ public class DataGenerator {
 
 	protected void generate() {
 		Developer harry = new Developer("Harry", 100);
-		harry.addProyecto(new Proyecto("varita", 1));
-		harry.addProyecto(new Proyecto("capa", 3));
+		harry.addProyecto(new Proyecto("Persistencia"));
+		harry.addProyecto(new Proyecto("Libro-matriz-digital"));
 		harry.setExperiencia(10);
 
 		Developer gandalf = new Developer("Gandalf", 90);
-		gandalf.addProyecto(new Proyecto("baculo", 7));
-		gandalf.addProyecto(new Proyecto("sombrero", 2));
+		gandalf.addProyecto(new Proyecto("Toxi-taxi"));
+		gandalf.addProyecto(new Proyecto("Aerolineas"));
 		gandalf.setExperiencia(200);
 
 		maguitoHome.saveOrUpdate(harry);
