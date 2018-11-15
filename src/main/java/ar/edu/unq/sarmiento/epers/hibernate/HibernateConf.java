@@ -19,8 +19,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @ComponentScan(basePackages = "ar.edu.unq.sarmiento.epers")
 @EnableTransactionManagement
 public class HibernateConf {
-	//create or update
-	public static String modo = "update";
+	// server o generate
+	public static String modo = "server";
 
 	@Bean
 	public LocalSessionFactoryBean sessionFactory() {
@@ -56,7 +56,12 @@ public class HibernateConf {
 		hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");
 		hibernateProperties.setProperty("cache.provider_class", "org.hibernate.cache.internal.NoCacheProvider");
 		hibernateProperties.setProperty("show_sql", "true");
-		hibernateProperties.setProperty("hibernate.hbm2ddl.auto", HibernateConf.modo);
+		if (HibernateConf.modo.equals("server")) {
+			hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "update");			
+		} else {
+			hibernateProperties.setProperty("hibernate.current_session_context_class", "thread");
+			hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "create");			
+		}
 
 		return hibernateProperties;
 	}

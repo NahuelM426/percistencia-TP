@@ -13,18 +13,15 @@ public class Developer extends Persistible {
 
 	private static final long serialVersionUID = -786414214144659508L;
 	private String nombre = "";
-	private int vida = 0;
-	private int experiencia;
-
+	
 	@OneToMany(mappedBy = "developer", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	private List<Proyecto> proyectos = new ArrayList<Proyecto>();
 
 	public Developer() {
 	}
 
-	public Developer(String nombre, int vida) {
+	public Developer(String nombre) {
 		this.setNombre(nombre);
-		this.setVida(vida);
 	}
 
 	public String getNombre() {
@@ -33,18 +30,6 @@ public class Developer extends Persistible {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
-	}
-
-	public int getVida() {
-		return vida;
-	}
-
-	public void setVida(int vida) {
-		this.vida = vida;
-	}
-
-	public void addVida() {
-		vida++;
 	}
 
 	public List<Proyecto> getProyectos() {
@@ -68,11 +53,4 @@ public class Developer extends Persistible {
 		project.setDeveloper(null);
 	}
 
-	public int getExperiencia() {
-		return experiencia;
-	}
-
-	public void setExperiencia(int experiencia) {
-		this.experiencia = experiencia;
-	}
 }

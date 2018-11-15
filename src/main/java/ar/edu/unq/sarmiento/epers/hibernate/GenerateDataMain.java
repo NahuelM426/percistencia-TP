@@ -10,6 +10,8 @@ public class GenerateDataMain {
 		ctx.scan("ar.edu.unq.sarmiento.epers", "ar.edu.unq.sarmiento.epers.hibernate", "ar.edu.unq.sarmiento.epers.home");
 		ctx.refresh();
 		
+		HibernateConf.modo = "generate";
+		
 		DataGenerator dg = (DataGenerator) ctx.getBean("dataGenerator");
 		dg.generate();
 		
