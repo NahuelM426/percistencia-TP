@@ -38,15 +38,17 @@ public class HomePage extends WebPage{
 				Developer developer = panel.getModelObject();
 				CompoundPropertyModel<Developer> developerModel = new CompoundPropertyModel<>(developer);
 				panel.add(new Label("nombre", developerModel.bind("nombre")));
-				Link<String> botonAsignar = new Link<String>("modificar") {
+				
+				Link<String> botonAsignar = new Link<String>("detalles") {
 					private static final long serialVersionUID = 3672370417232954427L;
 
 					@Override
 					public void onClick() {
 
-						//this.setResponsePage(new (materia, carrera));
+						this.setResponsePage(new  ProyectosPage(developer));
 					}
 				};
+				panel.add(botonAsignar);
 			}	
 		});
 	}

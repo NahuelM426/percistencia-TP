@@ -14,7 +14,7 @@ public class Developer extends Persistible {
 	private static final long serialVersionUID = -786414214144659508L;
 	private String nombre = "";
 	
-	@OneToMany(mappedBy = "developer", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "developer", cascade = CascadeType.ALL)
 	private List<Proyecto> proyectos = new ArrayList<Proyecto>();
 
 	public Developer() {
@@ -52,4 +52,5 @@ public class Developer extends Persistible {
 		this.getProyectos().remove(project);
 		project.setDeveloper(null);
 	}
+
 }

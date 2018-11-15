@@ -13,7 +13,10 @@ import ar.edu.unq.sarmiento.epers.model.Persistible;
 @Component
 @Transactional
 public class ControllerDeHomePage< T extends Persistible > implements Serializable {
-	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	private Developer desarrollador;
 	

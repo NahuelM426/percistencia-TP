@@ -16,6 +16,8 @@ public class DataGenerator {
 	@Autowired
 	private Home<Developer> developerHome;
 	@Autowired
+	private Home<Proyecto> proyectosHome; 
+	@Autowired
 	private SessionFactory sessionFactory;
 
 	protected void generate() {
@@ -27,9 +29,11 @@ public class DataGenerator {
 		gandalf.addProyecto(new Proyecto("baculo", 7));
 		gandalf.addProyecto(new Proyecto("sombrero", 2));
 		
+		Proyecto tp = new Proyecto("tp", 1);
 		Transaction ts = sessionFactory.getCurrentSession().beginTransaction();
 		developerHome.saveOrUpdate(harry);
 		developerHome.saveOrUpdate(gandalf);
+		proyectosHome.saveOrUpdate(tp);
 		ts.commit();
 		
 		System.out.println("Termine!!");
