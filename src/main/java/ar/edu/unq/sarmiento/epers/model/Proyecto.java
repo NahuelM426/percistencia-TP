@@ -8,7 +8,6 @@ public class Proyecto extends Persistible{
 
 	private static final long serialVersionUID = 7580495859264340032L;
 	private String nombre;
-	private int peso;
 	
 	@ManyToOne
 	private Developer developer;
@@ -18,18 +17,7 @@ public class Proyecto extends Persistible{
 
 	public Proyecto(String nombre, int peso) {
 		this.setNombre(nombre);
-		this.setPeso(peso);
 	}
-
-	
-	public int getPeso() {
-		return peso;
-	}
-
-	public void setPeso(int peso) {
-		this.peso = peso;
-	}
-
 	public String getNombre() {
 		return nombre;
 	}
