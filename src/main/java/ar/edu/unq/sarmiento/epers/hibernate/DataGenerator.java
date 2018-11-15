@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import ar.edu.unq.sarmiento.epers.home.DeveloperHome;
 import ar.edu.unq.sarmiento.epers.home.Home;
 import ar.edu.unq.sarmiento.epers.model.Developer;
 import ar.edu.unq.sarmiento.epers.model.Proyecto;
@@ -13,7 +14,7 @@ import ar.edu.unq.sarmiento.epers.model.Proyecto;
 public class DataGenerator {
 
 	@Autowired
-	private Home<Developer> maguitoHome;
+	private DeveloperHome maguitoHome;
 
 	protected void generate() {
 		Developer harry = new Developer("Harry", 100);

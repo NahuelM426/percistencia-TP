@@ -18,6 +18,7 @@ public class ProyectosPage extends WebPage {
 	private ProyectosPageController controller;
 
 	public ProyectosPage(Developer developer) {
+		this.controller.setProyectos(developer.getProyectos());
 		this.crearTablaProyectos();
 	}
 

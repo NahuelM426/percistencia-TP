@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import ar.edu.unq.sarmiento.epers.home.Home;
+import ar.edu.unq.sarmiento.epers.home.ProyectosHome;
 import ar.edu.unq.sarmiento.epers.model.Developer;
 import ar.edu.unq.sarmiento.epers.model.Proyecto;
 
@@ -14,7 +15,7 @@ public class ProyectosPageController implements Serializable{
 
 	private List<Proyecto> proyectos = new ArrayList<>();
 	@Autowired
-	private Home<Proyecto> home;
+	private ProyectosHome home;
 
 	public ProyectosPageController(Developer developer) {
 		super();
@@ -33,7 +34,7 @@ public class ProyectosPageController implements Serializable{
 		return this.home;
 	}
 	
-	public void setHome(Home<Proyecto> home){
+	public void setHome(ProyectosHome home){
 		this.home = home;
 	}
 	
