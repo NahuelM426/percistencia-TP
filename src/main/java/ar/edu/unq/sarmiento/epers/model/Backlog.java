@@ -3,15 +3,41 @@ package ar.edu.unq.sarmiento.epers.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Backlog extends Persistible{
 
 	@OneToMany
 	private List<UserStory> userStories= new ArrayList<>();
+	
 	private Sprint sprint;
+	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+	@JoinColumn
+	private Proyecto proyecto;
+	
+	private String nombre;
+	
+	public Backlog(String nombre) {
+		super();
+		this.nombre = nombre;
+	}
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	public Proyecto getProyecto() {
+		return proyecto;
+	}
+	public void setProyecto(Proyecto proyecto) {
+		this.proyecto = proyecto;
+	}
 	public List<UserStory> getUserStories() {
 		return userStories;
 	}

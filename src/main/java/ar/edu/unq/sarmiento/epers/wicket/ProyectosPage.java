@@ -17,9 +17,10 @@ public class ProyectosPage extends WebPage {
 	
 	@SpringBean(name = "proyectosPageController")
 	private ProyectosPageController controller;
-
+	
+	
 	public ProyectosPage(Developer developer) {
-		this.controller.setProyectos(developer.getProyectos());
+		this.controller.setDeveloper(developer);
 		this.crearTablaProyectos();
 	}
 
@@ -37,7 +38,7 @@ public class ProyectosPage extends WebPage {
 
 					@Override
 					public void onClick() {
-						this.setResponsePage(new ProyectoPage(proyecto));
+						this.setResponsePage(new HomePage());
 					}
 				};
 				panel.add(botonVerProyecto);

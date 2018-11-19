@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import ar.edu.unq.sarmiento.epers.home.Home;
+import ar.edu.unq.sarmiento.epers.model.Backlog;
 import ar.edu.unq.sarmiento.epers.model.Developer;
 import ar.edu.unq.sarmiento.epers.model.Proyecto;
 
@@ -16,7 +17,9 @@ public class DataGenerator {
 	@Autowired
 	private Home<Developer> developerHome;
 	@Autowired
-	private Home<Proyecto> proyectosHome; 
+	private Home<Proyecto> proyectosHome;
+	@Autowired
+	private Home<Backlog> backlogHome;
 	@Autowired
 	private SessionFactory sessionFactory;
 
@@ -29,11 +32,23 @@ public class DataGenerator {
 		gandalf.addProyecto(new Proyecto("baculo", 7));
 		gandalf.addProyecto(new Proyecto("sombrero", 2));
 		
-		Proyecto tp = new Proyecto("tp", 1);
+		Backlog juan=new Backlog("juan");
+		
+		Proyecto tp = new Proyecto("tp1", 1);
+		Proyecto tp1 = new Proyecto("tp2", 2);
+		Proyecto tp2 = new Proyecto("tp3", 3);
+		tp.setDeveloper(harry);
+		tp.setDeveloper(gandalf);
+		tp1.setDeveloper(gandalf);
+		tp.setBacklog(juan);
+		
 		Transaction ts = sessionFactory.getCurrentSession().beginTransaction();
 		developerHome.saveOrUpdate(harry);
 		developerHome.saveOrUpdate(gandalf);
 		proyectosHome.saveOrUpdate(tp);
+		proyectosHome.saveOrUpdate(tp1);
+		proyectosHome.saveOrUpdate(tp2);
+		
 		ts.commit();
 		
 		System.out.println("Termine!!");

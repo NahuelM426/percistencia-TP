@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<style>
+		.columna { font-size: smaller; }
+		.recuadro {
+			margin-top: 20px; margin-bottom: 20px;			
+			padding-top: 10px; padding-bottom: 10px; 
+			padding-left: 15px; padding-right: 15px;
+		}
+		.colorDeFondo{
+			background-color:white;
+			font-size: 16px;
+			color: black; 
+		}
+		.titulo{
+		    background: aliceblue;
+    		text-align: center;
+		}
+		table {
+   width: 100%;
+   border: 1px solid #000;
+}
+th, td {
+   width: 25%;
+   text-align: left;
+   vertical-align: top;
+   border: 1px solid #000;
+}
+		</style>
+</head>
+<body>
+	<div class="container">
+			<div class="row">
+				<div class="col-md-10 col-md-offset-1">
+					<div class="panel panel-info">
+							<div class="panel-heading titulo ">
+								<h4>Nombre De Proyecto  <tr wicket:id="nombreMateria">  </tr>  </h4>
+							</div>
+						</div>
+					<div class="row ">
+						<div class="panel panel-info">
+							<div class="panel-heading">
+							<table >
+									<thead>
+										<th>Nombre</th>							
+									</thead>
+									<tbody class="colorDeFondo" >
+										<tr wicket:id="filaDeveloper">
+											<td wicket:id="nombre" class="columna"></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>	
+				</div>
+			</div>
+			<div class="row">
+					<a wicket:id="backlog" class="btn btn-primary btn-lg" role="button">
+					Backlog
+					</a>
+			</div>
+		</div>
+</body>
+</html>

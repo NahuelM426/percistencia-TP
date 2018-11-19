@@ -20,13 +20,22 @@ public class HomePage extends WebPage{
 	
 	public HomePage(){
 		this(new Developer());
+		this.add(new Link<String>("listadoDeCarreras") {
+
+			@Override
+			public void onClick() {
+				this.setResponsePage(new DetalleDeProyecto());
+			}
+		});
 	}
 	@SuppressWarnings("serial")
 	public HomePage(Developer developer) {
 		super();
 		this.controller.setDesarrollador(developer);
 		this.agregarTablaDeMaterias();
+	
 	}
+	
 
 	
 	private void agregarTablaDeMaterias() {
