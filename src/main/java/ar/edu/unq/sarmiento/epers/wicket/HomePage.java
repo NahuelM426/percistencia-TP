@@ -45,7 +45,7 @@ public class HomePage extends WebPage{
 					@Override
 					public void onClick() {
 
-						this.setResponsePage(new  ProyectosPage(developer));
+						this.setResponsePage(new ProyectosPage(developer));
 					}
 				};
 				panel.add(botonAsignar);
