@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 
 import ar.edu.unq.sarmiento.epers.home.BacklogHome;
 import ar.edu.unq.sarmiento.epers.home.DeveloperHome;
-import ar.edu.unq.sarmiento.epers.home.Home;
 import ar.edu.unq.sarmiento.epers.home.ProyectoHome;
 import ar.edu.unq.sarmiento.epers.home.SprintHome;
 import ar.edu.unq.sarmiento.epers.home.UserStoryHome;
@@ -44,7 +43,7 @@ public class DataGenerator {
 		gandalf.addProyecto(new Proyecto("Aerolineas", 2));
 		
 		Backlog juan=new Backlog("juan");
-		
+		Backlog backlog1 = new Backlog();
 		Sprint sprint1 = new Sprint();
 		UserStory userStory1 = new UserStory();
 		
@@ -69,6 +68,7 @@ public class DataGenerator {
 		proyectosHome.saveOrUpdate(tp2);
 		userStoryHome.saveOrUpdate(userStory1);
 		sprintHome.saveOrUpdate(sprint1);
+		backlogHome.saveOrUpdate(backlog1);
 		ts.commit();
 		
 		System.out.println("Termine!!");
