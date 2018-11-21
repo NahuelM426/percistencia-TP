@@ -18,10 +18,10 @@ public class BacklogPage extends WebPage {
 	@SuppressWarnings("serial")
 	public BacklogPage(Proyecto proy) {
 		super();
-		this.controller.setProyecto(proy);
-		this.nombreDeMateria();
+		this.controller.setBacklog(proy.getBacklog());
+		this.nombre();
 	}
-	private void nombreDeMateria() {
+	private void nombre() {
 		this.add(new Label("nombre", new PropertyModel<>(this.controller, "nombre")));
 	}
 	

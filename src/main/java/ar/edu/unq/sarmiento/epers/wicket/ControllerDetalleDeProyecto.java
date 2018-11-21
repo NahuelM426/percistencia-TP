@@ -17,14 +17,15 @@ import ar.edu.unq.sarmiento.epers.model.Proyecto;
 @Service
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 @Transactional
-public class ControllerDetalleDeProyecto< T extends Persistible > implements Serializable {
+public class ControllerDetalleDeProyecto implements Serializable {
 	
 	private Proyecto proyecto;
 
 	@Autowired
 	private ProyectosHome home; 
 	
-	public void setProyecto(Proyecto developer) {
+	public void setProyecto(Proyecto proyecto) {
+		this.proyecto= proyecto;
 	}
 
 	public ProyectosHome getHome() {

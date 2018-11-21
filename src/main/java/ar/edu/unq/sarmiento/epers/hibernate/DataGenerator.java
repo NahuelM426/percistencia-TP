@@ -37,12 +37,14 @@ public class DataGenerator {
 		Proyecto tp = new Proyecto("tp1", 1);
 		Proyecto tp1 = new Proyecto("tp2", 2);
 		Proyecto tp2 = new Proyecto("tp3", 3);
+		tp.setBacklog(juan);
 		tp.setDeveloper(harry);
 		tp.setDeveloper(gandalf);
 		tp1.setDeveloper(gandalf);
-		tp.setBacklog(juan);
+		
 		
 		Transaction ts = sessionFactory.getCurrentSession().beginTransaction();
+		backlogHome.saveOrUpdate(juan);
 		developerHome.saveOrUpdate(harry);
 		developerHome.saveOrUpdate(gandalf);
 		proyectosHome.saveOrUpdate(tp);

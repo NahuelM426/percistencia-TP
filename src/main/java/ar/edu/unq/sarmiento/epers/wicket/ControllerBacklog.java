@@ -16,12 +16,12 @@ import ar.edu.unq.sarmiento.epers.model.Proyecto;
 @Service
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 @Transactional
-public class ControllerBacklog < T extends Persistible > implements Serializable{
+public class ControllerBacklog implements Serializable{
 	
 	@Autowired
 	private BacklogHome home;
 	
-	private Proyecto proyecto;
+	private Backlog backlog;
 
 	public BacklogHome getHome() {
 		return home;
@@ -31,18 +31,17 @@ public class ControllerBacklog < T extends Persistible > implements Serializable
 		this.home = home;
 	}
 
-	public Proyecto getProyecto() {
-		return proyecto;
+	public String nombre(){
+		this.backlog= home.findByName("juan");
+		return this.backlog.getNombre();
 	}
-	public Backlog nobre(){
-		return this.buscar(this.proyecto.getBacklog().getNombre());
+	public Backlog getBacklog() {
+		return backlog;
 	}
-	public Backlog buscar(String name){
-		return home.findByName(name);
+	public void setBacklog(Backlog backlog) {
+		this.backlog = backlog;
 	}
 
-	public void setProyecto(Proyecto proyecto) {
-		this.proyecto = proyecto;
-	}
+
 
 }

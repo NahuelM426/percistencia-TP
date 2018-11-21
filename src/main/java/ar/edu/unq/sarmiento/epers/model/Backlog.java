@@ -22,6 +22,8 @@ public class Backlog extends Persistible{
 	
 	private String nombre;
 	
+	public Backlog(){
+	}
 	public Backlog(String nombre) {
 		super();
 		this.nombre = nombre;
