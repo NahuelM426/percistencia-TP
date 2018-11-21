@@ -13,7 +13,7 @@ import javax.persistence.Transient;
 public class Sprint extends Persistible{
 	
 	@OneToMany
-	private List<UserStory> userStories = new ArrayList();
+	private List<UserStory> userStories = new ArrayList<>();
 	@Transient
 	private List<Rol> roles = new ArrayList<>();
 	
@@ -28,5 +28,11 @@ public class Sprint extends Persistible{
 	}
 	public void setRoles(List<Rol> roles) {
 		this.roles = roles;
+	}
+	public void agregarUserStory(UserStory newUserStory){
+		this.userStories.add(newUserStory);
+	}	
+	public void agregarRol(Rol rol){
+		this.roles.add(rol);
 	}
 }

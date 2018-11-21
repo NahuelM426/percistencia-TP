@@ -31,7 +31,7 @@ public class ProyectosPage extends WebPage {
 			@Override
 			protected void populateItem(ListItem<Proyecto> panel) {
 				Proyecto proyecto = panel.getModelObject();
-				panel.add(new Label("nombreProyectos", new PropertyModel<>(controller, "nombre")));
+				panel.add(new Label("nombreProyectos", new PropertyModel<>(proyecto, "nombre")));
 
 				Link<String> botonVerProyecto = new Link<String>("ver") {
 					private static final long serialVersionUID = 1L;
@@ -41,7 +41,7 @@ public class ProyectosPage extends WebPage {
 						this.setResponsePage(new HomePage());
 					}
 				};
-				panel.add(botonVerProyecto);
+//				panel.add(botonVerProyecto);
 			};
 		});
 	}

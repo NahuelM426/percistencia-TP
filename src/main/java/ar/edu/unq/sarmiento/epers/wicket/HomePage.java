@@ -61,7 +61,7 @@ public class HomePage extends WebPage{
 					@Override
 					public void onClick() {
 
-						this.setResponsePage(new  ProyectosPage(developer));
+						this.setResponsePage(new ProyectosPage(developer));
 					}
 				};
 				Link<String> botonEliminar = new Link<String>("eliminar") {

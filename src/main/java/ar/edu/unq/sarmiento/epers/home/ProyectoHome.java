@@ -10,7 +10,7 @@ import ar.edu.unq.sarmiento.epers.model.Proyecto;
 
 @Repository
 @Component
-public class ProyectosHome extends AbstractHome<Proyecto>{
+public class ProyectoHome extends AbstractHome<Proyecto>{
 
 	private static final long serialVersionUID = 1L;
 
