@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -13,7 +14,7 @@ public class UserStory extends Persistible{
 	private int complejidadEstimada;
 	private boolean completado = false; 
 	private Rol rol;
-	private Proyecto proyectoAlQuePertenece;
+	@ManyToOne
 	private Backlog backlogAlQuePertenece;
 	@OneToMany
 	private List<Developer> developers;
@@ -40,12 +41,6 @@ public class UserStory extends Persistible{
 	}
 	public void setRol(Rol rol) {
 		this.rol = rol;
-	}
-	public Proyecto getProyectoAlQuePertenece() {
-		return proyectoAlQuePertenece;
-	}
-	public void setProyectoAlQuePertenece(Proyecto proyectoAlQuePertenece) {
-		this.proyectoAlQuePertenece = proyectoAlQuePertenece;
 	}
 	public Backlog getBacklogAlQuePertenece() {
 		return backlogAlQuePertenece;

@@ -14,7 +14,7 @@ public class Backlog extends Persistible{
 
 	@OneToMany
 	private List<UserStory> userStories= new ArrayList<>();
-	
+	@OneToOne
 	private Sprint sprint;
 	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn
@@ -22,6 +22,8 @@ public class Backlog extends Persistible{
 	
 	private String nombre;
 	
+	public Backlog(){
+	}
 	public Backlog(String nombre) {
 		super();
 		this.nombre = nombre;
@@ -49,5 +51,8 @@ public class Backlog extends Persistible{
 	}
 	public void setSprint(Sprint sprint) {
 		this.sprint = sprint;
+	}
+	public void agregarUserStory(UserStory userstory){
+		this.userStories.add(userstory);
 	}
 }

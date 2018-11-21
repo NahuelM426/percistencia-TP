@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import ar.edu.unq.sarmiento.epers.home.ProyectosHome;
+import ar.edu.unq.sarmiento.epers.home.ProyectoHome;
 import ar.edu.unq.sarmiento.epers.model.Developer;
 import ar.edu.unq.sarmiento.epers.model.Persistible;
 import ar.edu.unq.sarmiento.epers.model.Proyecto;
@@ -17,21 +17,22 @@ import ar.edu.unq.sarmiento.epers.model.Proyecto;
 @Service
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 @Transactional
-public class ControllerDetalleDeProyecto< T extends Persistible > implements Serializable {
+public class ControllerDetalleDeProyecto implements Serializable {
 	
 	private Proyecto proyecto;
 
 	@Autowired
-	private ProyectosHome home; 
+	private ProyectoHome home; 
 	
-	public void setProyecto(Proyecto developer) {
+	public void setProyecto(Proyecto proyecto) {
+		this.proyecto= proyecto;
 	}
 
-	public ProyectosHome getHome() {
+	public ProyectoHome getHome() {
 		return home;
 	}
 
-	public void setHome(ProyectosHome home) {
+	public void setHome(ProyectoHome home) {
 		this.home = home;
 	}
 

@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unq.sarmiento.epers.home.Home;
-import ar.edu.unq.sarmiento.epers.home.ProyectosHome;
+import ar.edu.unq.sarmiento.epers.home.ProyectoHome;
 import ar.edu.unq.sarmiento.epers.model.Developer;
 import ar.edu.unq.sarmiento.epers.model.Persistible;
 import ar.edu.unq.sarmiento.epers.model.Proyecto;
@@ -21,15 +21,12 @@ import ar.edu.unq.sarmiento.epers.model.Proyecto;
 @Transactional
 public class ProyectosPageController < T extends Persistible > implements Serializable{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	private List<Proyecto> proyectos = new ArrayList<>();
 	
 	@Autowired
-	private ProyectosHome home;
+	private ProyectoHome home;
 	
 	private Developer developer;
 	
@@ -45,11 +42,11 @@ public class ProyectosPageController < T extends Persistible > implements Serial
 		return this.home;
 	}
 	
-	public void setHome(ProyectosHome home){
+	public void setHome(ProyectoHome home){
 		this.home = home;
 	}
 	
-	public List<Proyecto> proyectos(){
+	public List<Proyecto> getProyectos(){
 		return this.buscarProyectos(this.developer.getNombre());
 	}
 	public List<Proyecto> buscarProyectos(String name){

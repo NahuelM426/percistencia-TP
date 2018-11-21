@@ -8,10 +8,7 @@ import ar.edu.unq.sarmiento.epers.model.Backlog;
 @Repository
 @Component
 public class BacklogHome extends AbstractHome<Backlog>  {
-	
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 
 	@Override
