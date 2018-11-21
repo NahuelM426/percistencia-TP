@@ -27,6 +27,13 @@ public class HomePage extends WebPage{
 				this.setResponsePage(new DetalleDeProyecto());
 			}
 		});
+		this.add(new Link<String>("CrearDeveloper") {
+
+			@Override
+			public void onClick() {
+				this.setResponsePage(new CrearUnDeveloperPage());
+			}
+		});
 	}
 	@SuppressWarnings("serial")
 	public HomePage(Developer developer) {
@@ -57,7 +64,17 @@ public class HomePage extends WebPage{
 						this.setResponsePage(new  ProyectosPage(developer));
 					}
 				};
+				Link<String> botonEliminar = new Link<String>("eliminar") {
+					private static final long serialVersionUID = 3672370417232954427L;
+
+					@Override
+					public void onClick() {
+
+						controller.Eliminar(developer);
+					}
+				};
 				panel.add(botonAsignar);
+				panel.add(botonEliminar);
 			}	
 		});
 	}

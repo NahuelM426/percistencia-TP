@@ -15,7 +15,7 @@ public class Proyecto extends Persistible{
 	private static final long serialVersionUID = 7580495859264340032L;
 	private String nombre;
 	
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany
 	private List<Developer> developer = new ArrayList<Developer>();
 	@OneToOne(mappedBy = "proyecto")
 	private Backlog backlog;
