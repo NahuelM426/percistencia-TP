@@ -2,6 +2,7 @@ package ar.edu.unq.sarmiento.epers.wicket;
 
 import java.io.Serializable;
 
+import org.apache.wicket.request.component.IRequestablePage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
@@ -39,6 +40,11 @@ public class ControllerDeHomePage< T extends Persistible > implements Serializab
 	}
 	public java.util.List<Developer> listaDeDeveloper(){
 		return home.listaDeDeveloper();
+	}
+
+	public void Eliminar(Developer develp) {
+		home.delete(develp);
+		
 	}
 	
 }
