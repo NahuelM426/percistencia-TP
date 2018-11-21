@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 
 import ar.edu.unq.sarmiento.epers.home.BacklogHome;
 import ar.edu.unq.sarmiento.epers.home.DeveloperHome;
-import ar.edu.unq.sarmiento.epers.home.Home;
 import ar.edu.unq.sarmiento.epers.home.ProyectoHome;
 import ar.edu.unq.sarmiento.epers.home.SprintHome;
 import ar.edu.unq.sarmiento.epers.home.UserStoryHome;
