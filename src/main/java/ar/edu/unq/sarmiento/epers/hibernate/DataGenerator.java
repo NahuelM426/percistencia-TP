@@ -35,12 +35,12 @@ public class DataGenerator {
 
 	protected void generate() {
 		Developer harry = new Developer("Harry");
-		harry.addProyecto(new Proyecto("Persistencia", 1));
-		harry.addProyecto(new Proyecto("Libro Matriz", 3));
+		Proyecto proyecto1 = new Proyecto("Libro Matriz", 3);
+		harry.addProyecto(proyecto1);
 
 		Developer gandalf = new Developer("Gandalf");
-		gandalf.addProyecto(new Proyecto("Toxy-taxi", 7));
-		gandalf.addProyecto(new Proyecto("Aerolineas", 2));
+		Proyecto proyecto2 = new Proyecto("Toxy-taxi", 7);
+		gandalf.addProyecto(proyecto2);
 		
 		Backlog juan=new Backlog("juan");
 		Backlog backlog1 = new Backlog();
@@ -60,15 +60,16 @@ public class DataGenerator {
 		sprint1.agregarUserStory(userStory1);
 		
 		Transaction ts = sessionFactory.getCurrentSession().beginTransaction();
-		backlogHome.saveOrUpdate(juan);
+//		backlogHome.saveOrUpdate(juan);
 		developerHome.saveOrUpdate(harry);
-		developerHome.saveOrUpdate(gandalf);
-		proyectosHome.saveOrUpdate(tp);
-		proyectosHome.saveOrUpdate(tp1);
-		proyectosHome.saveOrUpdate(tp2);
-		userStoryHome.saveOrUpdate(userStory1);
-		sprintHome.saveOrUpdate(sprint1);
-		backlogHome.saveOrUpdate(backlog1);
+		proyectosHome.saveOrUpdate(proyecto1);
+//		developerHome.saveOrUpdate(gandalf);
+//		proyectosHome.saveOrUpdate(tp);
+//		proyectosHome.saveOrUpdate(tp1);
+//		proyectosHome.saveOrUpdate(tp2);
+//		userStoryHome.saveOrUpdate(userStory1);
+//		sprintHome.saveOrUpdate(sprint1);
+//		backlogHome.saveOrUpdate(backlog1);
 		ts.commit();
 		
 		System.out.println("Termine!!");
