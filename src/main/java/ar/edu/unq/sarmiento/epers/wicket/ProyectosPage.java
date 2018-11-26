@@ -41,7 +41,7 @@ public class ProyectosPage extends WebPage {
 						this.setResponsePage(new HomePage());
 					}
 				};
-//				panel.add(botonVerProyecto);
+				panel.add(botonVerProyecto);
 			};
 		});
 	}
