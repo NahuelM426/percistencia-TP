@@ -15,7 +15,7 @@ public class Developer extends Persistible {
 	private static final long serialVersionUID = -786414214144659508L;
 	private String nombre = "";
 	
-	@ManyToMany(fetch=FetchType.EAGER, cascade=CascadeType.REFRESH)
+	@ManyToMany
 	private List<Proyecto> proyectos = new ArrayList<Proyecto>();
 
 	public Developer() {

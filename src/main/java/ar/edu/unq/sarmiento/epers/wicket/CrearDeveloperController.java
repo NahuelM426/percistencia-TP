@@ -1,6 +1,8 @@
 package ar.edu.unq.sarmiento.epers.wicket;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.transaction.Transactional;
 
@@ -10,18 +12,45 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unq.sarmiento.epers.home.DeveloperHome;
+import ar.edu.unq.sarmiento.epers.home.ProyectoHome;
 import ar.edu.unq.sarmiento.epers.model.Developer;
+import ar.edu.unq.sarmiento.epers.model.Proyecto;
 @Service
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 @Transactional
 public class CrearDeveloperController implements Serializable {
 
-	private Developer developer;
+	
+	
 	@Autowired
 	private DeveloperHome home;
+	@Autowired
+	private ProyectoHome homeProy;
 	
-	private String nombre = "";
+	private String nombre = "";	
+	private List<Proyecto> proyectos= new ArrayList<>();
 	
+	private Developer developer;
+	private Proyecto proyectoElegido;
+	
+	
+	public List<Proyecto> getProyectos() {
+		this.proyectos = homeProy.listaDeDeveloper();
+		return proyectos;
+	}
+
+	public void setProyectos(List<Proyecto> proyectos) {
+		this.proyectos = proyectos;
+	}
+
+	public Proyecto getProyectoElegido() {
+		return proyectoElegido;
+	}
+
+	public void setProyectoElegido(Proyecto proyectoElegido) {
+		this.proyectoElegido = proyectoElegido;
+	}
+
 	public DeveloperHome getHome() {
 		return home;
 	}
@@ -47,9 +76,20 @@ public class CrearDeveloperController implements Serializable {
 	}
 
 	public void agregarCarrera() {
-		Developer developer1 = new Developer(getNombre());
-		home.saveOrUpdate(developer1);
+		this.developer.setNombre(getNombre());
+		home.saveOrUpdate(developer);
 		
+	}
+
+	public void confirmarProyecto() {
+		this.agregarCarrera();
+		this.developer.addProyecto(this.proyectoElegido);
+		home.saveOrUpdate(developer);
+		
+	}
+
+	public void guardar(Developer dev){
+		home.saveOrUpdate(dev);
 	}
 
 	

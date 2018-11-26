@@ -1,6 +1,8 @@
 package ar.edu.unq.sarmiento.epers.wicket;
 
 import org.apache.wicket.markup.html.WebPage;
+import org.apache.wicket.markup.html.form.ChoiceRenderer;
+import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.link.Link;
@@ -12,29 +14,29 @@ import ar.edu.unq.sarmiento.epers.model.Developer;
 
 public class CrearUnDeveloperPage extends WebPage {
 	@SpringBean(name="crearDeveloperController")
-	
 	private CrearDeveloperController controller;
+	private Developer developer;
 	
 	public CrearUnDeveloperPage(){
 	this(new Developer());
 	}
 	public CrearUnDeveloperPage(Developer developer){
 		controller.setDeveloper(developer);
-		this.formularioDeDeveloper();
+		this.developer=developer;
+		this.crearFormAgregar();
 	}
-	
-	public void formularioDeDeveloper() {
-		Form<CrearDeveloperController> altaCarrera = new Form<CrearDeveloperController>("laCarrera") {
-			private static final long serialVersionUID = 1L;
+	private void crearFormAgregar() {
+		Form<CrearDeveloperController> agregarMateria = new Form<CrearDeveloperController>("agregarMateria") {
+			private static final long serialVersionUID = 5932937158394555903L;
 
 			@Override
 			protected void onSubmit() {
-				controller.agregarCarrera();
+				controller.confirmarProyecto();
+				this.setResponsePage(new CrearUnDeveloperPage(CrearUnDeveloperPage.this.controller.getDeveloper()));
 				this.setResponsePage(new HomePage());
-
 			}
 		};
-		altaCarrera.add(new Link<String>("cancelar") {
+		agregarMateria.add(new Link<String>("cancelar") {
 
 			private static final long serialVersionUID = 1L;
 
@@ -46,11 +48,22 @@ public class CrearUnDeveloperPage extends WebPage {
 
 		});
 
+		agregarMateria.add(new DropDownChoice<>(
+				// id
+				"materia",
+				// binding del valor
+				new PropertyModel<>(controller, "proyectoElegido"),
+				// binding de la lista de items
+				new PropertyModel<>(controller, "proyectos"),
+				// que se muestra de cada item
+				new ChoiceRenderer<>("nombre")));
+		this.add(agregarMateria);
+		
+		agregarMateria.add(new TextField<>("nombre", new PropertyModel<>(controller, "nombre")));
 
-		altaCarrera.add(new TextField<>("nombre", new PropertyModel<>(controller, "nombre")));
-
-		this.add(altaCarrera);
-
+		this.add(agregarMateria);
 	}
+	
+	
 
 }
