@@ -15,18 +15,9 @@ import ar.edu.unq.sarmiento.epers.model.Developer;
 public class HomePage extends WebPage{
 	private static final int ListItem = 0;
 		
-	@SpringBean(name="controllerDeHomePage")
-	private ControllerDeHomePage controller;
 	
 	public HomePage(){
-		this(new Developer());
-		this.add(new Link<String>("listadoDeProyectos") {
-
-			@Override
-			public void onClick() {
-				this.setResponsePage(new HomePage());
-			}
-		});
+		
 		this.add(new Link<String>("ListaDeDevelopers"){
 			
 			@Override
@@ -34,17 +25,12 @@ public class HomePage extends WebPage{
 				this.setResponsePage(new ListaDeDevelopersPage());
 			}
 		});
-		this.add(new Link<String>("ListaDeProyectos") {
+		this.add(new Link<String>("ListadoDeProyectos") {
 
 			@Override
 			public void onClick() {
 				this.setResponsePage(new ListaDeProyectos());
 			}
 		});
-	}
-	@SuppressWarnings("serial")
-	public HomePage(Developer developer) {
-		super();
-		this.controller.setDesarrollador(developer);
 	}
 }	
