@@ -38,7 +38,7 @@ public class ProyectosPage extends WebPage {
 
 					@Override
 					public void onClick() {
-						this.setResponsePage(new HomePage());
+						this.setResponsePage(new DetalleDeProyecto(proyecto));
 					}
 				};
 				panel.add(botonVerProyecto);

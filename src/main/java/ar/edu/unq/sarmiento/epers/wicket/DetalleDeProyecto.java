@@ -36,6 +36,7 @@ public class DetalleDeProyecto extends WebPage {
 				this.setResponsePage(new BacklogPage(proy));
 			}
 		});
+		
 	}
 	private void nombreDeMateria() {
 		this.add(new Label("nombreMateria", new PropertyModel<>(this.controller, "nombre")));
