@@ -2,67 +2,65 @@
 <html>
 <head>
 <meta charset="UTF-8">
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-		<title>Developer</title>
-		<style>
-		.columna { font-size: smaller; }
-		.recuadro {
-			margin-top: 20px; margin-bottom: 20px;			
-			padding-top: 10px; padding-bottom: 10px; 
-			padding-left: 15px; padding-right: 15px;
-			border-style: solid; border-width: 2px; 
-		}
-		.colorDeFondo{
-			background-color:white;
-			font-size: 16px;
-			color: black; 
-		}
-		</style>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+<title>Home Page</title>
+<style>
+.columna {
+	font-size: smaller;
+}
+
+.recuadro {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 15px;
+	padding-right: 15px;
+	border-style: solid;
+	border-width: 2px;
+}
+
+.colorDeFondo {
+	background-color: white;
+	font-size: 16px;
+	color: black;
+}
+</style>
 </head>
 <body>
 	<div class="container">
-			<div class="row">
-				<div class="col-md-10 col-md-offset-1">
-								
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<center>
+				 <div class= "panel-headin-titulo">
+				 	<h4>Persistencia TP</h4>
+				 </div>
 					<div class="row recuadro">
 						<div class="panel panel-info" style="margin-top: 20px;">
 							<div class="panel-heading">
-							<table class="table">
-									<thead>
-										<th>Nombre</th>							
-									</thead>
-									<tbody class="colorDeFondo" >
-										<tr wicket:id="filaDeveloper">
-											<td wicket:id="nombre" class="columna"></td>
-											<td>
-												<button wicket:id="detalles" class="btn btn-info btn-sm">
-													Ver Proyectos En Curso
-												</button>
-												<button wicket:id="eliminar" class="btn btn-info btn-sm">
-													Eliminar
-												</button>
-											</td>
-											
-										</tr>
-									</tbody>
-								</table>
-						<div class="row">
-							<p>
-							<a wicket:id="CrearDeveloper" class="btn btn-primary btn-lg" role="button">
-									CrearDeveloper
-							</a>
-							<a wicket:id="ListaDeProyectos" class="btn btn-primary btn-lg" role="button">
-									Listado De Proyecto
-							</a>
-							</p>
-						</div>
+								<div class="row">
+									<p>
+										<a wicket:id="ListadoDeProyectos"
+											class="btn btn-primary btn-lg" role="button"> Listado de
+											Proyectos </a>
+										<a wicket:id="ListaDeDevelopers"
+											class="btn btn-primary btn-lg" role="button"> Listado de
+											Developers </a>
+									</p>
+								</div>
 							</div>
 						</div>
-					</div>	
-				</div>
+					</div>
+				</center>
 			</div>
-			
-		</div>	
+		</div>
+		<div>
+			<h4> Hecho por Juan y Nahuel</h4>
+		</div>
+	</div>
 </body>
 </html>
