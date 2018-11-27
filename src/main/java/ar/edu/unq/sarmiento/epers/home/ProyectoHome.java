@@ -24,7 +24,7 @@ public class ProyectoHome extends AbstractHome<Proyecto>{
 				.setParameter("name", name).getSingleResult();		
 	}
 
-	public List<Proyecto> listaDeDeveloper(){
+	public List<Proyecto> listaDeTodosLosProyectos(){
 		return this.getSession().createQuery("FROM Proyecto", Proyecto.class).list();
 	}
 	

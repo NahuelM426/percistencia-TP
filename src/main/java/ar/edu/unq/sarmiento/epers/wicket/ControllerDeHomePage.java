@@ -17,7 +17,7 @@ import ar.edu.unq.sarmiento.epers.model.Persistible;
 @Service
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 @Transactional
-public class ControllerDeHomePage< T extends Persistible > implements Serializable {
+public class ControllerDeHomePage implements Serializable {
 	/**
 	 * 
 	 */
