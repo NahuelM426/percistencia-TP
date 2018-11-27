@@ -34,6 +34,13 @@ public class HomePage extends WebPage{
 				this.setResponsePage(new ListaDeDevelopersPage());
 			}
 		});
+		this.add(new Link<String>("ListaDeProyectos") {
+
+			@Override
+			public void onClick() {
+				this.setResponsePage(new ListaDeProyectos());
+			}
+		});
 	}
 	@SuppressWarnings("serial")
 	public HomePage(Developer developer) {

@@ -19,7 +19,7 @@ import ar.edu.unq.sarmiento.epers.model.Proyecto;
 @Service
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 @Transactional
-public class ProyectosPageController < T extends Persistible > implements Serializable{
+public class ProyectosPageController  implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
