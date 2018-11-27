@@ -16,12 +16,12 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import ar.edu.unq.sarmiento.epers.model.Developer;
 import ar.edu.unq.sarmiento.epers.model.Proyecto;
 
-public class ListaDeProyectos extends WebPage {
+public class ListaDeProyectosPage extends WebPage {
 	
 	@SpringBean(name="controllerListadoDeProyectos")
 	private ControllerListadoDeProyectos controller;
 	
-	public ListaDeProyectos(){
+	public ListaDeProyectosPage(){
 		this(new Proyecto());
 		this.add(new Link<String>("carreraHome") {
 
@@ -32,7 +32,7 @@ public class ListaDeProyectos extends WebPage {
 		});
 	}
 	@SuppressWarnings("serial")
-	public ListaDeProyectos(Proyecto pro){
+	public ListaDeProyectosPage(Proyecto pro){
 		controller.setProyecto(pro);
 		this.agregarTablaDeMaterias();
 	}
