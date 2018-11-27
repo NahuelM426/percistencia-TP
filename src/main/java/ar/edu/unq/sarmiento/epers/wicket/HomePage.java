@@ -20,18 +20,18 @@ public class HomePage extends WebPage{
 	
 	public HomePage(){
 		this(new Developer());
-		this.add(new Link<String>("listadoDeCarreras") {
+		this.add(new Link<String>("listadoDeProyectos") {
 
 			@Override
 			public void onClick() {
-				this.setResponsePage(new DetalleDeProyecto());
+				this.setResponsePage(new HomePage());
 			}
 		});
-		this.add(new Link<String>("CrearDeveloper") {
-
+		this.add(new Link<String>("ListaDeDevelopers"){
+			
 			@Override
-			public void onClick() {
-				this.setResponsePage(new CrearUnDeveloperPage());
+			public void onClick(){
+				this.setResponsePage(new ListaDeDevelopersPage());
 			}
 		});
 	}
@@ -39,43 +39,5 @@ public class HomePage extends WebPage{
 	public HomePage(Developer developer) {
 		super();
 		this.controller.setDesarrollador(developer);
-		this.agregarTablaDeMaterias();
-	
-	}
-	
-
-	
-	private void agregarTablaDeMaterias() {
-		this.add(new ListView<Developer>( "filaDeveloper", new PropertyModel<>(this.controller, "listaDeDeveloper")) {
-
-			private static final long serialVersionUID = 2426749934569985837L;
-
-			protected void populateItem(ListItem<Developer> panel) {
-				Developer developer = panel.getModelObject();
-				CompoundPropertyModel<Developer> developerModel = new CompoundPropertyModel<>(developer);
-				panel.add(new Label("nombre", developerModel.bind("nombre")));
-				
-				Link<String> botonAsignar = new Link<String>("detalles") {
-					private static final long serialVersionUID = 3672370417232954427L;
-
-					@Override
-					public void onClick() {
-
-						this.setResponsePage(new ProyectosPage(developer));
-					}
-				};
-				Link<String> botonEliminar = new Link<String>("eliminar") {
-					private static final long serialVersionUID = 3672370417232954427L;
-
-					@Override
-					public void onClick() {
-
-						controller.Eliminar(developer);
-					}
-				};
-				panel.add(botonAsignar);
-				panel.add(botonEliminar);
-			}	
-		});
 	}
 }	
