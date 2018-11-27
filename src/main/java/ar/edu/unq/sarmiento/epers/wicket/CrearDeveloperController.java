@@ -35,7 +35,7 @@ public class CrearDeveloperController implements Serializable {
 	
 	
 	public List<Proyecto> getProyectos() {
-		this.proyectos = homeProy.listaDeDeveloper();
+		this.proyectos = homeProy.listaDeTodosLosProyectos();
 		return proyectos;
 	}
 
@@ -76,9 +76,10 @@ public class CrearDeveloperController implements Serializable {
 	}
 
 	public void agregarCarrera() {
+		if(developer.getNombre() != getNombre()){
 		this.developer.setNombre(getNombre());
 		home.saveOrUpdate(developer);
-		
+		}
 	}
 
 	public void confirmarProyecto() {
