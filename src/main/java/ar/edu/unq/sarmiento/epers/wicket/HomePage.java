@@ -29,7 +29,7 @@ public class HomePage extends WebPage{
 
 			@Override
 			public void onClick() {
-				this.setResponsePage(new ListaDeProyectos());
+				this.setResponsePage(new ListaDeProyectosPage());
 			}
 		});
 	}
