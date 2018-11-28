@@ -9,6 +9,7 @@ import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
+import ar.edu.unq.sarmiento.epers.model.Backlog;
 import ar.edu.unq.sarmiento.epers.model.Developer;
 import ar.edu.unq.sarmiento.epers.model.Proyecto;
 
@@ -29,13 +30,6 @@ public class DetalleDeProyecto extends WebPage {
 		this.controller.setProyecto(proy);
 		this.agregarTablaDeMaterias();
 		this.nombreDeMateria();
-		this.add(new Link<String>("backlog") {
-
-			@Override
-			public void onClick() {
-				this.setResponsePage(new BacklogPage(proy));
-			}
-		});
 		
 	}
 	private void nombreDeMateria() {
@@ -44,14 +38,15 @@ public class DetalleDeProyecto extends WebPage {
 
 	
 	private void agregarTablaDeMaterias() {
-		this.add(new ListView<Developer>( "filaDeveloper", new PropertyModel<>(this.controller, "lista")) {
+		this.add(new ListView<Backlog>( "filaDeveloper", new PropertyModel<>(this.controller, "lista")) {
 
 			private static final long serialVersionUID = 2426749934569985837L;
 
-			protected void populateItem(ListItem<Developer> panel) {
-				Developer proyecto = panel.getModelObject();
-				CompoundPropertyModel<Developer> proyectoModel = new CompoundPropertyModel<>(proyecto);
-				panel.add(new Label("nombre", proyectoModel.bind("nombre")));
+			protected void populateItem(ListItem<Backlog> panel) {
+				Backlog bac = panel.getModelObject();
+				CompoundPropertyModel<Backlog> backlogModel = new CompoundPropertyModel<>(bac);
+				
+				panel.add(new Label("nombre", backlogModel.bind("nombre")));
 				
 			}	
 		});

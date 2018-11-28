@@ -40,6 +40,7 @@ public class ControllerCrearProyecto implements Serializable {
 
 	public void confirmarProyecto() {
 		this.proyecto.setNombre(getNombre());
+		this.proyecto.setBacklog(null);
 		home.saveOrUpdate(proyecto);
 	}
 
