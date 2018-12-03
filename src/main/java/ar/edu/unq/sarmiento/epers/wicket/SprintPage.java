@@ -25,7 +25,6 @@ public class SprintPage extends WebPage{
 			@Override
 			public void onClick(){
 				controller.getSprint().cerrar();
-				
 			}
 		});
 		this.crearTablaUserStories();
