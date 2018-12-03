@@ -64,6 +64,12 @@ public class DataGenerator {
 		UserStory userStory2 = new UserStory();
 		userStory2.setTitulo("Configurar modelo");
 		
+		UserStory story3 = new UserStory();
+		story3.setTitulo("Modificar ReadMe");
+		
+		UserStory story4 = new UserStory();
+		story4.setTitulo("Configurar cardinalidades");
+		
 		Proyecto tp = new Proyecto("tp1", 1);
 		Proyecto tp1 = new Proyecto("tp2", 2);
 		Proyecto tp2 = new Proyecto("tp3", 3);
@@ -79,6 +85,8 @@ public class DataGenerator {
 		tp1.setDeveloper(gandalf);
 		
 		juan.agregarUserStory(userStory1);
+		juan.agregarUserStory(story3);
+		juan.agregarUserStory(story4);
 		sprint1.agregarUserStory(userStory1);
 		sprint1.agregarUserStory(userStory2);
 		
@@ -86,6 +94,8 @@ public class DataGenerator {
 		backlogHome.saveOrUpdate(juan);
 		userStoryHome.saveOrUpdate(userStory1);
 		userStoryHome.saveOrUpdate(userStory2);
+		userStoryHome.saveOrUpdate(story3);
+		userStoryHome.saveOrUpdate(story4);
 		proyectosHome.saveOrUpdate(proyecto1);
 		developerHome.saveOrUpdate(harry);
 		proyectosHome.saveOrUpdate(proyecto2);

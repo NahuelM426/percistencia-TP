@@ -50,4 +50,10 @@ public class SprintPageController implements Serializable{
 	public List<UserStory> buscarUserStories(int id){
 		return home.find(id).getUserStories();
 	}
+
+	public void cerrarSprint() {
+		this.sprint.cerrar();
+		home.saveOrUpdate(sprint);
+	}
+
 }

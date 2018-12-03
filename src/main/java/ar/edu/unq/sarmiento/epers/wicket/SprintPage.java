@@ -24,10 +24,11 @@ public class SprintPage extends WebPage{
 			
 			@Override
 			public void onClick(){
-				controller.getSprint().cerrar();
+				controller.cerrarSprint();
 			}
 		});
 		this.crearTablaUserStories();
+		
 	}
 
 	private void crearTablaUserStories() {
