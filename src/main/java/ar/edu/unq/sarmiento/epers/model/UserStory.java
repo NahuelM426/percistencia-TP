@@ -10,6 +10,8 @@ import javax.persistence.OneToMany;
 @Entity
 public class UserStory extends Persistible{
 	
+	private static final long serialVersionUID = 1L;
+	private String titulo;
 	private int valorAlCliente;
 	private int complejidadEstimada;
 	private boolean completado = false; 
@@ -54,6 +56,12 @@ public class UserStory extends Persistible{
 	}
 	public void setDevelopers(List<Developer> developers) {
 		this.developers = developers;
+	}
+	public String getTitulo() {
+		return titulo;
+	}
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
 	
 }

@@ -14,10 +14,9 @@ public class Backlog extends Persistible{
 
 	@OneToMany
 	private List<UserStory> userStories= new ArrayList<>();
-	@OneToOne
-	private Sprint sprint;
 	
-	private String nombre="Backlog";
+	
+	private String nombre;
 	
 	public Backlog(){
 	}
@@ -31,7 +30,12 @@ public class Backlog extends Persistible{
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	
+	public Proyecto getProyecto() {
+		return proyecto;
+	}
+	public void setProyecto(Proyecto proyecto) {
+		this.proyecto = proyecto;
+	}
 	public List<UserStory> getUserStories() {
 		return userStories;
 	}
