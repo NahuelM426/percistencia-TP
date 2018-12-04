@@ -16,11 +16,8 @@ public class Backlog extends Persistible{
 	private List<UserStory> userStories= new ArrayList<>();
 	@OneToOne
 	private Sprint sprint;
-	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-	@JoinColumn
-	private Proyecto proyecto;
 	
-	private String nombre;
+	private String nombre="Backlog";
 	
 	public Backlog(){
 	}
@@ -34,12 +31,7 @@ public class Backlog extends Persistible{
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public Proyecto getProyecto() {
-		return proyecto;
-	}
-	public void setProyecto(Proyecto proyecto) {
-		this.proyecto = proyecto;
-	}
+	
 	public List<UserStory> getUserStories() {
 		return userStories;
 	}

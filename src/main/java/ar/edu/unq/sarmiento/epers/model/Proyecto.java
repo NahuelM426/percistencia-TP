@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -16,8 +17,9 @@ public class Proyecto extends Persistible{
 	
 	@ManyToMany
 	private List<Developer> developer = new ArrayList<Developer>();
-	@OneToOne(mappedBy = "proyecto")
-	private Backlog backlog;
+
+	@OneToMany
+	private List<UserStory> userStori = new ArrayList<UserStory>();
 	
 
 	public Proyecto() {
@@ -42,12 +44,13 @@ public class Proyecto extends Persistible{
 		this.developer.add(developer);
 	}
 
-	public Backlog getBacklog() {
-		return backlog;
+	public List<UserStory> getUserStori() {
+		return userStori;
 	}
 
-	public void setBacklog(Backlog backlog) {
-		this.backlog = backlog;
+	public void setUserStori(UserStory userStori) {
+		this.userStori.add(userStori);
 	}
+
 
 }

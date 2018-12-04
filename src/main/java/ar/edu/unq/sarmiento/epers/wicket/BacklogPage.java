@@ -18,7 +18,6 @@ public class BacklogPage extends WebPage {
 	@SuppressWarnings("serial")
 	public BacklogPage(Proyecto proy) {
 		super();
-		this.controller.setBacklog(proy.getBacklog());
 		this.nombre();
 	}
 	private void nombre() {

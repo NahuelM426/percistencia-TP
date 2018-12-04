@@ -14,6 +14,7 @@ import ar.edu.unq.sarmiento.epers.home.UserStoryHome;
 import ar.edu.unq.sarmiento.epers.model.Backlog;
 import ar.edu.unq.sarmiento.epers.model.Developer;
 import ar.edu.unq.sarmiento.epers.model.Proyecto;
+import ar.edu.unq.sarmiento.epers.model.Rol;
 import ar.edu.unq.sarmiento.epers.model.Sprint;
 import ar.edu.unq.sarmiento.epers.model.UserStory;
 
@@ -37,26 +38,27 @@ public class DataGenerator {
 		Developer harry = new Developer("Harry");
 		Proyecto proyecto1 = new Proyecto("Libro Matriz", 3);
 		harry.addProyecto(proyecto1);
+		
 
 		Developer gandalf = new Developer("Gandalf");
 		Proyecto proyecto2 = new Proyecto("Toxy-taxi", 7);
 		gandalf.addProyecto(proyecto2);
 		
-		Backlog juan=new Backlog("juan");
-		Backlog backlog1 = new Backlog();
 		Sprint sprint1 = new Sprint();
 		UserStory userStory1 = new UserStory();
+		userStory1.setComplejidadEstimada(2);
+		userStory1.setRol(Rol.Usuario);
+		userStory1.setCompletado(false);
+		proyecto1.setUserStori(userStory1);
 		
 		Proyecto tp = new Proyecto("tp1", 1);
 		Proyecto tp1 = new Proyecto("tp2", 2);
 		Proyecto tp2 = new Proyecto("tp3", 3);
 		
-		tp.setBacklog(juan);
 		tp.setDeveloper(harry);
 		tp.setDeveloper(gandalf);
 		tp1.setDeveloper(gandalf);
-		juan.setSprint(sprint1);
-		juan.agregarUserStory(userStory1);
+
 		sprint1.agregarUserStory(userStory1);
 		
 		Transaction ts = sessionFactory.getCurrentSession().beginTransaction();
@@ -67,7 +69,7 @@ public class DataGenerator {
 //		proyectosHome.saveOrUpdate(tp);
 //		proyectosHome.saveOrUpdate(tp1);
 //		proyectosHome.saveOrUpdate(tp2);
-//		userStoryHome.saveOrUpdate(userStory1);
+		userStoryHome.saveOrUpdate(userStory1);
 //		sprintHome.saveOrUpdate(sprint1);
 //		backlogHome.saveOrUpdate(backlog1);
 		ts.commit();

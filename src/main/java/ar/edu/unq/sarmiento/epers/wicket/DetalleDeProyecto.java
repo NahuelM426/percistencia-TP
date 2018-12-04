@@ -2,6 +2,8 @@ package ar.edu.unq.sarmiento.epers.wicket;
 
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
@@ -12,6 +14,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import ar.edu.unq.sarmiento.epers.model.Backlog;
 import ar.edu.unq.sarmiento.epers.model.Developer;
 import ar.edu.unq.sarmiento.epers.model.Proyecto;
+import ar.edu.unq.sarmiento.epers.model.UserStory;
 
 public class DetalleDeProyecto extends WebPage {
 	
@@ -23,6 +26,7 @@ public class DetalleDeProyecto extends WebPage {
 	public DetalleDeProyecto() {
 		this(new Proyecto());
 	
+	
 	}
 	@SuppressWarnings("serial")
 	public DetalleDeProyecto(Proyecto proy) {
@@ -30,6 +34,13 @@ public class DetalleDeProyecto extends WebPage {
 		this.controller.setProyecto(proy);
 		this.agregarTablaDeMaterias();
 		this.nombreDeMateria();
+		this.add(new Link<String>("proyectoHome") {
+
+			@Override
+			public void onClick() {
+				this.setResponsePage(new AgregarUserStory(proy));
+			}
+		});
 		
 	}
 	private void nombreDeMateria() {
@@ -38,16 +49,19 @@ public class DetalleDeProyecto extends WebPage {
 
 	
 	private void agregarTablaDeMaterias() {
-		this.add(new ListView<Backlog>( "filaDeveloper", new PropertyModel<>(this.controller, "lista")) {
+		this.add(new ListView<UserStory>( "filaDeveloper", new PropertyModel<>(this.controller, "lista")) {
 
 			private static final long serialVersionUID = 2426749934569985837L;
 
-			protected void populateItem(ListItem<Backlog> panel) {
-				Backlog bac = panel.getModelObject();
-				CompoundPropertyModel<Backlog> backlogModel = new CompoundPropertyModel<>(bac);
+			protected void populateItem(ListItem<UserStory> panel) {
+				UserStory bac = panel.getModelObject();
+				CompoundPropertyModel<UserStory> backlogModel = new CompoundPropertyModel<>(bac);
 				
-				panel.add(new Label("nombre", backlogModel.bind("nombre")));
 				
+				panel.add(new Label("nombreDeProyecto", backlogModel.bind("proyecto.nombre")));
+				panel.add(new Label("complejidad", backlogModel.bind("complejidadEstimada")));
+				panel.add(new Label("completado", backlogModel.bind("completado")));
+				panel.add(new Label("rol", backlogModel.bind("rol")));
 			}	
 		});
 	}

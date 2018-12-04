@@ -14,6 +14,7 @@ import ar.edu.unq.sarmiento.epers.model.Backlog;
 import ar.edu.unq.sarmiento.epers.model.Developer;
 import ar.edu.unq.sarmiento.epers.model.Persistible;
 import ar.edu.unq.sarmiento.epers.model.Proyecto;
+import ar.edu.unq.sarmiento.epers.model.Rol;
 import ar.edu.unq.sarmiento.epers.model.UserStory;
 
 @Service
@@ -26,6 +27,8 @@ public class ControllerDetalleDeProyecto implements Serializable {
 	@Autowired
 	private ProyectoHome home; 
 	
+	
+
 	public void setProyecto(Proyecto proyecto) {
 		this.proyecto= proyecto;
 	}
@@ -41,12 +44,16 @@ public class ControllerDetalleDeProyecto implements Serializable {
 	public Proyecto getProyecto() {
 		return proyecto;
 	}
-	public List<UserStory> lista(){
-		return home.findByName(proyecto.getNombre()).getBacklog().getUserStories();
+	public List<UserStory> getLista(){
+		return buscaProyecto().getUserStori();
+	}
+	public Proyecto buscaProyecto(){
+		return home.findByName(proyecto.getNombre());
 	}
 	public String nombre(){
 		return this.proyecto.getNombre();
 	}
+
 	
 
 }

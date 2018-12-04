@@ -15,8 +15,6 @@ import ar.edu.unq.sarmiento.epers.model.Developer;
 public class HomePage extends WebPage{
 	private static final int ListItem = 0;
 		
-	@SpringBean(name="controllerDeHomePage")
-	private ControllerDeHomePage controller;
 	
 	public HomePage(){
 		
@@ -31,8 +29,8 @@ public class HomePage extends WebPage{
 
 			@Override
 			public void onClick() {
-				this.setResponsePage(new ListaDeProyectos());
-			}	
+				this.setResponsePage(new ListaDeProyectosPage());
+			}
 		});
 	}
 }	

@@ -8,14 +8,14 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import ar.edu.unq.sarmiento.epers.model.Proyecto;
 
-public class CreaProyecto extends WebPage {
+public class CreaProyectoPage extends WebPage {
 	@SpringBean(name="controllerCrearProyecto")
 	private ControllerCrearProyecto controller;
 	
-	public CreaProyecto (){
+	public CreaProyectoPage (){
 		this(new Proyecto());
 	}
-	public CreaProyecto(Proyecto pro){
+	public CreaProyectoPage(Proyecto pro){
 		this.controller.setProyecto(pro);
 		this.crearProyecto();
 	}

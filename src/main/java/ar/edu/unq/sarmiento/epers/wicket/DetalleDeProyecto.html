@@ -45,24 +45,28 @@ th, td {
 							<div class="panel-heading">
 							<table >
 									<thead>
-										<th>Nombre</th>							
+										<th>NombreDeProyecto</th>	
+										<th>Complejidad</th>
+										<th>Completado</th>	
+										<th>Rol</th>							
 									</thead>
 									<tbody class="colorDeFondo" >
 										<tr wicket:id="filaDeveloper">
-											<td wicket:id="nombre" class="columna"></td>
+											<td wicket:id="nombreDeProyecto" class="columna"></td>
+											<td wicket:id="complejidad" class="columna"></td>
+											<td wicket:id="completado" class="columna"></td>
+											<td wicket:id="rol" class="columna"></td>
 										</tr>
 									</tbody>
 								</table>
 							</div>
 						</div>
 					</div>	
+					<div class="text-center">
+				<button wicket:id="proyectoHome" class="btn btn-primary">
+					Crear Proyecto</button>
 				</div>
-			</div>
-			<div class="row">
-					<a wicket:id="backlog" class="btn btn-primary btn-lg" role="button">
-					Backlog
-					</a>
-					
+				</div>
 			</div>
 		</div>
 </body>

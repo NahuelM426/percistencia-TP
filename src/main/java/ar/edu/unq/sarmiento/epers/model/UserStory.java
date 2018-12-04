@@ -15,9 +15,10 @@ public class UserStory extends Persistible{
 	private boolean completado = false; 
 	private Rol rol;
 	@ManyToOne
-	private Backlog backlogAlQuePertenece;
+	private Proyecto backlogAlQuePertenece;
 	@OneToMany
 	private List<Developer> developers;
+	
 	public int getValorAlCliente() {
 		return valorAlCliente;
 	}
@@ -42,10 +43,10 @@ public class UserStory extends Persistible{
 	public void setRol(Rol rol) {
 		this.rol = rol;
 	}
-	public Backlog getBacklogAlQuePertenece() {
+	public Proyecto getBacklogAlQuePertenece() {
 		return backlogAlQuePertenece;
 	}
-	public void setBacklogAlQuePertenece(Backlog backlogAlQuePertenece) {
+	public void setBacklogAlQuePertenece(Proyecto backlogAlQuePertenece) {
 		this.backlogAlQuePertenece = backlogAlQuePertenece;
 	}
 	public List<Developer> getDevelopers() {
