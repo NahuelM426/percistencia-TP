@@ -13,7 +13,7 @@ public class SprintHome extends AbstractHome<Sprint> {
 
 	@Override
 	public Sprint findByName(String name) {
-		return this.getSession().createQuery("FROM Sprint WHERE nombre = :name", Sprint.class)
+		return this.getSession().createQuery("FROM Sprint WHERE titulo = :name", Sprint.class)
 				.setParameter("name", name).getSingleResult();		
 	}
 

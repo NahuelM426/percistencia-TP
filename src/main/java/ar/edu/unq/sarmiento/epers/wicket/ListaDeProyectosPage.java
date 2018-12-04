@@ -47,6 +47,17 @@ public class ListaDeProyectosPage extends WebPage {
 				CompoundPropertyModel<Proyecto> proyectoModel = new CompoundPropertyModel<>(proyecto);
 				panel.add(new Label("nombre", proyectoModel.bind("nombre")));
 				
+				Link<String> botonVerSprint = new Link<String>("sprintProyecto"){
+					private static final long serialVersionUID = 1L;
+
+					@Override
+					public void onClick(){
+						this.setResponsePage(new ListaDeSprintsPage(proyecto));
+					}
+				};
+				
+				panel.add(botonVerSprint);
+					
 				Link<String> botonEliminar = new Link<String>("eliminar") {
 					private static final long serialVersionUID = 3672370417232954427L;
 
@@ -59,6 +70,6 @@ public class ListaDeProyectosPage extends WebPage {
 				panel.add(botonEliminar);
 			}	
 		});
+		
 	}
-
 }
