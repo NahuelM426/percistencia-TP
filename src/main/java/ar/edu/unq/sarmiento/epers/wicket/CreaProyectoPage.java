@@ -29,10 +29,11 @@ public class CreaProyectoPage extends WebPage {
 				this.setResponsePage(new HomePage());
 			}
 		};
-
+		
 		agregarMateria.add(new TextField<>("nombre", new PropertyModel<>(controller, "nombre")));
 
 		this.add(agregarMateria);
 	
 	}
+	
 }

@@ -67,7 +67,17 @@ public class ListaDeProyectosPage extends WebPage {
 						controller.eliminar(proyecto);
 					}
 				};
+				Link<String> agregara = new Link<String>("detalles") {
+					private static final long serialVersionUID = 3672370417232954427L;
+
+					@Override
+					public void onClick() {
+						this.setResponsePage(new DetalleDeProyecto(proyecto));
+
+					}
+				};
 				panel.add(botonEliminar);
+				panel.add(agregara);
 			}	
 		});
 		

@@ -9,8 +9,8 @@ import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
-import ar.edu.unq.sarmiento.epers.model.Developer;
 import ar.edu.unq.sarmiento.epers.model.Proyecto;
+import ar.edu.unq.sarmiento.epers.model.UserStory;
 
 public class DetalleDeProyecto extends WebPage {
 	
@@ -22,6 +22,7 @@ public class DetalleDeProyecto extends WebPage {
 	public DetalleDeProyecto() {
 		this(new Proyecto());
 	
+	
 	}
 	@SuppressWarnings("serial")
 	public DetalleDeProyecto(Proyecto proy) {
@@ -29,13 +30,16 @@ public class DetalleDeProyecto extends WebPage {
 		this.controller.setProyecto(proy);
 		this.agregarTablaDeMaterias();
 		this.nombreDeMateria();
-		this.add(new Link<String>("backlog") {
+		this.add(new Link<String>("proyectoHome") {
 
 			@Override
 			public void onClick() {
-				this.setResponsePage(new BacklogPage(proy));
+				Proyecto proyecto = proy;
+				controller.getHome().attach(proyecto);
+				this.setResponsePage(new AgregarUserStory(proyecto));
 			}
 		});
+		
 	}
 	private void nombreDeMateria() {
 		this.add(new Label("nombreMateria", new PropertyModel<>(this.controller, "nombre")));
@@ -43,15 +47,19 @@ public class DetalleDeProyecto extends WebPage {
 
 	
 	private void agregarTablaDeMaterias() {
-		this.add(new ListView<Developer>( "filaDeveloper", new PropertyModel<>(this.controller, "lista")) {
+		this.add(new ListView<UserStory>( "filaDeveloper", new PropertyModel<>(this.controller, "lista")) {
 
 			private static final long serialVersionUID = 2426749934569985837L;
 
-			protected void populateItem(ListItem<Developer> panel) {
-				Developer proyecto = panel.getModelObject();
-				CompoundPropertyModel<Developer> proyectoModel = new CompoundPropertyModel<>(proyecto);
-				panel.add(new Label("nombre", proyectoModel.bind("nombre")));
+			protected void populateItem(ListItem<UserStory> panel) {
+				UserStory bac = panel.getModelObject();
+				CompoundPropertyModel<UserStory> backlogModel = new CompoundPropertyModel<>(bac);
 				
+				
+				panel.add(new Label("nombreDeProyecto", backlogModel.bind("proyecto.nombre")));
+				panel.add(new Label("complejidad", backlogModel.bind("complejidadEstimada")));
+				panel.add(new Label("completado", backlogModel.bind("completado")));
+				panel.add(new Label("rol", backlogModel.bind("rol")));
 			}	
 		});
 	}

@@ -3,7 +3,6 @@ package ar.edu.unq.sarmiento.epers.model;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -17,9 +16,18 @@ public class UserStory extends Persistible{
 	private boolean completado = false; 
 	private Rol rol;
 	@ManyToOne
-	private Backlog backlogAlQuePertenece;
+	private Proyecto backlogAlQuePertenece;
 	@OneToMany
 	private List<Developer> developers;
+	
+	public UserStory(int complejidadEstimada, boolean completado) {
+		super();
+		this.complejidadEstimada = complejidadEstimada;
+		this.completado = completado;
+	}
+	public UserStory(){
+		
+	}
 	public int getValorAlCliente() {
 		return valorAlCliente;
 	}
@@ -44,10 +52,10 @@ public class UserStory extends Persistible{
 	public void setRol(Rol rol) {
 		this.rol = rol;
 	}
-	public Backlog getBacklogAlQuePertenece() {
+	public Proyecto getBacklogAlQuePertenece() {
 		return backlogAlQuePertenece;
 	}
-	public void setBacklogAlQuePertenece(Backlog backlogAlQuePertenece) {
+	public void setBacklogAlQuePertenece(Proyecto backlogAlQuePertenece) {
 		this.backlogAlQuePertenece = backlogAlQuePertenece;
 	}
 	public List<Developer> getDevelopers() {

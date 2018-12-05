@@ -10,9 +10,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unq.sarmiento.epers.home.ProyectoHome;
-import ar.edu.unq.sarmiento.epers.model.Developer;
-import ar.edu.unq.sarmiento.epers.model.Persistible;
 import ar.edu.unq.sarmiento.epers.model.Proyecto;
+import ar.edu.unq.sarmiento.epers.model.UserStory;
 
 @Service
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
@@ -24,6 +23,8 @@ public class ControllerDetalleDeProyecto implements Serializable {
 	@Autowired
 	private ProyectoHome home; 
 	
+	
+
 	public void setProyecto(Proyecto proyecto) {
 		this.proyecto= proyecto;
 	}
@@ -39,16 +40,16 @@ public class ControllerDetalleDeProyecto implements Serializable {
 	public Proyecto getProyecto() {
 		return proyecto;
 	}
-	public List<Developer> lista(){
-		return this.listadoDeDeveloperDeProy("tp1");
+	public List<UserStory> getLista(){
+		return buscaProyecto().getUserStori();
 	}
-	public List<Developer> listadoDeDeveloperDeProy(String name){
-		return home.findByName(name).getDeveloper();
+	public Proyecto buscaProyecto(){
+		return home.findByName(proyecto.getNombre());
 	}
 	public String nombre(){
-		this.proyecto = home.findByName("baculo");
 		return this.proyecto.getNombre();
 	}
+
 	
 
 }

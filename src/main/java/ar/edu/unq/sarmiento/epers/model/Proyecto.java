@@ -3,6 +3,7 @@ package ar.edu.unq.sarmiento.epers.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
@@ -16,10 +17,13 @@ public class Proyecto extends Persistible{
 	
 	@ManyToMany
 	private List<Developer> developer = new ArrayList<Developer>();
-	@OneToOne
-	private Backlog backlog;
 	@OneToMany
 	private List<Sprint> sprintBacklogs = new ArrayList<>();
+	
+	@OneToMany
+	private List<UserStory> userStory = new ArrayList<UserStory>();
+	
+
 
 	public Proyecto() {
 	}
@@ -43,12 +47,12 @@ public class Proyecto extends Persistible{
 		this.developer.add(developer);
 	}
 
-	public Backlog getBacklog() {
-		return backlog;
+	public List<UserStory> getUserStori() {
+		return userStory;
 	}
 
-	public void setBacklog(Backlog backlog) {
-		this.backlog = backlog;
+	public void addUserStory(UserStory userStori) {
+		this.userStory.add(userStori);
 	}
 
 	public List<Sprint> getSprintBacklogs() {

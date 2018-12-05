@@ -42,6 +42,4 @@ public class ControllerCrearProyecto implements Serializable {
 		this.proyecto.setNombre(getNombre());
 		home.saveOrUpdate(proyecto);
 	}
-
-	
 }
