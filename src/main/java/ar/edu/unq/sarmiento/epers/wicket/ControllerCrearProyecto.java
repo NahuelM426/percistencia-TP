@@ -10,7 +10,6 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unq.sarmiento.epers.home.ProyectoHome;
-import ar.edu.unq.sarmiento.epers.model.Backlog;
 import ar.edu.unq.sarmiento.epers.model.Proyecto;
 @Service
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
@@ -22,7 +21,6 @@ public class ControllerCrearProyecto implements Serializable {
 	
 	private String nombre="";
 	private Proyecto proyecto;
-	private Backlog bak = new Backlog();
 
 	public String getNombre() {
 		return nombre;

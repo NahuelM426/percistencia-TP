@@ -3,7 +3,6 @@ package ar.edu.unq.sarmiento.epers.model;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -21,6 +20,14 @@ public class UserStory extends Persistible{
 	@OneToMany
 	private List<Developer> developers;
 	
+	public UserStory(int complejidadEstimada, boolean completado) {
+		super();
+		this.complejidadEstimada = complejidadEstimada;
+		this.completado = completado;
+	}
+	public UserStory(){
+		
+	}
 	public int getValorAlCliente() {
 		return valorAlCliente;
 	}

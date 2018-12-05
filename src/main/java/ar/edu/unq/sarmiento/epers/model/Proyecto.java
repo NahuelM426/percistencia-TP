@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -16,13 +17,11 @@ public class Proyecto extends Persistible{
 	
 	@ManyToMany
 	private List<Developer> developer = new ArrayList<Developer>();
-	@OneToOne
-	private Backlog backlog;
 	@OneToMany
 	private List<Sprint> sprintBacklogs = new ArrayList<>();
 	
 	@OneToMany
-	private List<UserStory> userStori = new ArrayList<UserStory>();
+	private List<UserStory> userStory = new ArrayList<UserStory>();
 	
 
 
@@ -49,11 +48,11 @@ public class Proyecto extends Persistible{
 	}
 
 	public List<UserStory> getUserStori() {
-		return userStori;
+		return userStory;
 	}
 
-	public void setUserStori(UserStory userStori) {
-		this.userStori.add(userStori);
+	public void addUserStory(UserStory userStori) {
+		this.userStory.add(userStori);
 	}
 
 	public List<Sprint> getSprintBacklogs() {

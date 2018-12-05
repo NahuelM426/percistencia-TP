@@ -10,11 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unq.sarmiento.epers.home.ProyectoHome;
-import ar.edu.unq.sarmiento.epers.model.Backlog;
-import ar.edu.unq.sarmiento.epers.model.Developer;
-import ar.edu.unq.sarmiento.epers.model.Persistible;
 import ar.edu.unq.sarmiento.epers.model.Proyecto;
-import ar.edu.unq.sarmiento.epers.model.Rol;
 import ar.edu.unq.sarmiento.epers.model.UserStory;
 
 @Service

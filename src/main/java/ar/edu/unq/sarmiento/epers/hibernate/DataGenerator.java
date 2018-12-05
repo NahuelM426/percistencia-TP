@@ -6,15 +6,12 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import ar.edu.unq.sarmiento.epers.home.BacklogHome;
 import ar.edu.unq.sarmiento.epers.home.DeveloperHome;
 import ar.edu.unq.sarmiento.epers.home.ProyectoHome;
 import ar.edu.unq.sarmiento.epers.home.SprintHome;
 import ar.edu.unq.sarmiento.epers.home.UserStoryHome;
-import ar.edu.unq.sarmiento.epers.model.Backlog;
 import ar.edu.unq.sarmiento.epers.model.Developer;
 import ar.edu.unq.sarmiento.epers.model.Proyecto;
-import ar.edu.unq.sarmiento.epers.model.Rol;
 import ar.edu.unq.sarmiento.epers.model.Sprint;
 import ar.edu.unq.sarmiento.epers.model.UserStory;
 
@@ -25,8 +22,6 @@ public class DataGenerator {
 	private DeveloperHome developerHome;
 	@Autowired
 	private ProyectoHome proyectosHome;
-	@Autowired
-	private BacklogHome backlogHome;
 	@Autowired
 	private SprintHome sprintHome;
 	@Autowired
@@ -42,12 +37,6 @@ public class DataGenerator {
 		Developer gandalf = new Developer("Gandalf");
 		Proyecto proyecto2 = new Proyecto("Toxy-taxi", 7);
 		gandalf.addProyecto(proyecto2);
-		
-		Backlog juan=new Backlog("backlog 01");
-		Backlog backlog1 = new Backlog("backlog 02");
-		Backlog backlog2 = new Backlog("backlog 03");
-		Backlog backlog3 = new Backlog("backlog 04");
-		Backlog backlog4 = new Backlog("backlog 05");
 		
 		Sprint sprint1 = new Sprint();
 		Sprint sprint2 = new Sprint();
@@ -74,25 +63,16 @@ public class DataGenerator {
 		Proyecto tp = new Proyecto("tp1", 1);
 		Proyecto tp1 = new Proyecto("tp2", 2);
 		Proyecto tp2 = new Proyecto("tp3", 3);
-		
-		tp.setBacklog(juan);
-		proyecto1.setBacklog(backlog2);
-		proyecto2.setBacklog(backlog4);
-		tp2.setBacklog(backlog1);
-		tp1.setBacklog(backlog3);
+
 		
 		tp.setDeveloper(harry);
 		tp.setDeveloper(gandalf);
 		tp1.setDeveloper(gandalf);
-		
-		juan.agregarUserStory(userStory1);
-		juan.agregarUserStory(story3);
-		juan.agregarUserStory(story4);
+
 		sprint1.agregarUserStory(userStory1);
 		sprint1.agregarUserStory(userStory2);
 		
 		Transaction ts = sessionFactory.getCurrentSession().beginTransaction();
-		backlogHome.saveOrUpdate(juan);
 		userStoryHome.saveOrUpdate(userStory1);
 		userStoryHome.saveOrUpdate(userStory2);
 		userStoryHome.saveOrUpdate(story3);
@@ -108,10 +88,6 @@ public class DataGenerator {
 		sprintHome.saveOrUpdate(sprint2);
 		sprintHome.saveOrUpdate(sprint3);
 		sprintHome.saveOrUpdate(sprint4);
-		backlogHome.saveOrUpdate(backlog1);
-		backlogHome.saveOrUpdate(backlog2);
-		backlogHome.saveOrUpdate(backlog3);
-		backlogHome.saveOrUpdate(backlog4);
 		ts.commit();
 		
 		System.out.println("Termine!!");

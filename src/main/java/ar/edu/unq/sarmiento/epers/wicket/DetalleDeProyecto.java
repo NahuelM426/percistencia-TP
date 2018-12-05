@@ -2,8 +2,6 @@ package ar.edu.unq.sarmiento.epers.wicket;
 
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.form.Form;
-import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
@@ -11,8 +9,6 @@ import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
-import ar.edu.unq.sarmiento.epers.model.Backlog;
-import ar.edu.unq.sarmiento.epers.model.Developer;
 import ar.edu.unq.sarmiento.epers.model.Proyecto;
 import ar.edu.unq.sarmiento.epers.model.UserStory;
 
@@ -38,7 +34,9 @@ public class DetalleDeProyecto extends WebPage {
 
 			@Override
 			public void onClick() {
-				this.setResponsePage(new AgregarUserStory(proy));
+				Proyecto proyecto = proy;
+				controller.getHome().attach(proyecto);
+				this.setResponsePage(new AgregarUserStory(proyecto));
 			}
 		});
 		

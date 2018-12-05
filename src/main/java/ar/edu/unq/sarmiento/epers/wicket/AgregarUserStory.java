@@ -14,6 +14,7 @@ public class AgregarUserStory extends WebPage {
 	private ControllerCrearUserStory controller;
 	
 public AgregarUserStory(Proyecto pro){
+	
 	controller.setProyecto(pro);
 	this.crearUserStory();	
 }
@@ -35,8 +36,7 @@ public AgregarUserStory(Proyecto pro){
 
 		agregarMateria.add(new TextField<>("complejidad", new PropertyModel<>(controller, "complejidad")));
 		agregarMateria.add(new TextField<>("completado", new PropertyModel<>(controller, "completado")));
-
-		agregarMateria.add(new TextField<>("rol", new PropertyModel<>(controller, "rol")));
+//		agregarMateria.add(new TextField<>("rol", new PropertyModel<>(controller, "rol")));
 
 		this.add(agregarMateria);
 	
