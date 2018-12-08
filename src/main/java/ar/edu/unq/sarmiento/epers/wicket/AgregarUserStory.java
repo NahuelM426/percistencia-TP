@@ -12,10 +12,12 @@ public class AgregarUserStory extends WebPage {
 
 	@SpringBean(name="controllerCrearUserStory")
 	private ControllerCrearUserStory controller;
+	private Proyecto proyecto;
 	
 public AgregarUserStory(Proyecto pro){
-	
-	controller.setProyecto(pro);
+	this.proyecto = pro;
+	controller.attch(proyecto);
+	controller.setProyecto(proyecto);
 	this.crearUserStory();	
 }
 	
@@ -28,12 +30,13 @@ public AgregarUserStory(Proyecto pro){
 			@Override
 			protected void onSubmit() {
 				controller.confirmar();
-				this.setResponsePage(new HomePage());
+				this.setResponsePage(new DetalleDeProyecto(proyecto));
 			}
 		};
 		
 
-
+		agregarMateria.add(new TextField<>("titulo", new PropertyModel<>(controller, "titulo")));
+		agregarMateria.add(new TextField<>("valorAlCliente", new PropertyModel<>(controller, "valorAlCliente")));
 		agregarMateria.add(new TextField<>("complejidad", new PropertyModel<>(controller, "complejidad")));
 		agregarMateria.add(new TextField<>("completado", new PropertyModel<>(controller, "completado")));
 //		agregarMateria.add(new TextField<>("rol", new PropertyModel<>(controller, "rol")));

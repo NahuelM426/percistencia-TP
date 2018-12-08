@@ -22,8 +22,39 @@ public class ControllerCrearUserStory implements Serializable {
 	private ProyectoHome home; 
 	@Autowired
 	private UserStoryHome home2;
-	private Proyecto proyecto;
 	
+	private Proyecto proyecto;
+	private UserStory nueva;
+	
+	private String titulo;
+	private int valorAlCliente;
+	private int complejidad;
+	private boolean completado = false; 
+	
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
+	public int getValorAlCliente() {
+		return valorAlCliente;
+	}
+
+	public void setValorAlCliente(int valorAlCliente) {
+		this.valorAlCliente = valorAlCliente;
+	}
+
+	public UserStory getNueva() {
+		return nueva;
+	}
+
+	public void setNueva(UserStory nueva) {
+		this.nueva = nueva;
+	}
+
 	public ProyectoHome getHome() {
 		return home;
 	}
@@ -31,9 +62,10 @@ public class ControllerCrearUserStory implements Serializable {
 	public void setHome(ProyectoHome home) {
 		this.home = home;
 	}
-
-	private int complejidad;
-	private boolean completado = false; 
+	public void attch(Proyecto pro){
+		home.attach(pro);
+	}
+	
 	
 	public int getComplejidad() {
 		return complejidad;
@@ -52,10 +84,14 @@ public class ControllerCrearUserStory implements Serializable {
 	}
 
 	public void confirmar() {
-		UserStory user = new UserStory(getComplejidad(),getCompletado());
+		Proyecto pro = home.findByName(this.proyecto.getNombre());
+		pro.addUserStory(crearUser());
+		home.saveOrUpdate(pro);
+	}
+	public UserStory crearUser(){
+		UserStory user = new UserStory(getComplejidad(), getCompletado(),getTitulo(),getValorAlCliente());
 		home2.saveOrUpdate(user);
-		proyecto.addUserStory(user);
-		home.saveOrUpdate(proyecto);
+		return user;
 	}
 
 	public Proyecto buscarProyecto(Proyecto pro){
@@ -66,7 +102,6 @@ public class ControllerCrearUserStory implements Serializable {
 	}
 
 	public void setProyecto(Proyecto proyecto) {
-		home.attach(proyecto);
 		this.proyecto = proyecto;
 	}
 

@@ -26,7 +26,7 @@ public class CreaProyectoPage extends WebPage {
 			@Override
 			protected void onSubmit() {
 				controller.confirmarProyecto();
-				this.setResponsePage(new HomePage());
+				this.setResponsePage(new ListaDeProyectosPage());
 			}
 		};
 		

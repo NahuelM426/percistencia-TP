@@ -52,7 +52,7 @@ public class Proyecto extends Persistible{
 	}
 
 	public void addUserStory(UserStory userStori) {
-		this.userStory.add(userStori);
+		this.getUserStori().add(userStori);
 	}
 
 	public List<Sprint> getSprintBacklogs() {
