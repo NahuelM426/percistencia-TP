@@ -21,8 +21,6 @@ public class DetalleDeProyecto extends WebPage {
 	
 	public DetalleDeProyecto() {
 		this(new Proyecto());
-	
-	
 	}
 	@SuppressWarnings("serial")
 	public DetalleDeProyecto(Proyecto proy) {
@@ -34,9 +32,7 @@ public class DetalleDeProyecto extends WebPage {
 
 			@Override
 			public void onClick() {
-				Proyecto proyecto = proy;
-				controller.getHome().attach(proyecto);
-				this.setResponsePage(new AgregarUserStory(proyecto));
+				this.setResponsePage(new AgregarUserStory(proy));
 			}
 		});
 		
@@ -56,7 +52,8 @@ public class DetalleDeProyecto extends WebPage {
 				CompoundPropertyModel<UserStory> backlogModel = new CompoundPropertyModel<>(bac);
 				
 				
-				panel.add(new Label("nombreDeProyecto", backlogModel.bind("proyecto.nombre")));
+				panel.add(new Label("titulo", backlogModel.bind("titulo")));
+				panel.add(new Label("valorAlCliente", backlogModel.bind("valorAlCliente")));
 				panel.add(new Label("complejidad", backlogModel.bind("complejidadEstimada")));
 				panel.add(new Label("completado", backlogModel.bind("completado")));
 				panel.add(new Label("rol", backlogModel.bind("rol")));
