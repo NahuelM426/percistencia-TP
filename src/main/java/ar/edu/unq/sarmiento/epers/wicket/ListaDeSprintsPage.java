@@ -37,7 +37,7 @@ public class ListaDeSprintsPage extends WebPage {
 
 					@Override
 					public void onClick() {
-						this.setResponsePage(new SprintPage(sprint));
+						this.setResponsePage(new SprintPage(controller.getProyecto(), sprint));
 					}
 				};
 				panel.add(botonVerProyecto);

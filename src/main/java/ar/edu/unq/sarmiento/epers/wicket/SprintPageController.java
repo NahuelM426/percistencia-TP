@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unq.sarmiento.epers.home.Home;
+import ar.edu.unq.sarmiento.epers.home.ProyectoHome;
 import ar.edu.unq.sarmiento.epers.home.SprintHome;
+import ar.edu.unq.sarmiento.epers.model.Proyecto;
 import ar.edu.unq.sarmiento.epers.model.Sprint;
 import ar.edu.unq.sarmiento.epers.model.UserStory;
 
@@ -21,11 +23,17 @@ public class SprintPageController implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
+	private UserStory newUserStory;
 	private List<UserStory> userStories;
+	private List<UserStory> todasLasUserStories;
 	@Autowired
 	private SprintHome home;
+	@Autowired
+	private ProyectoHome home2;
 	
 	private Sprint sprint;
+
+	private Proyecto proyecto;
 	
 	public Home<Sprint> getHome() {
 		return home;
@@ -48,7 +56,9 @@ public class SprintPageController implements Serializable{
 	}
 	
 	public List<UserStory> buscarUserStories(int id){
+		
 		return home.find(id).getUserStories();
+		
 	}
 
 	public void cerrarSprint() {
@@ -56,4 +66,22 @@ public class SprintPageController implements Serializable{
 		home.saveOrUpdate(sprint);
 	}
 
+	public void confirmarAgregarUserStory() {
+		this.sprint.agregarUserStory(this.newUserStory);
+		home.saveOrUpdate(sprint);
+	}
+
+	public String getEstadoDeSprint(){
+		return this.sprint.getEstado();
+	}
+
+	public void setProyecto(Proyecto proyecto) {
+		this.proyecto = proyecto;
+	}
+	
+	public List<UserStory> getListaDeUserStories(){
+		Proyecto pro = home2.findByName(proyecto.getNombre());
+		return pro.getUserStori();
+		
+	}
 }

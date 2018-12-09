@@ -30,4 +30,12 @@ public class Sprint extends Persistible{
 	public void cerrar(){
 		this.estaAbierto = false;
 	}
+	
+	public String getEstado(){
+		if(this.estaAbierto == true){
+			return "Abierto";
+		} else{
+			return "Cerrado";
+		}
+	}
 }
