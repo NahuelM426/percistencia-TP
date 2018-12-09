@@ -25,7 +25,7 @@ public class SprintPageController implements Serializable{
 
 	private UserStory newUserStory;
 	private List<UserStory> userStories;
-	private List<UserStory> todasLasUserStories;
+	
 	@Autowired
 	private SprintHome home;
 	@Autowired
@@ -56,7 +56,6 @@ public class SprintPageController implements Serializable{
 	}
 	
 	public List<UserStory> buscarUserStories(int id){
-		
 		return home.find(id).getUserStories();
 		
 	}
@@ -67,8 +66,14 @@ public class SprintPageController implements Serializable{
 	}
 
 	public void confirmarAgregarUserStory() {
-		this.sprint.agregarUserStory(this.newUserStory);
-		home.saveOrUpdate(sprint);
+		Sprint sprint1 = home.find(this.sprint.getId());
+		//Proyecto proyecto = this.home2.findByName(this.proyecto.getNombre());
+		
+		sprint1.agregarUserStory(this.newUserStory);
+		//proyecto.removerUser(this.newUserStory);
+		
+		home.saveOrUpdate(sprint1);
+		//home2.saveOrUpdate(proyecto);
 	}
 
 	public String getEstadoDeSprint(){

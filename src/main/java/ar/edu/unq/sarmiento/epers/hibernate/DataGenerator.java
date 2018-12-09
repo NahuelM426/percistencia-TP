@@ -40,15 +40,11 @@ public class DataGenerator {
 		
 		Sprint sprint1 = new Sprint();
 		Sprint sprint2 = new Sprint();
-		Sprint sprint3 = new Sprint();
-		Sprint sprint4 = new Sprint();
 		
 		Sprint sprint5 = new Sprint();
 		
 		proyecto1.agregarSprint(sprint1);
-		proyecto1.agregarSprint(sprint3);
 		proyecto2.agregarSprint(sprint2);
-		proyecto2.agregarSprint(sprint4);
 		
 		UserStory userStory1 = new UserStory();
 		userStory1.setTitulo("Configurar Travis");
@@ -94,8 +90,6 @@ public class DataGenerator {
 		proyectosHome.saveOrUpdate(tp2);
 		sprintHome.saveOrUpdate(sprint1);
 		sprintHome.saveOrUpdate(sprint2);
-		sprintHome.saveOrUpdate(sprint3);
-		sprintHome.saveOrUpdate(sprint4);
 		sprintHome.saveOrUpdate(sprint5);
 		ts.commit();
 		

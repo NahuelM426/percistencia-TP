@@ -4,13 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity
 public class Sprint extends Persistible{
 
 	private static final long serialVersionUID = 1L;
+
 	@OneToMany
+	@JoinColumn(name = "sprin_id")
 	private List<UserStory> userStories = new ArrayList<>();
 	private boolean estaAbierto = true;
 	public List<UserStory> getUserStories() {
@@ -38,4 +42,5 @@ public class Sprint extends Persistible{
 			return "Cerrado";
 		}
 	}
+	
 }
