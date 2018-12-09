@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unq.sarmiento.epers.home.ProyectoHome;
+import ar.edu.unq.sarmiento.epers.home.UserStoryHome;
 import ar.edu.unq.sarmiento.epers.model.Proyecto;
 import ar.edu.unq.sarmiento.epers.model.UserStory;
 
@@ -22,6 +23,8 @@ public class ControllerDetalleDeProyecto implements Serializable {
 
 	@Autowired
 	private ProyectoHome home; 
+	@Autowired
+	private UserStoryHome home2;
 	
 	
 
@@ -50,6 +53,10 @@ public class ControllerDetalleDeProyecto implements Serializable {
 		return this.proyecto.getNombre();
 	}
 
+	public void eliminar(UserStory bac) {
+		this.buscaProyecto().removerUser(bac);
+		home.saveOrUpdate(buscaProyecto());
+		home2.delete(bac);
+	}
 	
-
 }

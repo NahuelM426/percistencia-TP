@@ -57,8 +57,20 @@ public class DetalleDeProyecto extends WebPage {
 				panel.add(new Label("complejidad", backlogModel.bind("complejidadEstimada")));
 				panel.add(new Label("completado", backlogModel.bind("completado")));
 				panel.add(new Label("rol", backlogModel.bind("rol")));
-			}	
-		});
-	}
+			
+				Link<String> botonEliminar = new Link<String>("eliminar") {
+					private static final long serialVersionUID = 3672370417232954427L;
 
+					@Override
+					public void onClick() {
+
+						controller.eliminar(bac);
+					}
+				};
+				panel.add(botonEliminar);
+			}
+		});
+	
+	}
+	
 }
