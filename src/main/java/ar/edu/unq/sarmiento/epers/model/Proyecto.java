@@ -5,9 +5,12 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
+import org.eclipse.jetty.server.Authentication.User;
 
 @Entity
 public class Proyecto extends Persistible{
@@ -18,9 +21,10 @@ public class Proyecto extends Persistible{
 	@ManyToMany
 	private List<Developer> developer = new ArrayList<Developer>();
 	@OneToMany
+	@JoinColumn(name = "proyecto_id")
 	private List<Sprint> sprintBacklogs = new ArrayList<>();
-	
 	@OneToMany
+	@JoinColumn(name = "proyecto_id")
 	private List<UserStory> userStory = new ArrayList<UserStory>();
 	
 
@@ -64,5 +68,10 @@ public class Proyecto extends Persistible{
 	}
 	public void agregarSprint(Sprint sprint){
 		this.sprintBacklogs.add(sprint);
+	}
+
+	public void removerUser(UserStory bac) {
+		this.userStory.stream().filter(u->u.getTitulo()== bac.getTitulo());
+		
 	}
 }
