@@ -25,13 +25,6 @@ public class ListaDeDevelopersPage extends WebPage {
 	
 	public ListaDeDevelopersPage(){
 		this(new Developer());
-		this.add(new Link<String>("listadoDeCarreras") {
-
-			@Override
-			public void onClick() {
-				this.setResponsePage(new DetalleDeProyecto());
-			}
-		});
 		this.add(new Link<String>("CrearDeveloper") {
 
 			@Override
