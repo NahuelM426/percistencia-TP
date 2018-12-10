@@ -2,6 +2,8 @@ package ar.edu.unq.sarmiento.epers.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -31,5 +33,19 @@ public class Sprint extends Persistible{
 	}
 	public void cerrar(){
 		this.estaAbierto = false;
+	}
+	public String getEstado(){
+		if(estaAbierto == true){
+			return "Abierto";
+		} else{
+			return "Cerrado";
+		}
+	}
+	
+	public List<UserStory> buscarUserStoriesSinCompletar(){
+		return this.userStories.stream().filter(u -> u.isCompletado() == false).collect(Collectors.toList());
+	}
+	public void removerUserStoriesSinCompletar(){
+		this.userStories.removeAll(this.buscarUserStoriesSinCompletar());
 	}
 }

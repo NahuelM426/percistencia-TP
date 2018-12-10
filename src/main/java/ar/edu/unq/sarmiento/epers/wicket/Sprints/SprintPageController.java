@@ -2,6 +2,8 @@ package ar.edu.unq.sarmiento.epers.wicket.Sprints;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -61,8 +63,17 @@ public class SprintPageController implements Serializable{
 	}
 
 	public void cerrarSprint() {
-		this.sprint.cerrar();
-		sprintHome.saveOrUpdate(sprint);
+		Sprint sprint1 = sprintHome.find(this.sprint.getId());
+		Proyecto proyecto1 = proyectoHome.findByName(this.proyecto.getNombre());
+		
+		sprint1.cerrar();
+		proyecto1.addUserStories(sprint1.buscarUserStoriesSinCompletar());
+
+		sprint1.removerUserStoriesSinCompletar();
+		
+		sprintHome.saveOrUpdate(sprint1);
+		proyectoHome.saveOrUpdate(proyecto1);
+		
 	}
 
 	public void confirmarAgregarUserStory() {

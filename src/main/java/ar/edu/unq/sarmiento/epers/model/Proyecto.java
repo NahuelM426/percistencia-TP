@@ -74,4 +74,8 @@ public class Proyecto extends Persistible{
 	public void removerUser(UserStory bac) {
 		this.userStory.remove(bac);
 	}
+
+	public void addUserStories(List<UserStory> buscarUserStoriesSinCompletar) {
+		this.userStory.addAll(buscarUserStoriesSinCompletar);
+	}
 }
