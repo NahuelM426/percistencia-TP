@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
@@ -12,12 +11,10 @@ import javax.persistence.OneToMany;
 public class Sprint extends Persistible{
 
 	private static final long serialVersionUID = 1L;
-
 	@OneToMany
-	@JoinColumn(name = "sprin_id")
+	@JoinColumn(name = "sprint_id")
 	private List<UserStory> userStories = new ArrayList<>();
 	private boolean estaAbierto = true;
-	
 	public List<UserStory> getUserStories() {
 		return userStories;
 	}
@@ -35,13 +32,4 @@ public class Sprint extends Persistible{
 	public void cerrar(){
 		this.estaAbierto = false;
 	}
-	
-	public String getEstado(){
-		if(this.estaAbierto == true){
-			return "Abierto";
-		} else{
-			return "Cerrado";
-		}
-	}
-	
 }

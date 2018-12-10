@@ -23,6 +23,7 @@ public class Proyecto extends Persistible{
 	@OneToMany
 	@JoinColumn(name = "proyecto_id")
 	private List<Sprint> sprintBacklogs = new ArrayList<>();
+	
 	@OneToMany
 	@JoinColumn(name = "proyecto_id")
 	private List<UserStory> userStory = new ArrayList<UserStory>();
