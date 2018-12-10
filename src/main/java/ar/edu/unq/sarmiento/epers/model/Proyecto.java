@@ -71,7 +71,6 @@ public class Proyecto extends Persistible{
 	}
 
 	public void removerUser(UserStory bac) {
-		this.userStory.stream().filter(u->u.getTitulo()== bac.getTitulo());
-		
+		this.userStory.remove(bac);
 	}
 }

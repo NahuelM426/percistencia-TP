@@ -17,6 +17,7 @@ public class Sprint extends Persistible{
 	@JoinColumn(name = "sprin_id")
 	private List<UserStory> userStories = new ArrayList<>();
 	private boolean estaAbierto = true;
+	
 	public List<UserStory> getUserStories() {
 		return userStories;
 	}
