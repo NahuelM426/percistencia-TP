@@ -8,63 +8,65 @@
 	crossorigin="anonymous">
 <title>Insert title here</title>
 <style>
-		.columna { font-size: smaller; }
 		.recuadro {
-			margin-top: 20px; margin-bottom: 20px;			
-			padding-top: 10px; padding-bottom: 10px; 
-			padding-left: 15px; padding-right: 15px;
-			border-style: solid; border-width: 2px; 
-		}
-		.colorDeFondo{
-			margin-top: -8px;
-    		margin-right: 292px;
-   		    margin-left: 5px; 
-   		    padding: 7px;
-		}
+	margin-top: 20px;
+	margin-bottom: 20px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 15px;
+	padding-right: 15px;
+	border-style: solid;
+	border-width: 2px;
+}
+
+.colorDeFondo {
+	background-color: white;
+	font-size: 16px;
+	color: black;
+}
 		</style>
 </head>
 <body>
-
+<center>
 	<div class="row recuadro">
-			
-			<div class="form-group col-md-2 ">
-	
+			<div class="form-group col-md-3 ">
 			<form wicket:id="agregarMateria" class="colorDeFondo">
 					
 						<div class="form-group ">
-						<label for="resolucion" class="col-md-2 control-label">Comentario</label>
-						<div class="col-md-9">
+						<label for="resolucion" class="col-md-3 control-label">Comentario</label>
+						<div >
 							<input type="text" class="form-control"
 									id="resolucion" wicket:id ="titulo" >
 						</div>
 					</div>
 						<div class="form-group ">
-						<label for="resolucion" class="col-md-2 control-label">ValorAlCliente</label>
-						<div class="col-md-9">
+						<label for="resolucion" class="col-md-3 control-label">ValorAlCliente</label>
+						<div >
 							<input type="text" class="form-control"
 									id="resolucion" wicket:id ="valorAlCliente" >
 						</div>
 					</div>
 					<div class="form-group ">
-						<label for="resolucion" class="col-md-2 control-label">Complejidad</label>
-						<div class="col-md-9">
+						<label for="resolucion" class="col-md-3 control-label">Complejidad</label>
+						<div >
 							<input type="text" class="form-control"
 									id="resolucion" wicket:id ="complejidad" >
 						</div>
 					</div>
 	
 					<div class="form-group">
-						<label for="duracion" class="col-md-2 control-label">Completado</label>
-						<div class="col-md-9">
+						<label for="duracion" class="col-md-3 control-label">Completado</label>
+						<div >
 							<input type="text" class="form-control"
 									id="duracion" wicket:id ="completado" >
 						</div>
 					</div>	
-							<button type="submit" class="btn btn-info btn-sm">Agregar</button>
+						<button type="submit" class="btn btn-info btn-sm">Agregar</button>
 				</form>
-					
+						
 					</div>
-		
-		</div>	
+			
+				</div>
+	</center>		
 </body>
 </html>

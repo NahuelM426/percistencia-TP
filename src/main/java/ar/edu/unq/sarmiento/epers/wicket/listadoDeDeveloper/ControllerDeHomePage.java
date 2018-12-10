@@ -1,4 +1,4 @@
-package ar.edu.unq.sarmiento.epers.wicket;
+package ar.edu.unq.sarmiento.epers.wicket.listadoDeDeveloper;
 
 import java.io.Serializable;
 
