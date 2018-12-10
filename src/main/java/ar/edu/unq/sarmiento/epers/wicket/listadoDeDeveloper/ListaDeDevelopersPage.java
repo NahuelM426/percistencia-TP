@@ -1,4 +1,4 @@
-package ar.edu.unq.sarmiento.epers.wicket;
+package ar.edu.unq.sarmiento.epers.wicket.listadoDeDeveloper;
 
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
@@ -10,6 +10,9 @@ import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import ar.edu.unq.sarmiento.epers.model.Developer;
+import ar.edu.unq.sarmiento.epers.wicket.DetallesDeProyecto.DetalleDeProyecto;
+import ar.edu.unq.sarmiento.epers.wicket.ProyectoPage.ProyectosPage;
+import ar.edu.unq.sarmiento.epers.wicket.crearDeveloper.CrearUnDeveloperPage;
 
 public class ListaDeDevelopersPage extends WebPage {
 
