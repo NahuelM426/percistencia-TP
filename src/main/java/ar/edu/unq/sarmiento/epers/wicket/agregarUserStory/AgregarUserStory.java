@@ -41,7 +41,7 @@ public AgregarUserStory(Proyecto pro){
 		agregarMateria.add(new TextField<>("valorAlCliente", new PropertyModel<>(controller, "valorAlCliente")));
 		agregarMateria.add(new TextField<>("complejidad", new PropertyModel<>(controller, "complejidad")));
 		agregarMateria.add(new TextField<>("completado", new PropertyModel<>(controller, "completado")));
-//		agregarMateria.add(new TextField<>("rol", new PropertyModel<>(controller, "rol")));
+		agregarMateria.add(new TextField<>("roll", new PropertyModel<>(controller, "rol")));
 
 		this.add(agregarMateria);
 	
