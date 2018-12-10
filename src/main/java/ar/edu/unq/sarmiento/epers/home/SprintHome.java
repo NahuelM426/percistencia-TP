@@ -16,5 +16,4 @@ public class SprintHome extends AbstractHome<Sprint> {
 		return this.getSession().createQuery("FROM Sprint WHERE titulo = :name", Sprint.class)
 				.setParameter("name", name).getSingleResult();		
 	}
-
 }

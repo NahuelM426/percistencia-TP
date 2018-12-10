@@ -40,13 +40,11 @@ public class DataGenerator {
 		
 		Sprint sprint1 = new Sprint();
 		Sprint sprint2 = new Sprint();
-		Sprint sprint3 = new Sprint();
-		Sprint sprint4 = new Sprint();
+		
+		Sprint sprint5 = new Sprint();
 		
 		proyecto1.agregarSprint(sprint1);
-		proyecto1.agregarSprint(sprint3);
 		proyecto2.agregarSprint(sprint2);
-		proyecto2.agregarSprint(sprint4);
 		
 		UserStory userStory1 = new UserStory();
 		userStory1.setTitulo("Configurar Travis");
@@ -60,6 +58,9 @@ public class DataGenerator {
 		UserStory story4 = new UserStory();
 		story4.setTitulo("Configurar cardinalidades");
 		
+		proyecto1.addUserStory(story3);
+		proyecto1.addUserStory(story4);
+		
 		Proyecto tp = new Proyecto("tp1", 1);
 		Proyecto tp1 = new Proyecto("tp2", 2);
 		Proyecto tp2 = new Proyecto("tp3", 3);
@@ -69,6 +70,7 @@ public class DataGenerator {
 		tp.setDeveloper(gandalf);
 		tp1.setDeveloper(gandalf);
 		tp.addUserStory(userStory2);
+		tp.agregarSprint(sprint5);
 		userStory2.setProyecto(tp);
 
 		sprint1.agregarUserStory(userStory1);
@@ -88,8 +90,7 @@ public class DataGenerator {
 		proyectosHome.saveOrUpdate(tp2);
 		sprintHome.saveOrUpdate(sprint1);
 		sprintHome.saveOrUpdate(sprint2);
-		sprintHome.saveOrUpdate(sprint3);
-		sprintHome.saveOrUpdate(sprint4);
+		sprintHome.saveOrUpdate(sprint5);
 		ts.commit();
 		
 		System.out.println("Termine!!");

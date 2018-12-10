@@ -29,10 +29,10 @@
 	font-size: 16px;
 	color: black;
 }
-.margen{
+
+.margen {
 	margin-top: 20px;
 }
-
 </style>
 </head>
 <body>
@@ -40,8 +40,13 @@
 		<div class="row">
 			<div class="col-md-10 col-md-offset-1">
 				<div class="row recuadro">
-					<div class="panel panel-info margen" >
+					<div class="panel panel-info margen">
 						<div class="panel-heading">
+							<h4>
+								Estado de Sprint:
+								<tr wicket:id="estadoDeSprint">
+								</tr>
+							</h4>
 							<td>
 								<button wicket:id="cerrarSprint" class="btn btn-info btn-block">
 									Cerrar</button>
@@ -60,7 +65,14 @@
 									</tr>
 								</tbody>
 							</table>
-
+							<div class="form-group">
+								<form wicket:id="agregarUserStory">
+									<div class="col-md-9">
+										<select id="titulos" class="form-control" wicket:id="titulo"></select>
+									</div>
+									<button type="submit" class="btn btn-info btn-sm">Agregar</button>
+								</form>
+							</div>
 						</div>
 					</div>
 				</div>

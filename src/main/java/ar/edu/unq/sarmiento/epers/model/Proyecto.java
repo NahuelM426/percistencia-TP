@@ -23,6 +23,7 @@ public class Proyecto extends Persistible{
 	@OneToMany
 	@JoinColumn(name = "proyecto_id")
 	private List<Sprint> sprintBacklogs = new ArrayList<>();
+	
 	@OneToMany
 	@JoinColumn(name = "proyecto_id")
 	private List<UserStory> userStory = new ArrayList<UserStory>();
@@ -71,7 +72,6 @@ public class Proyecto extends Persistible{
 	}
 
 	public void removerUser(UserStory bac) {
-		this.userStory.stream().filter(u->u.getTitulo()== bac.getTitulo());
-		
+		this.userStory.remove(bac);
 	}
 }
