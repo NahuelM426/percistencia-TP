@@ -29,8 +29,17 @@ public class ControllerCrearUserStory implements Serializable {
 	private String titulo;
 	private int valorAlCliente;
 	private int complejidad;
+	private String rol;
 	private boolean completado = false; 
 	
+	public String getRol() {
+		return rol;
+	}
+
+	public void setRol(String rol) {
+		this.rol = rol;
+	}
+
 	public String getTitulo() {
 		return titulo;
 	}
@@ -89,7 +98,7 @@ public class ControllerCrearUserStory implements Serializable {
 		home.saveOrUpdate(pro);
 	}
 	public UserStory crearUser(){
-		UserStory user = new UserStory(getComplejidad(), getCompletado(),getTitulo(),getValorAlCliente());
+		UserStory user = new UserStory(getComplejidad(), getCompletado(),getTitulo(),getValorAlCliente(),getRol());
 		home2.saveOrUpdate(user);
 		return user;
 	}

@@ -81,9 +81,12 @@ public class SprintPageController implements Serializable{
 		sprint1.agregarUserStory(this.newUserStory);
 		
 		Proyecto proyecto1 = proyectoHome.findByName(this.proyecto.getNombre());
+		Sprint sprint = new Sprint();
 		
 		proyecto1.removerUser(newUserStory);
+		proyecto1.agregarSprint(sprint);
 		sprintHome.saveOrUpdate(sprint1);
+		sprintHome.saveOrUpdate(sprint);
 		proyectoHome.saveOrUpdate(proyecto1);
 
 	}

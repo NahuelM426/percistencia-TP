@@ -14,18 +14,19 @@ public class UserStory extends Persistible{
 	private int valorAlCliente;
 	private int complejidadEstimada;
 	private boolean completado = false; 
-	private Rol rol;
+	private String rol;
 	@ManyToOne
 	private Proyecto proyecto;
 	@OneToMany
 	private List<Developer> developers;
 	
-	public UserStory(int complejidadEstimada, boolean completado,String titulo,int valor) {
+	public UserStory(int complejidadEstimada, boolean completado,String titulo,int valor,String roll) {
 		super();
 		this.titulo = titulo;
 		this.valorAlCliente = valor;
 		this.complejidadEstimada = complejidadEstimada;
 		this.completado = completado;
+		this.rol = roll;
 	}
 	public UserStory(){
 		
@@ -48,10 +49,10 @@ public class UserStory extends Persistible{
 	public void setCompletado(boolean completado) {
 		this.completado = completado;
 	}
-	public Rol getRol() {
+	public String getRol() {
 		return rol;
 	}
-	public void setRol(Rol rol) {
+	public void setRol(String rol) {
 		this.rol = rol;
 	}
 	public Proyecto getProyecto() {
