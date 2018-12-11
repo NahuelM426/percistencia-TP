@@ -13,6 +13,7 @@ import ar.edu.unq.sarmiento.epers.model.Developer;
 import ar.edu.unq.sarmiento.epers.wicket.DetallesDeProyecto.DetalleDeProyecto;
 import ar.edu.unq.sarmiento.epers.wicket.ProyectoPage.ProyectosPage;
 import ar.edu.unq.sarmiento.epers.wicket.crearDeveloper.CrearUnDeveloperPage;
+import ar.edu.unq.sarmiento.epers.wicket.home.HomePage;
 
 public class ListaDeDevelopersPage extends WebPage {
 
@@ -30,6 +31,13 @@ public class ListaDeDevelopersPage extends WebPage {
 			@Override
 			public void onClick() {
 				this.setResponsePage(new CrearUnDeveloperPage());
+			}
+		});
+		this.add(new Link<String>("volver") {
+
+			@Override
+			public void onClick() {
+				this.setResponsePage(new HomePage());
 			}
 		});
 	}

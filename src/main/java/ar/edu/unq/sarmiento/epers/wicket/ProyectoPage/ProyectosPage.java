@@ -11,6 +11,8 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import ar.edu.unq.sarmiento.epers.model.Developer;
 import ar.edu.unq.sarmiento.epers.model.Proyecto;
 import ar.edu.unq.sarmiento.epers.wicket.DetallesDeProyecto.DetalleDeProyecto;
+import ar.edu.unq.sarmiento.epers.wicket.crearDeveloper.CrearUnDeveloperPage;
+import ar.edu.unq.sarmiento.epers.wicket.listadoDeDeveloper.ListaDeDevelopersPage;
 
 public class ProyectosPage extends WebPage {
 
@@ -23,6 +25,13 @@ public class ProyectosPage extends WebPage {
 	public ProyectosPage(Developer developer) {
 		this.controller.setDeveloper(developer);
 		this.crearTablaProyectos();
+		this.add(new Link<String>("volver") {
+
+			@Override
+			public void onClick() {
+				this.setResponsePage(new ListaDeDevelopersPage());
+			}
+		});
 	}
 
 	private void crearTablaProyectos() {

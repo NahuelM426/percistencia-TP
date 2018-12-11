@@ -11,6 +11,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import org.eclipse.jetty.server.Authentication.User;
+import org.hibernate.annotations.Cascade;
 
 @Entity
 public class Proyecto extends Persistible{
@@ -18,13 +19,13 @@ public class Proyecto extends Persistible{
 	private static final long serialVersionUID = 7580495859264340032L;
 	private String nombre;
 	
-	@ManyToMany
+	@ManyToMany(cascade=CascadeType.REFRESH)
 	private List<Developer> developer = new ArrayList<Developer>();
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "proyecto_id")
 	private List<Sprint> sprintBacklogs = new ArrayList<>();
 	
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "proyecto_id")
 	private List<UserStory> userStory = new ArrayList<UserStory>();
 	
@@ -66,6 +67,9 @@ public class Proyecto extends Persistible{
 
 	public void setSprintBacklogs(List<Sprint> sprintBacklogs) {
 		this.sprintBacklogs = sprintBacklogs;
+	}
+	public void setSprint(Sprint sprint){
+		this.sprintBacklogs.add(sprint);
 	}
 	public void agregarSprint(Sprint sprint){
 		this.sprintBacklogs.add(sprint);

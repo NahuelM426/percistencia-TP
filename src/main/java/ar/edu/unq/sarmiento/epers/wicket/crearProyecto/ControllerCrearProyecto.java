@@ -10,14 +10,18 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unq.sarmiento.epers.home.ProyectoHome;
+import ar.edu.unq.sarmiento.epers.home.SprintHome;
 import ar.edu.unq.sarmiento.epers.model.Proyecto;
+import ar.edu.unq.sarmiento.epers.model.Sprint;
 @Service
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 @Transactional
 public class ControllerCrearProyecto implements Serializable {
 
 	@Autowired
-	private ProyectoHome home;
+	private ProyectoHome proyectoHome;
+	@Autowired
+	private SprintHome sprintHome;
 	
 	private String nombre="";
 	private Proyecto proyecto;
@@ -39,7 +43,10 @@ public class ControllerCrearProyecto implements Serializable {
 	}
 
 	public void confirmarProyecto() {
+		Sprint sprint = new Sprint();
+		sprintHome.saveOrUpdate(sprint);
 		this.proyecto.setNombre(getNombre());
-		home.saveOrUpdate(proyecto);
+		this.proyecto.setSprint(sprint);
+		proyectoHome.saveOrUpdate(proyecto);
 	}
 }
