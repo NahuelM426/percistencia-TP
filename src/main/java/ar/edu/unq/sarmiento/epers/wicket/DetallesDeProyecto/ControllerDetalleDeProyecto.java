@@ -22,9 +22,9 @@ public class ControllerDetalleDeProyecto implements Serializable {
 	private Proyecto proyecto;
 
 	@Autowired
-	private ProyectoHome home; 
+	private ProyectoHome proyectoHome; 
 	@Autowired
-	private UserStoryHome home2;
+	private UserStoryHome userStoryHome;
 	
 	
 
@@ -33,11 +33,11 @@ public class ControllerDetalleDeProyecto implements Serializable {
 	}
 
 	public ProyectoHome getHome() {
-		return home;
+		return proyectoHome;
 	}
 
 	public void setHome(ProyectoHome home) {
-		this.home = home;
+		this.proyectoHome = home;
 	}
 
 	public Proyecto getProyecto() {
@@ -47,22 +47,20 @@ public class ControllerDetalleDeProyecto implements Serializable {
 		return buscaProyecto().getUserStori();
 	}
 	public Proyecto buscaProyecto(){
-		return home.findByName(proyecto.getNombre());
+		return proyectoHome.findByName(proyecto.getNombre());
 	}
 	public String nombre(){
 		return this.proyecto.getNombre();
 	}
 
 	public void eliminar(UserStory bac) {
-		this.buscaProyecto().removerUser(bac);
-		home.saveOrUpdate(buscaProyecto());
-		home2.delete(bac);
+		userStoryHome.delete(bac);
 	}
 
 	public void completadoUserStory(UserStory bac) {
-		UserStory userStory = home2.findByName(bac.getTitulo());
+		UserStory userStory = userStoryHome.findByName(bac.getTitulo());
 		userStory.setCompletado(true);
-		home2.saveOrUpdate(userStory);
+		userStoryHome.saveOrUpdate(userStory);
 		
 	}
 	
