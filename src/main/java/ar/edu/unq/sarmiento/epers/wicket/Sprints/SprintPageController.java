@@ -19,21 +19,21 @@ import ar.edu.unq.sarmiento.epers.model.UserStory;
 @Service
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 @Transactional
-public class SprintPageController implements Serializable{
+public class SprintPageController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	private UserStory newUserStory;
-	
+
 	@Autowired
 	private SprintHome sprintHome;
 	@Autowired
 	private ProyectoHome proyectoHome;
-	
+
 	private Sprint sprint;
 
 	private Proyecto proyecto;
-	
+
 	public Home<Sprint> getHome() {
 		return sprintHome;
 	}
@@ -49,38 +49,38 @@ public class SprintPageController implements Serializable{
 	public void setSprint(Sprint sprint) {
 		this.sprint = sprint;
 	}
-	
-	public List<UserStory> getUserStories(){
+
+	public List<UserStory> getUserStories() {
 		return this.buscarUserStories(this.sprint.getId());
 	}
-	
-	public List<UserStory> buscarUserStories(int id){
+
+	public List<UserStory> buscarUserStories(int id) {
 		return sprintHome.find(id).getUserStories();
-		
+
 	}
 
 	public void cerrarSprint() {
 		Sprint sprint1 = sprintHome.find(this.sprint.getId());
 		sprint1.cerrar();
 		Proyecto proyecto1 = proyectoHome.findByName(this.proyecto.getNombre());
-		
+
 		Sprint sprint = new Sprint();
 		sprint.setUserStories(sprint1.buscarUserStoriesSinCompletar());
-		
+
 		sprint1.removerUserStoriesSinCompletar();
 		proyecto1.agregarSprint(sprint);
 		sprintHome.saveOrUpdate(sprint1);
 		sprintHome.saveOrUpdate(sprint);
 		proyectoHome.saveOrUpdate(proyecto1);
-		
+
 	}
 
 	public void confirmarAgregarUserStory() {
 		Sprint sprint1 = sprintHome.find(this.sprint.getId());
 		sprint1.agregarUserStory(this.newUserStory);
-		
+
 		Proyecto proyecto1 = proyectoHome.findByName(this.proyecto.getNombre());
-		
+
 		proyecto1.removerUser(newUserStory);
 		sprintHome.saveOrUpdate(sprint1);
 
@@ -88,7 +88,7 @@ public class SprintPageController implements Serializable{
 
 	}
 
-	public String getEstadoDeSprint(){
+	public String getEstadoDeSprint() {
 		Sprint sprint1 = sprintHome.find(this.sprint.getId());
 		return sprint1.getEstado();
 	}
@@ -96,11 +96,11 @@ public class SprintPageController implements Serializable{
 	public void setProyecto(Proyecto proyecto) {
 		this.proyecto = proyecto;
 	}
-	
-	public List<UserStory> getListaDeUserStories(){
+
+	public List<UserStory> getListaDeUserStories() {
 		Proyecto pro = proyectoHome.findByName(proyecto.getNombre());
 		return pro.getUserStori();
-		
+
 	}
 
 	public UserStory getNewUserStory() {
@@ -110,6 +110,5 @@ public class SprintPageController implements Serializable{
 	public void setNewUserStory(UserStory newUserStory) {
 		this.newUserStory = newUserStory;
 	}
-	
-	
+
 }
