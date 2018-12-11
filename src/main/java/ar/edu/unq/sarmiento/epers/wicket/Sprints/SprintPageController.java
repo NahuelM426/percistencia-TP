@@ -5,8 +5,6 @@ import java.util.List;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
-import org.apache.wicket.model.IModel;
-import org.apache.wicket.request.component.IRequestablePage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
@@ -29,8 +27,7 @@ public class SprintPageController implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	private UserStory newUserStory;
-	private List<UserStory> userStories;
-	
+
 	@Autowired
 	private SprintHome sprintHome;
 	@Autowired
@@ -41,7 +38,7 @@ public class SprintPageController implements Serializable{
 	private Sprint sprint;
 
 	private Proyecto proyecto;
-	
+
 	public Home<Sprint> getHome() {
 		return sprintHome;
 	}
@@ -64,7 +61,7 @@ public class SprintPageController implements Serializable{
 	
 	public List<UserStory> buscarUserStories(int id){
 		return sprintHome.find(id).getUserStories();
-		
+
 	}
 
 	public void cerrarSprint() {
@@ -78,33 +75,34 @@ public class SprintPageController implements Serializable{
 		
 		sprintHome.saveOrUpdate(sprint1);
 		proyectoHome.saveOrUpdate(proyecto1);
-		
+
 	}
 
 	public void confirmarAgregarUserStory() {
 		Sprint sprint1 = sprintHome.find(this.sprint.getId());
 		sprint1.agregarUserStory(this.newUserStory);
-		
+
 		Proyecto proyecto1 = proyectoHome.findByName(this.proyecto.getNombre());
-		
+
 		proyecto1.removerUser(newUserStory);
 		sprintHome.saveOrUpdate(sprint1);
 		proyectoHome.saveOrUpdate(proyecto1);
 
 	}
 
-	public String getEstadoDeSprint(){
-		return this.sprint.getEstado();
+	public String getEstadoDeSprint() {
+		Sprint sprint1 = sprintHome.find(this.sprint.getId());
+		return sprint1.getEstado();
 	}
 
 	public void setProyecto(Proyecto proyecto) {
 		this.proyecto = proyecto;
 	}
-	
-	public List<UserStory> getListaDeUserStories(){
+
+	public List<UserStory> getListaDeUserStories() {
 		Proyecto pro = proyectoHome.findByName(proyecto.getNombre());
 		return pro.getUserStori();
-		
+
 	}
 
 	public UserStory getNewUserStory() {

@@ -48,7 +48,7 @@ public class DataGenerator {
 		
 		UserStory userStory1 = new UserStory();
 		userStory1.setTitulo("Configurar Travis");
-		
+		userStory1.setCompletado(true);
 		UserStory userStory2 = new UserStory();
 		userStory2.setTitulo("Configurar modelo");
 		
