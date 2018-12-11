@@ -18,6 +18,7 @@ import ar.edu.unq.sarmiento.epers.model.Proyecto;
 import ar.edu.unq.sarmiento.epers.wicket.DetallesDeProyecto.DetalleDeProyecto;
 import ar.edu.unq.sarmiento.epers.wicket.ListaDeSprint.ListaDeSprintsPage;
 import ar.edu.unq.sarmiento.epers.wicket.crearProyecto.CreaProyectoPage;
+import ar.edu.unq.sarmiento.epers.wicket.home.HomePage;
 
 public class ListaDeProyectosPage extends WebPage {
 	
@@ -31,6 +32,13 @@ public class ListaDeProyectosPage extends WebPage {
 			@Override
 			public void onClick() {
 				this.setResponsePage(new CreaProyectoPage());
+			}
+		});
+		this.add(new Link<String>("volver") {
+
+			@Override
+			public void onClick() {
+				this.setResponsePage(new HomePage());
 			}
 		});
 	}

@@ -6,12 +6,14 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.apache.wicket.request.component.IRequestablePage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unq.sarmiento.epers.home.ProyectoHome;
+import ar.edu.unq.sarmiento.epers.home.SprintHome;
 import ar.edu.unq.sarmiento.epers.model.Proyecto;
 import ar.edu.unq.sarmiento.epers.model.Sprint;
 
@@ -23,6 +25,7 @@ public class ListaDeSprintsPageController implements Serializable{
 	private Proyecto proyecto;
 	@Autowired
 	private ProyectoHome home;
+	@Autowired SprintHome sprintHome;
 	
 	private List<Sprint> sprints = new ArrayList<>();
 	
@@ -50,5 +53,13 @@ public class ListaDeSprintsPageController implements Serializable{
 
 	public Proyecto getProyecto() {
 		return proyecto;
+	}
+
+	public void craerSprinte() {
+		Sprint sprint = new Sprint();
+		sprintHome.saveOrUpdate(sprint);
+		Proyecto proyecto1 = home.findByName(proyecto.getNombre());
+		proyecto1.setSprint(sprint);
+		home.saveOrUpdate(proyecto1);
 	}
 }

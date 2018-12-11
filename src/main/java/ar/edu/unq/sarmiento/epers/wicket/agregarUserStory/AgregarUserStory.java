@@ -3,12 +3,14 @@ package ar.edu.unq.sarmiento.epers.wicket.agregarUserStory;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import ar.edu.unq.sarmiento.epers.model.Proyecto;
 import ar.edu.unq.sarmiento.epers.wicket.DetallesDeProyecto.ControllerDetalleDeProyecto;
 import ar.edu.unq.sarmiento.epers.wicket.DetallesDeProyecto.DetalleDeProyecto;
+import ar.edu.unq.sarmiento.epers.wicket.home.HomePage;
 
 public class AgregarUserStory extends WebPage {
 
@@ -35,6 +37,17 @@ public AgregarUserStory(Proyecto pro){
 				this.setResponsePage(new DetalleDeProyecto(proyecto));
 			}
 		};
+		agregarMateria.add(new Link<String>("cancelar") {
+
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void onClick() {
+				this.setResponsePage(new DetalleDeProyecto(proyecto));
+
+			}
+
+		});
 		
 
 		agregarMateria.add(new TextField<>("titulo", new PropertyModel<>(controller, "titulo")));

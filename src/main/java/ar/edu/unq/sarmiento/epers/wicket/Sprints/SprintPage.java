@@ -28,16 +28,18 @@ public class SprintPage extends WebPage{
 		this.controller.setProyecto(proyecto);
 		this.nombreDeMateriaElegida();
 		this.add(new Link<String>("cerrarSprint"){
-			
+
+			private static final long serialVersionUID = 1L;
+
 			@Override
 			public void onClick(){
-				controller.cerrarSprint();	
+				controller.cerrarSprint();
 			}
 			
 			@Override
 		     protected void onConfigure() {
 		        super.onConfigure(); 
-		        setVisible(controller.getSprint().isEstaAbierto() == true);
+		        setVisible(controller.getEstadoDeSprint() == "Abierto");
 		     }
 		});
 		this.crearTablaUserStories();
