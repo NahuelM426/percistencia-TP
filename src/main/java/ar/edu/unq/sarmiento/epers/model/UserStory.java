@@ -74,4 +74,11 @@ public class UserStory extends Persistible{
 		this.titulo = titulo;
 	}
 	
+	public String getEstado(){
+		if(this.completado == true){
+			return "Completado";
+		} else {
+			return "Sin Completar";
+		}
+	}
 }
