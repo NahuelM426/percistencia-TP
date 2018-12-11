@@ -10,7 +10,9 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import ar.edu.unq.sarmiento.epers.model.Proyecto;
 import ar.edu.unq.sarmiento.epers.model.Sprint;
+import ar.edu.unq.sarmiento.epers.wicket.ListadoDeProyectos.ListaDeProyectosPage;
 import ar.edu.unq.sarmiento.epers.wicket.Sprints.SprintPage;
+import ar.edu.unq.sarmiento.epers.wicket.crearDeveloper.CrearUnDeveloperPage;
 
 public class ListaDeSprintsPage extends WebPage {
 
@@ -22,8 +24,25 @@ public class ListaDeSprintsPage extends WebPage {
 	public ListaDeSprintsPage (Proyecto proyecto){
 		this.controller.setProyecto(proyecto);
 		this.crearTablaSprints();
-	}
+		this.crearSprint();
+		this.add(new Link<String>("volver") {
 
+			@Override
+			public void onClick() {
+				this.setResponsePage(new ListaDeProyectosPage());
+			}
+		});
+	}
+	private void crearSprint(){
+		this.add(new Link<String>("agregarSprint") {
+
+			@Override
+			public void onClick() {
+				controller.craerSprinte();
+			}
+		});
+	}
+	
 	private void crearTablaSprints() {
 		this.add(new ListView<Sprint>("filaSprints", new PropertyModel<>(this.controller, "sprints")) {
 			private static final long serialVersionUID = 1L;
