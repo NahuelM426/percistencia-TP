@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
+import org.apache.wicket.model.IModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
@@ -69,7 +70,6 @@ public class SprintPageController implements Serializable{
 		Proyecto proyecto1 = proyectoHome.findByName(this.proyecto.getNombre());
 		
 		sprint1.cerrar();
-		proyecto1.addUserStories(sprint1.buscarUserStoriesSinCompletar());
 		
 		Sprint sprint = new Sprint();
 		sprint.setUserStories(sprint1.buscarUserStoriesSinCompletar());
@@ -92,7 +92,6 @@ public class SprintPageController implements Serializable{
 		proyecto1.removerUser(newUserStory);
 		sprintHome.saveOrUpdate(sprint1);
 		proyectoHome.saveOrUpdate(proyecto1);
-
 	}
 
 	public String getEstadoDeSprint() {
@@ -127,6 +126,23 @@ public class SprintPageController implements Serializable{
 	public String getEstadoDeUserStory(UserStory userStory) {
 		UserStory userStory1 = userStoryHome.findByName(userStory.getTitulo());
 		return userStory1.getEstado();
+	}
+
+	public int getComplejidad(UserStory userStory) {
+		UserStory userStory1 = userStoryHome.findByName(userStory.getTitulo());
+		return userStory1.getComplejidadEstimada();
+	}
+	
+	public int getComplejidadTotalInicial(){
+		Sprint sprint1 = sprintHome.find(this.sprint.getId());
+		sprint1.setComplejidadEstimadaInicial();
+		sprintHome.saveOrUpdate(sprint1);
+		return sprint1.getComplejidadEstimadaInicial();
+	}
+	
+	public int getComplejidadTotal(){
+		Sprint sprint1 = sprintHome.find(this.sprint.getId());
+		return sprint1.setComplejidadEstimadaInicial();
 	}
 	
 }

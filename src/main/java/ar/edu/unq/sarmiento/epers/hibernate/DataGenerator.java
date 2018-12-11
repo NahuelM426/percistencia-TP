@@ -49,9 +49,10 @@ public class DataGenerator {
 		UserStory userStory1 = new UserStory();
 		userStory1.setTitulo("Configurar Travis");
 		userStory1.setCompletado(true);
+		userStory1.setComplejidadEstimada(5);
 		UserStory userStory2 = new UserStory();
 		userStory2.setTitulo("Configurar modelo");
-		
+		userStory2.setComplejidadEstimada(3);
 		UserStory story3 = new UserStory();
 		story3.setTitulo("Modificar ReadMe");
 		
