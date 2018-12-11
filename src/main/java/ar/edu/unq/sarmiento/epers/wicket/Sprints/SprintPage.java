@@ -71,7 +71,7 @@ public class SprintPage extends WebPage{
 			protected void populateItem(ListItem<UserStory> panel) {
 				UserStory userStory= panel.getModelObject();
 				panel.add(new Label("tituloUserStories", new PropertyModel<>(userStory, "titulo")));
-
+				panel.add(new Label("completado", controller.getEstadoDeUserStory(userStory)));
 				Link<String> botonVerProyecto = new Link<String>("ver") {
 					private static final long serialVersionUID = 1L;
 
@@ -81,6 +81,20 @@ public class SprintPage extends WebPage{
 					}
 				};
 				panel.add(botonVerProyecto);
+				Link<String> completarUserStory = new Link<String>("completar") {
+					private static final long serialVersionUID = 1L;
+
+					@Override
+					public void onClick() {
+						controller.completarUserStory(userStory);
+					}
+					@Override
+				     protected void onConfigure() {
+				        super.onConfigure(); 
+				        setVisible(controller.getEstadoDeUserStory(userStory) == "Sin Completar");
+				     }
+				};
+				panel.add(completarUserStory);
 			};
 		});
 	}

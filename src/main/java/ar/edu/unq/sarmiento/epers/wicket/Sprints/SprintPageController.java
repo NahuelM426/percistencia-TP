@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
+import org.apache.wicket.model.IModel;
+import org.apache.wicket.request.component.IRequestablePage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
@@ -14,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ar.edu.unq.sarmiento.epers.home.Home;
 import ar.edu.unq.sarmiento.epers.home.ProyectoHome;
 import ar.edu.unq.sarmiento.epers.home.SprintHome;
+import ar.edu.unq.sarmiento.epers.home.UserStoryHome;
 import ar.edu.unq.sarmiento.epers.model.Proyecto;
 import ar.edu.unq.sarmiento.epers.model.Sprint;
 import ar.edu.unq.sarmiento.epers.model.UserStory;
@@ -32,6 +35,8 @@ public class SprintPageController implements Serializable{
 	private SprintHome sprintHome;
 	@Autowired
 	private ProyectoHome proyectoHome;
+	@Autowired 
+	private UserStoryHome userStoryHome;
 	
 	private Sprint sprint;
 
@@ -109,6 +114,16 @@ public class SprintPageController implements Serializable{
 	public void setNewUserStory(UserStory newUserStory) {
 		this.newUserStory = newUserStory;
 	}
-	
+
+	public void completarUserStory(UserStory userStory) {
+		UserStory userStory1 = userStoryHome.findByName(userStory.getTitulo());
+		userStory1.setCompletado(true);
+		userStoryHome.saveOrUpdate(userStory1);
+	}
+
+	public String getEstadoDeUserStory(UserStory userStory) {
+		UserStory userStory1 = userStoryHome.findByName(userStory.getTitulo());
+		return userStory1.getEstado();
+	}
 	
 }
