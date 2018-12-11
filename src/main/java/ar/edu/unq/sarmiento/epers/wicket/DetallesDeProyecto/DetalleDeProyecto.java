@@ -11,7 +11,9 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import ar.edu.unq.sarmiento.epers.model.Proyecto;
 import ar.edu.unq.sarmiento.epers.model.UserStory;
+import ar.edu.unq.sarmiento.epers.wicket.ListadoDeProyectos.ListaDeProyectosPage;
 import ar.edu.unq.sarmiento.epers.wicket.agregarUserStory.AgregarUserStory;
+import ar.edu.unq.sarmiento.epers.wicket.listadoDeDeveloper.ListaDeDevelopersPage;
 
 public class DetalleDeProyecto extends WebPage {
 	
@@ -36,6 +38,14 @@ public class DetalleDeProyecto extends WebPage {
 				this.setResponsePage(new AgregarUserStory(proy));
 			}
 		});
+		this.add(new Link<String>("volver") {
+
+			@Override
+			public void onClick() {
+				this.setResponsePage(new ListaDeProyectosPage());
+			}
+		});
+		
 		
 	}
 	private void nombreDeMateria() {
@@ -67,7 +77,16 @@ public class DetalleDeProyecto extends WebPage {
 
 						controller.eliminar(bac);
 					}
+				};	Link<String> botoncompletado = new Link<String>("completar") {
+					private static final long serialVersionUID = 3672370417232954427L;
+
+					@Override
+					public void onClick() {
+
+						controller.completadoUserStory(bac);
+					}
 				};
+				panel.add(botoncompletado);
 				panel.add(botonEliminar);
 			}
 		});
