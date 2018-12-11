@@ -31,8 +31,9 @@ public class SprintPage extends WebPage{
 			
 			@Override
 			public void onClick(){
-				controller.cerrarSprint();
+				controller.cerrarSprint();	
 			}
+			
 			@Override
 		     protected void onConfigure() {
 		        super.onConfigure(); 

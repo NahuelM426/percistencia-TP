@@ -26,7 +26,6 @@ public class SprintPageController implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	private UserStory newUserStory;
-	private List<UserStory> userStories;
 	
 	@Autowired
 	private SprintHome sprintHome;
@@ -67,10 +66,14 @@ public class SprintPageController implements Serializable{
 		Proyecto proyecto1 = proyectoHome.findByName(this.proyecto.getNombre());
 		
 		sprint1.cerrar();
-		proyecto1.addUserStories(sprint1.buscarUserStoriesSinCompletar());
-
-		sprint1.removerUserStoriesSinCompletar();
 		
+		Sprint sprint = new Sprint();
+		sprint.setUserStories(sprint1.buscarUserStoriesSinCompletar());
+		
+		sprint1.removerUserStoriesSinCompletar();
+		proyecto1.agregarSprint(sprint);
+		
+		sprintHome.saveOrUpdate(sprint);
 		sprintHome.saveOrUpdate(sprint1);
 		proyectoHome.saveOrUpdate(proyecto1);
 		
@@ -84,6 +87,7 @@ public class SprintPageController implements Serializable{
 		
 		proyecto1.removerUser(newUserStory);
 		sprintHome.saveOrUpdate(sprint1);
+
 		proyectoHome.saveOrUpdate(proyecto1);
 
 	}
