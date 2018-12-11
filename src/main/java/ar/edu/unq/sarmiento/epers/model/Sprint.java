@@ -16,6 +16,7 @@ public class Sprint extends Persistible{
 	@JoinColumn(name = "sprint_id")
 	private List<UserStory> userStories = new ArrayList<>();
 	private boolean estaAbierto = true;
+	private int complejidadEstimadaInicial;
 	public List<UserStory> getUserStories() {
 		return userStories;
 	}
@@ -47,4 +48,19 @@ public class Sprint extends Persistible{
 	public void removerUserStoriesSinCompletar(){
 		this.userStories.removeAll(this.buscarUserStoriesSinCompletar());
 	}
+	public int setComplejidadEstimadaInicial() {
+		if(this.estaAbierto == true){
+			return this.complejidadEstimadaInicial = this.userStories.stream().mapToInt(u -> u.getComplejidadEstimada()).sum();
+		} else{
+			return this.userStories.stream().mapToInt(u -> u.getComplejidadEstimada()).sum();
+		}
+	}
+	
+	public int getComplejidadEstimadaInicial() {
+		return complejidadEstimadaInicial;
+	}
+	public void setComplejidadEstimadaInicial(int complejidadEstimadaInicial) {
+		this.complejidadEstimadaInicial = complejidadEstimadaInicial;
+	}
+	
 }

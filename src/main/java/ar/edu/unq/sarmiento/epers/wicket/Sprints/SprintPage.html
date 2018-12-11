@@ -53,11 +53,14 @@
 							<table class="table">
 								<thead>
 									<th>user stories</th>
+									<th>Estado</th>
+									<th>Complejidad estimada</th>
 								</thead>
 								<tbody class="colorDeFondo">
 									<tr wicket:id="filaUserStories">
 										<td wicket:id="tituloUserStories" class="columna"></td>
 										<td wicket:id="completado" class="columna"></td>
+										<td wicket:id="complejidad" class="columna"></td>
 										<td>
 											<button wicket:id="ver" class="btn btn-info btn-sm">
 												Detalle</button>
@@ -67,8 +70,18 @@
 												Completar</button>
 										</td>
 									</tr>
+									
 								</tbody>
 							</table>
+							<h4>
+										Complejidad total estimada:<tr wicket:id="complejidadTotalInicial">
+								</tr>
+							</h4>
+							<h4>
+										Complejidad total:<tr wicket:id="complejidadTotal">
+								</tr>
+							</h4>
+							
 							<div class="form-group">
 								<form wicket:id="agregarUserStory">
 									<div class="col-md-9">

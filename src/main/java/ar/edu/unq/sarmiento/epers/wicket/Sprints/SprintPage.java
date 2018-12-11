@@ -16,35 +16,43 @@ import ar.edu.unq.sarmiento.epers.model.Sprint;
 import ar.edu.unq.sarmiento.epers.model.UserStory;
 import ar.edu.unq.sarmiento.epers.wicket.home.HomePage;
 
-public class SprintPage extends WebPage{
+public class SprintPage extends WebPage {
 
 	private static final long serialVersionUID = 1L;
 
 	@SpringBean(name = "sprintPageController")
 	private SprintPageController controller;
-	
-	public SprintPage(Proyecto proyecto, Sprint sprint){
+
+	public SprintPage(Proyecto proyecto, Sprint sprint) {
 		this.controller.setSprint(sprint);
 		this.controller.setProyecto(proyecto);
 		this.nombreDeMateriaElegida();
-		this.add(new Link<String>("cerrarSprint"){
+		this.add(new Link<String>("cerrarSprint") {
 
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public void onClick(){
+			public void onClick() {
 				controller.cerrarSprint();
 			}
-			
+
 			@Override
-		     protected void onConfigure() {
-		        super.onConfigure(); 
-		        setVisible(controller.getEstadoDeSprint() == "Abierto");
-		     }
+			protected void onConfigure() {
+				super.onConfigure();
+				setVisible(controller.getEstadoDeSprint() == "Abierto");
+			}
 		});
 		this.crearTablaUserStories();
 		this.crearFormAgregar();
+		this.complejidadEstimada();
+		this.complejidadTotal();
 	}
+
+	private void complejidadTotal() {
+		this.add(new Label("complejidadTotal", new PropertyModel<>(this.controller, "complejidadTotal")));
+		
+	}
+
 	private void crearFormAgregar() {
 		Form<SprintPageController> agregarUserStory = new Form<SprintPageController>("agregarUserStory") {
 			private static final long serialVersionUID = 5932937158394555903L;
@@ -52,6 +60,11 @@ public class SprintPage extends WebPage{
 			@Override
 			protected void onSubmit() {
 				controller.confirmarAgregarUserStory();
+			}
+			@Override
+			protected void onConfigure() {
+				super.onConfigure();
+				setVisible(controller.getEstadoDeSprint() == "Abierto");
 			}
 		};
 
@@ -66,14 +79,16 @@ public class SprintPage extends WebPage{
 				new ChoiceRenderer<>("titulo")));
 		this.add(agregarUserStory);
 	}
+
 	private void crearTablaUserStories() {
 		this.add(new ListView<UserStory>("filaUserStories", new PropertyModel<>(this.controller, "userStories")) {
 			private static final long serialVersionUID = 1L;
 
 			@Override
 			protected void populateItem(ListItem<UserStory> panel) {
-				UserStory userStory= panel.getModelObject();
+				UserStory userStory = panel.getModelObject();
 				panel.add(new Label("tituloUserStories", new PropertyModel<>(userStory, "titulo")));
+				panel.add(new Label("complejidad", controller.getComplejidad(userStory)));
 				panel.add(new Label("completado", controller.getEstadoDeUserStory(userStory)));
 				Link<String> botonVerProyecto = new Link<String>("ver") {
 					private static final long serialVersionUID = 1L;
@@ -91,18 +106,22 @@ public class SprintPage extends WebPage{
 					public void onClick() {
 						controller.completarUserStory(userStory);
 					}
+
 					@Override
-				     protected void onConfigure() {
-				        super.onConfigure(); 
-				        setVisible(controller.getEstadoDeUserStory(userStory) == "Sin Completar");
-				     }
+					protected void onConfigure() {
+						super.onConfigure();
+						setVisible(controller.getEstadoDeUserStory(userStory) == "Sin Completar");
+					}
 				};
 				panel.add(completarUserStory);
 			};
 		});
 	}
-	
+
 	private void nombreDeMateriaElegida() {
 		this.add(new Label("estadoDeSprint", new PropertyModel<>(this.controller, "estadoDeSprint")));
+	}
+	private void complejidadEstimada() {
+		this.add(new Label("complejidadTotalInicial", new PropertyModel<>(this.controller, "complejidadTotalInicial")));
 	}
 }
