@@ -70,9 +70,7 @@ public class DataGenerator {
 		tp.setDeveloper(harry);
 		tp.setDeveloper(gandalf);
 		tp1.setDeveloper(gandalf);
-		tp.addUserStory(userStory2);
-		tp.agregarSprint(sprint5);
-		userStory2.setProyecto(tp);
+
 
 		sprint1.agregarUserStory(userStory1);
 		sprint1.agregarUserStory(userStory2);
