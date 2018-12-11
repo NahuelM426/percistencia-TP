@@ -13,7 +13,7 @@ public class UserStoryHome extends AbstractHome<UserStory>{
 
 	@Override
 	public UserStory findByName(String name) {
-		return this.getSession().createQuery("FROM UserStory WHERE nombre = :name", UserStory.class)
+		return this.getSession().createQuery("FROM UserStory WHERE titulo = :name", UserStory.class)
 				.setParameter("name", name).getSingleResult();		
 	}
 }
