@@ -89,7 +89,7 @@ public class SprintPageController implements Serializable{
 
 		Proyecto proyecto1 = proyectoHome.findByName(this.proyecto.getNombre());
 
-		proyecto1.removerUser(newUserStory);
+	//	proyecto1.removerUser(newUserStory);
 		sprintHome.saveOrUpdate(sprint1);
 		proyectoHome.saveOrUpdate(proyecto1);
 	}
@@ -141,8 +141,8 @@ public class SprintPageController implements Serializable{
 	}
 	
 	public int getComplejidadTotal(){
-		Sprint sprint1 = sprintHome.find(this.sprint.getId());
-		return sprint1.setComplejidadEstimadaInicial();
+		Proyecto proyecto1 = proyectoHome.findByName(this.proyecto.getNombre());
+		return proyecto1.totalDeComplegidar();
 	}
 	
 }

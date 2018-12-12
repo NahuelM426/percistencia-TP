@@ -82,4 +82,7 @@ public class Proyecto extends Persistible{
 	public void addUserStories(List<UserStory> buscarUserStoriesSinCompletar) {
 		this.userStory.addAll(buscarUserStoriesSinCompletar);
 	}
+	public int totalDeComplegidar(){
+	return	this.userStory.stream().mapToInt(u->u.getComplejidadEstimada()).sum();
+	}
 }
