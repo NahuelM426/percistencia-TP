@@ -19,7 +19,7 @@ public class Proyecto extends Persistible{
 	private static final long serialVersionUID = 7580495859264340032L;
 	private String nombre;
 	
-	@ManyToMany(cascade=CascadeType.REFRESH)
+	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Developer> developer = new ArrayList<Developer>();
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "proyecto_id")
