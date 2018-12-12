@@ -57,12 +57,14 @@ public class SprintPageController implements Serializable{
 	}
 	
 	public List<UserStory> getUserStories(){
-		return this.buscarUserStories(this.sprint.getId());
+		Sprint sprint1 = sprintHome.find(this.sprint.getId());
+		return this.buscarUserStories(sprint1.getId());
 	}
 	
 	public List<UserStory> buscarUserStories(int id){
-		return sprintHome.find(id).getUserStories();
-
+		Proyecto proyecto1 = proyectoHome.findByName(this.proyecto.getNombre());
+		List<UserStory> stories = sprintHome.find(id).getUserStories().stream().filter(u -> u.isEnSprint() == true).collect(Collectors.toList());
+		return stories.stream().filter(u -> u.getProyecto() == proyecto1).collect(Collectors.toList());
 	}
 
 	public void cerrarSprint() {
@@ -85,11 +87,10 @@ public class SprintPageController implements Serializable{
 
 	public void confirmarAgregarUserStory() {
 		Sprint sprint1 = sprintHome.find(this.sprint.getId());
-		sprint1.agregarUserStory(this.newUserStory);
-
 		Proyecto proyecto1 = proyectoHome.findByName(this.proyecto.getNombre());
 
-		proyecto1.removerUser(newUserStory);
+		sprint1.agregarUserStory(this.newUserStory);
+		this.newUserStory.setEnSprint(true);
 		sprintHome.saveOrUpdate(sprint1);
 		proyectoHome.saveOrUpdate(proyecto1);
 	}
@@ -105,8 +106,8 @@ public class SprintPageController implements Serializable{
 
 	public List<UserStory> getListaDeUserStories() {
 		Proyecto pro = proyectoHome.findByName(proyecto.getNombre());
-		return pro.getUserStori();
-
+		List<UserStory> userStories = pro.getUserStori().stream().filter(u -> u.isEnSprint() == false).collect(Collectors.toList());
+		return userStories.stream().filter(u->u.getProyecto() == pro).collect(Collectors.toList());
 	}
 
 	public UserStory getNewUserStory() {
@@ -118,18 +119,21 @@ public class SprintPageController implements Serializable{
 	}
 
 	public void completarUserStory(UserStory userStory) {
+		Sprint sprint1 = sprintHome.find(this.sprint.getId());
+		
 		UserStory userStory1 = userStoryHome.findByName(userStory.getTitulo());
 		userStory1.setCompletado(true);
 		userStoryHome.saveOrUpdate(userStory1);
 	}
 
 	public String getEstadoDeUserStory(UserStory userStory) {
-		UserStory userStory1 = userStoryHome.findByName(userStory.getTitulo());
+		UserStory userStory1 = userStoryHome.find(userStory.getId());
 		return userStory1.getEstado();
 	}
 
 	public int getComplejidad(UserStory userStory) {
-		UserStory userStory1 = userStoryHome.findByName(userStory.getTitulo());
+		UserStory userStory1 = userStoryHome.find(userStory.getId());
+		
 		return userStory1.getComplejidadEstimada();
 	}
 	

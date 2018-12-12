@@ -99,6 +99,7 @@ public class ControllerCrearUserStory implements Serializable {
 	}
 	public UserStory crearUser(){
 		UserStory user = new UserStory(getComplejidad(), getCompletado(),getTitulo(),getValorAlCliente(),getRol());
+		user.setProyecto(getProyecto());
 		home2.saveOrUpdate(user);
 		return user;
 	}
