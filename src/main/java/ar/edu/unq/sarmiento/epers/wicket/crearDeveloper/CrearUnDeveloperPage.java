@@ -22,6 +22,7 @@ public class CrearUnDeveloperPage extends WebPage {
 	this(new Developer());
 	}
 	public CrearUnDeveloperPage(Developer developer){
+		developer = new Developer();
 		controller.setDeveloper(developer);
 		this.developer=developer;
 		this.crearFormAgregar();
