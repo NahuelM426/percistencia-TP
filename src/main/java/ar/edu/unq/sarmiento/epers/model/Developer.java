@@ -42,7 +42,8 @@ public class Developer extends Persistible {
 	}
 
 	public void addProyecto(Proyecto project) {
+		if(!!this.proyectos.contains(project)){
 		this.getProyectos().add(project);
+	  }
 	}
-
 }

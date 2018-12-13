@@ -88,7 +88,6 @@ public class SprintPageController implements Serializable{
 	public void confirmarAgregarUserStory() {
 		Sprint sprint1 = sprintHome.find(this.sprint.getId());
 	
-
 		Proyecto proyecto1 = proyectoHome.findByName(this.proyecto.getNombre());
 
 		sprint1.agregarUserStory(this.newUserStory);
@@ -138,7 +137,6 @@ public class SprintPageController implements Serializable{
 		
 		return userStory1.getComplejidadEstimada();
 	}
-	
 	
 	public int getComplejidadTotalInicial(){
 		Sprint sprint1 = sprintHome.find(this.sprint.getId());
