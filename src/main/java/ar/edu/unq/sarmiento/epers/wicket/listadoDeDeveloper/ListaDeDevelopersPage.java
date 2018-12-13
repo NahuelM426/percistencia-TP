@@ -76,7 +76,7 @@ public class ListaDeDevelopersPage extends WebPage {
 					@Override
 					public void onClick() {
 
-						controller.Eliminar(developer);
+						controller.eliminar(developer);
 					}
 				};
 				panel.add(botonAsignar);

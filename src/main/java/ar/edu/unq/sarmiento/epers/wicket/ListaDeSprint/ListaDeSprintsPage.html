@@ -31,6 +31,15 @@
 .margen{
 	margin-top: 20px;
 }
+	.botonvoler{
+	         text-align: left;
+   			 margin-top: -42px;
+   			 padding: 8px;
+		}
+		.botoncrear{
+	         text-align: right;
+   			margin-top: -17px;
+		}
 
 </style>
 </head>
@@ -41,7 +50,7 @@
 				<div class="row recuadro">
 					<div class="panel panel-info margen" >
 						<div class="panel-heading">
-							<table class="table">
+							<table class="table table-striped">
 								<thead>
 									<th>sprints</th>
 								</thead>
@@ -55,20 +64,14 @@
 									</tr>
 								</tbody>
 							</table>
-						<div class="row">
-							<p>
-							<a wicket:id="agregarSprint" class="btn btn-primary btn-lg" role="button">
-							Agregar Sprint
-							</a>
-							</p>
+						<div class="botoncrear">
+							<button wicket:id="agregarSprint" class="btn btn-success">
+							Agregar Sprint</button>
 						</div>
-						<div class="row">
-							<p>
-							<a wicket:id="volver" class="btn btn-primary btn-lg" role="button">
-							Volver
-							</a>
-							</p>
-						</div>
+					<div class="botonvoler">
+						<button wicket:id="volver" class="btn btn-primary">
+						Volver</button>
+					</div>
 						</div>
 					</div>
 				</div>

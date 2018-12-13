@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unq.sarmiento.epers.home.DeveloperHome;
+import ar.edu.unq.sarmiento.epers.home.ProyectoHome;
 import ar.edu.unq.sarmiento.epers.model.Developer;
 import ar.edu.unq.sarmiento.epers.model.Persistible;
 
@@ -42,7 +43,7 @@ public class ControllerDeHomePage implements Serializable {
 		return home.listaDeDeveloper();
 	}
 
-	public void Eliminar(Developer develp) {
+	public void eliminar(Developer develp) {
 		home.delete(develp);
 		
 	}

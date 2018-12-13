@@ -66,7 +66,7 @@ public class DetalleDeProyecto extends WebPage {
 				panel.add(new Label("titulo", backlogModel.bind("titulo")));
 				panel.add(new Label("valorAlCliente", backlogModel.bind("valorAlCliente")));
 				panel.add(new Label("complejidad", backlogModel.bind("complejidadEstimada")));
-				panel.add(new Label("completado", backlogModel.bind("completado")));
+				panel.add(new Label("completado", backlogModel.bind("estado")));
 				panel.add(new Label("rol", backlogModel.bind("rol")));
 			
 				Link<String> botonEliminar = new Link<String>("eliminar") {
