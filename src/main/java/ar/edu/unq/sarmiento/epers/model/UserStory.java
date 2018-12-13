@@ -19,6 +19,7 @@ public class UserStory extends Persistible{
 	private Proyecto proyecto;
 	@OneToMany
 	private List<Developer> developers;
+	private boolean enSprint  = false;
 	
 	public UserStory(int complejidadEstimada, boolean completado,String titulo,int valor,String roll) {
 		super();
@@ -81,5 +82,10 @@ public class UserStory extends Persistible{
 			return "Sin Completar";
 		}
 	}
-	
+	public boolean isEnSprint() {
+		return enSprint;
+	}
+	public void setEnSprint(boolean enSprint) {
+		this.enSprint = enSprint;
+	}
 }
