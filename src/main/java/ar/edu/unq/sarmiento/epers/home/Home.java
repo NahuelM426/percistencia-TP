@@ -1,6 +1,7 @@
 package ar.edu.unq.sarmiento.epers.home;
 
 import java.io.Serializable;
+import java.util.List;
 
 import org.hibernate.Session;
 
@@ -14,5 +15,6 @@ public interface Home<T extends Persistible> extends Serializable {
 	public void saveOrUpdate(T object);
 	public void delete(T object);
 	public void attach(T result);
+	void saveOrUpdateLista(List<T> object);
 
 }

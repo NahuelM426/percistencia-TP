@@ -14,6 +14,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import ar.edu.unq.sarmiento.epers.model.Proyecto;
 import ar.edu.unq.sarmiento.epers.model.Sprint;
 import ar.edu.unq.sarmiento.epers.model.UserStory;
+import ar.edu.unq.sarmiento.epers.wicket.ListaDeSprint.ListaDeSprintsPage;
 import ar.edu.unq.sarmiento.epers.wicket.home.HomePage;
 
 public class SprintPage extends WebPage {
@@ -40,6 +41,13 @@ public class SprintPage extends WebPage {
 			protected void onConfigure() {
 				super.onConfigure();
 				setVisible(controller.getEstadoDeSprint() == "Abierto");
+			}
+		});
+		this.add(new Link<String>("volver") {
+
+			@Override
+			public void onClick() {
+				this.setResponsePage(new ListaDeSprintsPage(proyecto));
 			}
 		});
 		this.crearTablaUserStories();

@@ -58,7 +58,7 @@ public class ControllerDetalleDeProyecto implements Serializable {
 	}
 
 	public void completadoUserStory(UserStory bac) {
-		UserStory userStory = userStoryHome.findByName(bac.getTitulo());
+		UserStory userStory = userStoryHome.find(bac.getId());
 		userStory.setCompletado(true);
 		userStoryHome.saveOrUpdate(userStory);
 		

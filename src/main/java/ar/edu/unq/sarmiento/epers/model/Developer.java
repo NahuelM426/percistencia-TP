@@ -3,11 +3,10 @@ package ar.edu.unq.sarmiento.epers.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 
 @Entity
 public class Developer extends Persistible {
@@ -15,7 +14,12 @@ public class Developer extends Persistible {
 	private static final long serialVersionUID = -786414214144659508L;
 	private String nombre = "";
 	
-	@ManyToMany(cascade=CascadeType.ALL)
+	@ManyToMany
+    @JoinTable(
+            name = "Developer_Proyecto", 
+            joinColumns = { @JoinColumn(name = "developer_id") }, 
+            inverseJoinColumns = { @JoinColumn(name = "proyecto_id") }
+        )
 	private List<Proyecto> proyectos = new ArrayList<Proyecto>();
 
 	public Developer() {
@@ -40,9 +44,14 @@ public class Developer extends Persistible {
 	public void setProyectos(Proyecto proyectos) {
 		this.proyectos.add(proyectos);
 	}
+	public void removerProyecto(Proyecto proyect){
+		getProyectos().remove(proyect);
+	}
 
 	public void addProyecto(Proyecto project) {
 		this.getProyectos().add(project);
 	}
-
+	public Developer getDeveloper(){
+		return this;
+	}
 }

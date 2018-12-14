@@ -20,6 +20,15 @@
 			font-size: 16px;
 			color: black; 
 		}
+			.botonvoler{
+	         text-align: left;
+   			 margin-top: -42px;
+   			 padding: 8px;
+		}
+			.botoncrear{
+	         text-align: right;
+   			margin-top: -17px;
+		}
 		</style>
 </head>
 <body>
@@ -28,7 +37,7 @@
 				<h4>Lista de Proyectos</h4>
 			</div>
 					<div class="panel-body recuadro">
-								<table class="table">
+								<table class="table table-striped">
 									<thead>
 										<th>Nombre</th>	
 									</thead>
@@ -46,7 +55,7 @@
 												</button>
 											</td>
 											<td>
-												<button wicket:id="eliminar" class="btn btn-info btn-sm">
+												<button wicket:id="eliminar" class="btn btn-danger btn-sm">
 													Eliminar
 												</button>
 											</td>
@@ -55,11 +64,11 @@
 									</tbody>
 								</table>
 					</div>
-				<div class="text-center">
-				<button wicket:id="proyectoHome" class="btn btn-primary">
+				<div class="botoncrear">
+				<button wicket:id="proyectoHome" class="btn btn-success">
 					Crear Proyecto</button>
 				</div>
-				<div class="text-center">
+				<div class="botonvoler">
 				<button wicket:id="volver" class="btn btn-primary">
 					Volver</button>
 				</div>
