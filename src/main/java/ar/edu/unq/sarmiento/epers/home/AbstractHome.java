@@ -1,5 +1,7 @@
 package ar.edu.unq.sarmiento.epers.home;
 
+import java.util.List;
+
 import org.hibernate.LockMode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -32,6 +34,10 @@ public abstract class AbstractHome<T extends Persistible> implements Home<T> {
 	@Override
 	public void saveOrUpdate(T object) {
 		this.getSession().saveOrUpdate(object);
+	}
+	@Override
+	public void saveOrUpdateLista(List<T> object) {
+		object.forEach(p-> this.getSession().saveOrUpdate(object));
 	}
 
 	@Override

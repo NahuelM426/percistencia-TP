@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -19,8 +20,14 @@ public class Proyecto extends Persistible{
 	private static final long serialVersionUID = 7580495859264340032L;
 	private String nombre;
 	
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany
+    @JoinTable(
+            name = "Developer_Proyecto", 
+            joinColumns = { @JoinColumn(name = "developer_id") }, 
+            inverseJoinColumns = { @JoinColumn(name = "proyecto_id") }
+        )
 	private List<Developer> developer = new ArrayList<Developer>();
+	
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "proyecto_id")
 	private List<Sprint> sprintBacklogs = new ArrayList<>();
@@ -77,6 +84,9 @@ public class Proyecto extends Persistible{
 
 	public void removerUser(UserStory bac) {
 		this.userStory.remove(bac);
+	}
+	public void eliminarDevelopes(){
+		this.developer.removeAll(developer);
 	}
 
 	public void addUserStories(List<UserStory> buscarUserStoriesSinCompletar) {

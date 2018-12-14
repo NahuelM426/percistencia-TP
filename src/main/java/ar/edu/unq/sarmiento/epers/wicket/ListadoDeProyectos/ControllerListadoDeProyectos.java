@@ -10,7 +10,9 @@ import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
+import ar.edu.unq.sarmiento.epers.home.DeveloperHome;
 import ar.edu.unq.sarmiento.epers.home.ProyectoHome;
+import ar.edu.unq.sarmiento.epers.model.Developer;
 import ar.edu.unq.sarmiento.epers.model.Proyecto;
 @Service
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
@@ -19,7 +21,10 @@ public class ControllerListadoDeProyectos implements Serializable  {
 
 	@Autowired
 	private ProyectoHome home;
+	@Autowired
+	private DeveloperHome developerHome;
 	
+	private List<Developer> listaDeveloper;
 	private Proyecto proyecto;
 	private String nombre="";
 	
@@ -43,7 +48,8 @@ public class ControllerListadoDeProyectos implements Serializable  {
 		return home.listaDeTodosLosProyectos();
 	}
 	public void eliminar(Proyecto por){
-		home.delete(por);
+		Proyecto proyecto = home.find(por.getId());
+		home.delete(proyecto);
 	}
 
 	public void confirmarProyecto() {
