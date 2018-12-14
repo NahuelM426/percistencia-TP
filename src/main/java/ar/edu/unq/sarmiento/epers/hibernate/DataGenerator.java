@@ -33,11 +33,9 @@ public class DataGenerator {
 		Developer harry = new Developer("Harry");
 		Proyecto proyecto1 = new Proyecto("Libro Matriz", 3);
 		harry.addProyecto(proyecto1);
-		proyecto1.setDeveloper(harry);
 		Developer gandalf = new Developer("Gandalf");
 		Proyecto proyecto2 = new Proyecto("Toxy-taxi", 7);
 		gandalf.addProyecto(proyecto2);
-		proyecto2.setDeveloper(gandalf);
 		Sprint sprint1 = new Sprint();
 		Sprint sprint2 = new Sprint();
 		
