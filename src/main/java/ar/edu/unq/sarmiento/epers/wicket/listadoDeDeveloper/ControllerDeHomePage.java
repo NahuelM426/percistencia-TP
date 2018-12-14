@@ -44,6 +44,7 @@ public class ControllerDeHomePage implements Serializable {
 	}
 
 	public void eliminar(Developer develp) {
+		
 		home.delete(develp);
 		
 	}

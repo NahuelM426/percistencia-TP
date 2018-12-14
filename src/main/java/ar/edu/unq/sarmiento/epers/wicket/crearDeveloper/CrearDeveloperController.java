@@ -77,15 +77,15 @@ public class CrearDeveloperController implements Serializable {
 
 	public void agregarCarrera() {
 		if(developer.getNombre() != getNombre()){
-		this.developer.setNombre(getNombre());
-		home.saveOrUpdate(developer);
+		this.getDeveloper().setNombre(getNombre());
+		home.saveOrUpdate(getDeveloper());
 		}
 	}
 
 	public void confirmarProyecto() {
 		this.agregarCarrera();
-		this.developer.addProyecto(this.proyectoElegido);
-		home.saveOrUpdate(developer);
+		this.getDeveloper().addProyecto(this.proyectoElegido);
+		home.saveOrUpdate(getDeveloper());
 		
 	}
 
