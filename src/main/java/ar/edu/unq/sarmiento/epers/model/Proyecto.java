@@ -23,8 +23,8 @@ public class Proyecto extends Persistible{
 	@ManyToMany
     @JoinTable(
             name = "Developer_Proyecto", 
-            joinColumns = { @JoinColumn(name = "developer_id") }, 
-            inverseJoinColumns = { @JoinColumn(name = "proyecto_id") }
+            joinColumns = { @JoinColumn(name = "proyecto_id") }, 
+            inverseJoinColumns = { @JoinColumn(name = "developer_id") }
         )
 	private List<Developer> developer = new ArrayList<Developer>();
 	

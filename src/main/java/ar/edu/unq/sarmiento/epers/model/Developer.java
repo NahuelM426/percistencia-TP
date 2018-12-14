@@ -13,9 +13,8 @@ public class Developer extends Persistible {
 
 	private static final long serialVersionUID = -786414214144659508L;
 	private String nombre = "";
-	
 	@ManyToMany
-    @JoinTable(
+	@JoinTable(
             name = "Developer_Proyecto", 
             joinColumns = { @JoinColumn(name = "developer_id") }, 
             inverseJoinColumns = { @JoinColumn(name = "proyecto_id") }
