@@ -33,11 +33,11 @@ public class DataGenerator {
 		Developer harry = new Developer("Harry");
 		Proyecto proyecto1 = new Proyecto("Libro Matriz", 3);
 		harry.addProyecto(proyecto1);
-		proyecto1.setDeveloper(harry);
+		
 		Developer gandalf = new Developer("Gandalf");
 		Proyecto proyecto2 = new Proyecto("Toxy-taxi", 7);
 		gandalf.addProyecto(proyecto2);
-		proyecto2.setDeveloper(gandalf);
+		
 		Sprint sprint1 = new Sprint();
 		Sprint sprint2 = new Sprint();
 		
@@ -65,10 +65,6 @@ public class DataGenerator {
 		
 		proyecto1.addUserStory(story3);
 		proyecto1.addUserStory(story4);
-		
-		Proyecto tp = new Proyecto("tp1", 1);
-		Proyecto tp1 = new Proyecto("tp2", 2);
-		Proyecto tp2 = new Proyecto("tp3", 3);
 
 
 		sprint1.agregarUserStory(userStory1);
@@ -83,9 +79,6 @@ public class DataGenerator {
 		developerHome.saveOrUpdate(harry);
 		proyectosHome.saveOrUpdate(proyecto2);
 		developerHome.saveOrUpdate(gandalf);
-		proyectosHome.saveOrUpdate(tp);
-		proyectosHome.saveOrUpdate(tp1);
-		proyectosHome.saveOrUpdate(tp2);
 		sprintHome.saveOrUpdate(sprint1);
 		sprintHome.saveOrUpdate(sprint2);
 		sprintHome.saveOrUpdate(sprint5);
