@@ -7,73 +7,91 @@
 	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
 	crossorigin="anonymous">
 <title>Lista de Proyectos</title>
-		<style>
-		.columna { font-size: smaller; }
-		.recuadro {
-			margin-top: 20px; margin-bottom: 20px;			
-			padding-top: 10px; padding-bottom: 10px; 
-			padding-left: 15px; padding-right: 15px;
-			border-style: solid; border-width: 2px; 
-		}
-		.colorDeFondo{
-			background-color:white;
-			font-size: 16px;
-			color: black; 
-		}
-			.botonvoler{
-	         text-align: left;
-   			 margin-top: -42px;
-   			 padding: 8px;
-		}
-			.botoncrear{
-	         text-align: right;
-   			margin-top: -17px;
-		}
-		</style>
+<style>
+.columna {
+	font-size: smaller;
+}
+
+.recuadro {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 15px;
+	padding-right: 15px;
+	border-style: solid;
+	border-width: 2px;
+}
+
+.colorDeFondo {
+	background-color: white;
+	font-size: 16px;
+	color: black;
+}
+
+.botonvoler {
+	text-align: left;
+	margin-top: -42px;
+	padding: 8px;
+}
+
+.botoncrear {
+	text-align: right;
+	margin-top: -17px;
+}
+</style>
 </head>
 <body>
-		<div class="panel panel-info">
-		<div class="panel-heading titulo">
-				<h4>Lista de Proyectos</h4>
-			</div>
-					<div class="panel-body recuadro">
-								<table class="table table-striped">
-									<thead>
-										<th>Nombre</th>	
-									</thead>
-									<tbody class="colorDeFondo">
-										<tr wicket:id="filaDeveloper">
-											<td wicket:id="nombre" class="columna"></td>
-											<td>
-												<button wicket:id="sprintProyecto" class="btn btn-info btn-sm">
-													Ver Sprints
-												</button>
-											</td>
-											<td>
-												<button wicket:id="detalles" class="btn btn-info btn-sm">
-													Detalle 
-												</button>
-											</td>
-											<td>
-												<button wicket:id="eliminar" class="btn btn-danger btn-sm">
-													Eliminar
-												</button>
-											</td>
-											
-										</tr>
-									</tbody>
-								</table>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<div class="panel panel-info">
+					<div class="panel-heading titulo ">
+						<h4>
+							Lista De Proyectos
+						</h4>
 					</div>
+				</div>
 				<div class="botoncrear">
-				<button wicket:id="proyectoHome" class="btn btn-success">
-					Crear Proyecto</button>
+					<button wicket:id="proyectoHome" class="btn btn-success">
+						Crear Proyecto</button>
 				</div>
 				<div class="botonvoler">
-				<button wicket:id="volver" class="btn btn-primary">
-					Volver</button>
+					<button wicket:id="volver" class="btn btn-primary">Volver</button>
+				</div>
+
+				<div class="row ">
+					<div class="panel panel-info">
+						<div class="table-responsive">
+							<table class="table table-bordered">
+								<thead>
+										<th>Nombre</th>
+								</thead>
+
+								<tbody class="colorDeFondo">
+									<tr wicket:id="filaDeveloper">
+										<td wicket:id="nombre" class="columna col-md-4"></td>
+										<td class ="col-md-1"> 
+											<button wicket:id="sprintProyecto"
+												class="btn btn-info btn-sm">Ver Sprints</button>
+										</td>
+										<td class ="col-md-1">
+											<button wicket:id="detalles" class="btn btn-info btn-sm">
+												Detalle</button>
+										</td>
+										<td class ="col-md-1">
+											<button wicket:id="eliminar" class="btn btn-danger btn-sm">
+												Eliminar</button>
+										</td>
+
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
 				</div>
 			</div>
-
-						
+		</div>
+	</div>
 </body>
 </html>
