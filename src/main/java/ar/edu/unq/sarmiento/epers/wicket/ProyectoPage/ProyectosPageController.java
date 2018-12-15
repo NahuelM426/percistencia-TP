@@ -88,7 +88,9 @@ public class ProyectosPageController  implements Serializable{
 		
 	}
 	public List<Proyecto> getProyectosLista() {
-		this.proyectos = home.listaDeTodosLosProyectos();
-		return proyectos;
+		List<Proyecto> todosLostProyectos = home.listaDeTodosLosProyectos();
+		List<Proyecto> proyectos1 = developerHome.findByName(this.getDeveloper().getNombre()).getProyectos();
+		todosLostProyectos.removeAll(proyectos1);
+		return todosLostProyectos;
 	}
 }
