@@ -21,22 +21,21 @@ import ar.edu.unq.sarmiento.epers.model.Sprint;
 @Service
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 @Transactional
-public class ProyectosPageController  implements Serializable{
+public class ProyectosPageController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	private List<Proyecto> proyectos = new ArrayList<>();
-	
+
 	@Autowired
 	private ProyectoHome home;
-	@Autowired 
+	@Autowired
 	private DeveloperHome developerHome;
-	
+
 	private Developer developer;
 
 	private Proyecto newProyecto;
-	
-	
+
 	public DeveloperHome getDeveloperHome() {
 		return developerHome;
 	}
@@ -64,29 +63,30 @@ public class ProyectosPageController  implements Serializable{
 	public void setDeveloper(Developer developer) {
 		this.developer = developer;
 	}
-	
-	public Home<Proyecto> getHome(){
+
+	public Home<Proyecto> getHome() {
 		return this.home;
 	}
-	
-	public void setHome(ProyectoHome home){
+
+	public void setHome(ProyectoHome home) {
 		this.home = home;
 	}
-	
-	public List<Proyecto> getProyectos(){
+
+	public List<Proyecto> getProyectos() {
 		return this.buscarProyectos(this.developer.getNombre());
 	}
-	public List<Proyecto> buscarProyectos(String name){
+
+	public List<Proyecto> buscarProyectos(String name) {
 		return home.findByNamee(name).getProyectos();
 	}
-	
-	
+
 	public void confirmarAgregarUserStory() {
 		Developer developer1 = developerHome.findByName(this.developer.getNombre());
 		developer1.addProyecto(this.newProyecto);
 		developerHome.saveOrUpdate(developer1);
-		
+
 	}
+
 	public List<Proyecto> getProyectosLista() {
 		List<Proyecto> todosLostProyectos = home.listaDeTodosLosProyectos();
 		List<Proyecto> proyectos1 = developerHome.findByName(this.getDeveloper().getNombre()).getProyectos();
