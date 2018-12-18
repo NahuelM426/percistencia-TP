@@ -96,6 +96,7 @@ public class SprintPage extends WebPage {
 			protected void populateItem(ListItem<UserStory> panel) {
 				UserStory userStory = panel.getModelObject();
 				panel.add(new Label("tituloUserStories", new PropertyModel<>(userStory, "titulo")));
+				panel.add(new Label("rol", controller.getRolDeUserStory(userStory)));
 				panel.add(new Label("complejidad", controller.getComplejidad(userStory)));
 				panel.add(new Label("completado", controller.getEstadoDeUserStory(userStory)));
 				Link<String> completarUserStory = new Link<String>("completar") {
