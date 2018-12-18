@@ -148,6 +148,5 @@ public class SprintPageController implements Serializable{
 	public int getComplejidadTotal(){
 		Sprint sprint1 = sprintHome.find(this.sprint.getId());
 		return sprint1.setComplejidadEstimadaInicial();
-	}
-	
+	}	
 }

@@ -98,15 +98,6 @@ public class SprintPage extends WebPage {
 				panel.add(new Label("tituloUserStories", new PropertyModel<>(userStory, "titulo")));
 				panel.add(new Label("complejidad", controller.getComplejidad(userStory)));
 				panel.add(new Label("completado", controller.getEstadoDeUserStory(userStory)));
-				Link<String> botonVerProyecto = new Link<String>("ver") {
-					private static final long serialVersionUID = 1L;
-
-					@Override
-					public void onClick() {
-						this.setResponsePage(new HomePage());
-					}
-				};
-				panel.add(botonVerProyecto);
 				Link<String> completarUserStory = new Link<String>("completar") {
 					private static final long serialVersionUID = 1L;
 
